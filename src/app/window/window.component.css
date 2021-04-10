@@ -1,0 +1,22 @@
+.horizontal-border {
+  width: 100%;
+  height: 5px;
+  background-color: coral;
+  opacity: 0;
+}
+
+.horizontal-border:hover {
+  cursor: ns-resize;
+}
+
+.vertical-border {
+  width: 5px;
+  height: 100%;
+  display: inline-block;
+  background-color: coral;
+  opacity: 0;
+}
+
+.vertical-border:hover {
+  cursor: ew-resize;
+}

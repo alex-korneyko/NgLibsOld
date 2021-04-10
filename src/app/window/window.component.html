@@ -1,0 +1,45 @@
+<div style="position: absolute"
+     [id]="params.id"
+     [ngStyle]="{
+      'width': params.xSize + 'px',
+      'height': params.ySize + 'px',
+      'left': params.xPos + 'px',
+      'top': params.yPos + 'px',
+      'z-index': params.zPos
+     }"
+     (mousedown)="WindowAreaClick($event)"
+
+>
+  <div class="horizontal-border" draggable="true"
+       (drag)="DragTopBorder($event)"
+  ></div>
+
+  <div style="width: 100%; height: calc(100% - 10px)">
+
+    <div class="vertical-border" draggable="true"
+         (drag)="DragLeftBorder($event)"
+    ></div>
+
+    <div style="width: calc(100% - 10px); height: 100%; display: inline-block">
+      <div style="width: 100%; height: 25px" draggable="true"
+           [ngStyle]="{
+            'background-color': params.isActive ? '#3a55bb' : '#b6b6b6'
+           }"
+           (mousedown)="WindowHeaderMouseDown($event)"
+           (mouseup)="WindowHeaderMouseUp($event)"
+      >
+        <p class="window-close-btn" (click)="CloseClick()">X</p>
+      </div>
+      <div style="width: 100%; height: calc(100% - 25px); background-color: lightgray; border: 1px solid dimgray"></div>
+    </div>
+
+    <div class="vertical-border" draggable="true"
+         (drag)="DragRightBorder($event)"
+    ></div>
+  </div>
+
+  <div class="horizontal-border" draggable="true"
+       (drag)="DragBottomBorder($event)"
+  ></div>
+
+</div>
