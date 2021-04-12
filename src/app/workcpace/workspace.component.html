@@ -1,0 +1,19 @@
+<div style="height: 100%; background-color: #eaeaea"
+     (dragover)="deskTopService.DragOver($event)"
+     (drop)="deskTopService.Drop($event)"
+>
+  <app-window *ngFor="let window of deskTopService.windows"
+              [id]="window.id"
+              [params]="window"
+              (windowClick)="deskTopService.WindowClick($event)"
+              (closeEvent)="deskTopService.CloseEventHandler($event)"
+              (dragenter)="deskTopService.DragEnter($event)"
+              (windowHeaderMouseDown)="deskTopService.HeaderMouseDown($event)"
+              (windowHeaderMouseUp)="deskTopService.HeaderMouseUp($event)"
+              (resizeTopBorder)="deskTopService.ResizeTopBorder($event)"
+              (resizeBottomBorder)="deskTopService.ResizeBottomBorder($event)"
+              (resizeRightBorder)="deskTopService.ResizeRightBorder($event)"
+              (resizeLeftBorder)="deskTopService.ResizeLeftBorder($event)"
+  >
+  </app-window>
+</div>

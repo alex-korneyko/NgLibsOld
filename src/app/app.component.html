@@ -1,25 +1,2 @@
-<div style="width: 100%; height: 100vh">
 
-  <div style="height: 100%; background-color: #eaeaea"
-       (dragover)="DragOver($event)"
-       (drop)="Drop($event)"
-  >
-    <app-window *ngFor="let window of windows"
-                [id]="window.id"
-                [params]="window"
-                (windowClick)="WindowClick($event)"
-                (closeEvent)="CloseEventHandler($event)"
-                (dragenter)="DragEnter($event)"
-                (windowHeaderMouseDown)="HeaderMouseDown($event)"
-                (windowHeaderMouseUp)="HeaderMouseUp($event)"
-                (resizeTopBorder)="ResizeTopBorder($event)"
-                (resizeBottomBorder)="ResizeBottomBorder($event)"
-                (resizeRightBorder)="ResizeRightBorder($event)"
-                (resizeLeftBorder)="ResizeLeftBorder($event)"
-    >
-    </app-window>
-  </div>
-  <div style="position: absolute; right: 0; bottom: 0; width: 100%; background-color: gray; z-index: 1000">
-    <button class="btn btn-sm btn-primary" (click)="AddWindowClick()">Add window</button>
-  </div>
-</div>
+<app-desk-top></app-desk-top>
