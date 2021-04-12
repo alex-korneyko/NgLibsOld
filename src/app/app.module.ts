@@ -6,6 +6,9 @@ import { WindowComponent } from './window/window.component';
 import { DeskTopComponent } from './desk-top/desk-top.component';
 import { TaskPanelComponent } from './task-panel/task-panel.component';
 import { WorkspaceComponent } from './workcpace/workspace.component';
+import { TestWindowContentComponent } from './test-window-content/test-window-content.component';
+import { WindowContentDirective } from './window/window-content.directive';
+import {FormsModule} from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -13,10 +16,13 @@ import { WorkspaceComponent } from './workcpace/workspace.component';
     WindowComponent,
     DeskTopComponent,
     TaskPanelComponent,
-    WorkspaceComponent
+    WorkspaceComponent,
+    TestWindowContentComponent,
+    WindowContentDirective,
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

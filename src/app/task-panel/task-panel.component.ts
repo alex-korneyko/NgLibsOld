@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {DeskTopService} from '../desk-top/desk-top.service';
+import {TestWindowContentComponent} from '../test-window-content/test-window-content.component';
 
 @Component({
   selector: 'app-task-panel',
@@ -7,6 +8,8 @@ import {DeskTopService} from '../desk-top/desk-top.service';
   styleUrls: ['./task-panel.component.css']
 })
 export class TaskPanelComponent implements OnInit {
+
+  testWindow = TestWindowContentComponent;
 
   constructor(public deskTopService: DeskTopService) { }
 

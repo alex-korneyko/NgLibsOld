@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import {Injectable, Type} from '@angular/core';
 import {WindowParams} from '../window/window-params';
 import {WindowEvent} from '../window/window-event';
 import {WindowEventType} from '../window/window-event-type.enum';
@@ -11,10 +11,11 @@ export class DeskTopService {
   windows = new Array<WindowParams>();
   currentWindow: WindowParams;
   currentWindowEvent: WindowEvent;
+  testName = "Alex";
 
   constructor() { }
 
-  AddEmptyWindow = () => {
+  AddWindow = (windowContentComponent: Type<any>): number => {
     this.windows.forEach(win => win.isActive = false);
 
     let maxZ = 0;
@@ -25,8 +26,22 @@ export class DeskTopService {
       }
     });
 
-    this.currentWindow = new WindowParams(100, 50, maxZ + 10, 450, 300);
+    this.currentWindow = new WindowParams(100, 50, maxZ + 10, 450, 300, windowContentComponent);
     this.windows.push(this.currentWindow);
+
+    return this.currentWindow.id;
+  }
+
+  SetActiveWindow(windowId: number) {
+    this.windows.forEach(win => win.isActive = false);
+    this.GetWindow(windowId).isActive = true;
+  }
+
+  CloseWindow(windowId: number) {
+    let index = this.windows.findIndex(win => win.id === windowId);
+    if (index > -1) {
+      this.windows.splice(index, 1);
+    }
   }
 
   CloseEventHandler(windowId: number) {
@@ -102,5 +117,10 @@ export class DeskTopService {
     let windowParams = this.GetWindow(event.windowId);
     windowParams.xSize -= event.dragEvent.offsetX;
     windowParams.xPos += event.dragEvent.offsetX
+  }
+
+  FullScreenEventHandler(event: number) {
+    let windowParams = this.GetWindow(event);
+    windowParams.isFullScreen = !windowParams.isFullScreen;
   }
 }

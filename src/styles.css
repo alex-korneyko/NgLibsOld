@@ -4,17 +4,22 @@ body {
   overflow-y: hidden;
 }
 
-.window-close-btn {
-  position: absolute;
-  margin: 10px;
-  line-height: 8px;
-  right: 0;
+.window-header-btn {
+  margin: 3px;
   font-size: small;
   color: lightgray;
-  font-weight: bold;
+  /*font-weight: bold;*/
+  cursor: pointer;
 }
 
-.window-close-btn:hover {
-  cursor: pointer;
+.window-header-btn.window-background-btn:hover {
+  color: gold;
+}
+
+.window-header-btn.window-fullscreen-btn:hover {
+  color: aqua;
+}
+
+.window-header-btn.window-close-btn:hover {
   color: red;
 }

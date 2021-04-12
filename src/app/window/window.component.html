@@ -1,45 +1,65 @@
 <div style="position: absolute"
      [id]="params.id"
      [ngStyle]="{
-      'width': params.xSize + 'px',
-      'height': params.ySize + 'px',
-      'left': params.xPos + 'px',
-      'top': params.yPos + 'px',
+      'width': params.isFullScreen ? '100%' : params.xSize + 'px',
+      'height': params.isFullScreen ? '100%' : params.ySize + 'px',
+      'left': params.isFullScreen ? '0px' : params.xPos + 'px',
+      'top': params.isFullScreen ? '0px' : params.yPos + 'px',
       'z-index': params.zPos
      }"
      (mousedown)="WindowAreaClick($event)"
 
 >
   <div class="horizontal-border" draggable="true"
+       *ngIf="!params.isFullScreen"
        (drag)="DragTopBorder($event)"
+       (dragstart)="HorizontalBorderDragStart($event)"
   ></div>
 
-  <div style="width: 100%; height: calc(100% - 10px)">
+  <div style="width: 100%; height: calc(100%); display: flex">
 
     <div class="vertical-border" draggable="true"
+         *ngIf="!params.isFullScreen"
          (drag)="DragLeftBorder($event)"
+         (dragstart)="VerticalBorderDragStart($event)"
     ></div>
 
-    <div style="width: calc(100% - 10px); height: 100%; display: inline-block">
-      <div style="width: 100%; height: 25px" draggable="true"
+    <div style="width: calc(100%); height: 100%; display: inline-block">
+      <div style="width: 100%; height: 25px; text-align: right" draggable="true"
            [ngStyle]="{
             'background-color': params.isActive ? '#3a55bb' : '#b6b6b6'
            }"
            (mousedown)="WindowHeaderMouseDown($event)"
            (mouseup)="WindowHeaderMouseUp($event)"
+           (dragstart)="HeaderDragStart($event)"
       >
-        <p class="window-close-btn" (click)="CloseClick()">X</p>
+        <span class="window-header-btn window-background-btn fa fa-window-minimize" (click)="BackgroundClick()"></span>
+        <span class="window-header-btn window-fullscreen-btn fa fa-window-maximize"
+              *ngIf="!params.isFullScreen"
+              (click)="FullScreenClick()"></span>
+        <span class="window-header-btn window-fullscreen-btn fa fa-window-restore"
+              *ngIf="params.isFullScreen"
+              (click)="FullScreenClick()"></span>
+        <span class="window-header-btn window-close-btn fa fa-window-close mr-1" (click)="CloseClick()"></span>
       </div>
-      <div style="width: 100%; height: calc(100% - 25px); background-color: lightgray; border: 1px solid dimgray"></div>
+      <div style="width: 100%; height: calc(100% - 25px); background-color: lightgray; border: 1px solid dimgray">
+
+        <ng-template windowContent></ng-template>
+
+      </div>
     </div>
 
     <div class="vertical-border" draggable="true"
+         *ngIf="!params.isFullScreen"
          (drag)="DragRightBorder($event)"
+         (dragstart)="VerticalBorderDragStart($event)"
     ></div>
   </div>
 
   <div class="horizontal-border" draggable="true"
+       *ngIf="!params.isFullScreen"
        (drag)="DragBottomBorder($event)"
+       (dragstart)="HorizontalBorderDragStart($event)"
   ></div>
 
 </div>

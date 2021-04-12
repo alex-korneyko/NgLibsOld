@@ -1,14 +1,19 @@
-import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import {Component, ComponentFactoryResolver, EventEmitter, Input, OnDestroy, OnInit, Output, Type, ViewChild} from '@angular/core';
 import {WindowParams} from './window-params';
 import {WindowEvent} from './window-event';
 import {WindowEventType} from './window-event-type.enum';
+import {WindowContentDirective} from './window-content.directive';
+import {IWindowContent} from './iwindow-content';
 
 @Component({
   selector: 'app-window',
   templateUrl: './window.component.html',
   styleUrls: ['./window.component.css']
 })
-export class WindowComponent implements OnInit {
+export class WindowComponent implements OnInit, OnDestroy {
+
+  @ViewChild(WindowContentDirective, {static: true})
+  windowHost: WindowContentDirective;
 
   @Input()
   id: number;
@@ -18,6 +23,9 @@ export class WindowComponent implements OnInit {
 
   @Output()
   windowClick = new EventEmitter<number>();
+
+  @Output()
+  fullScreenEvent = new EventEmitter<number>();
 
   @Output()
   closeEvent = new EventEmitter<number>();
@@ -40,9 +48,19 @@ export class WindowComponent implements OnInit {
   @Output()
   resizeBottomBorder = new EventEmitter<WindowEvent>();
 
-  constructor() { }
+  constructor(private componentFactoryResolver: ComponentFactoryResolver) { }
 
   ngOnInit(): void {
+    let componentFactory = this.componentFactoryResolver.resolveComponentFactory(this.params.windowContent);
+    let viewContainerRef = this.windowHost.viewContainerRef;
+    viewContainerRef.clear();
+
+    let windowContentRef = viewContainerRef.createComponent<IWindowContent>(componentFactory);
+    windowContentRef.instance.id = this.id;
+  }
+
+  ngOnDestroy() {
+    this.windowHost.viewContainerRef.clear();
   }
 
   CloseClick = () => {
@@ -61,7 +79,6 @@ export class WindowComponent implements OnInit {
   }
 
   WindowHeaderMouseUp(event: MouseEvent) {
-    console.log("WindowHeaderMouseUp")
     this.windowHeaderMouseUp.emit(new WindowEvent(this.id, WindowEventType.NONE))
   }
 
@@ -91,5 +108,25 @@ export class WindowComponent implements OnInit {
     windowEvent.dragEvent = event;
 
     this.resizeBottomBorder.emit(windowEvent);
+  }
+
+  HeaderDragStart(event: DragEvent) {
+    event.dataTransfer.effectAllowed = "move";
+  }
+
+  VerticalBorderDragStart(event: DragEvent) {
+    event.dataTransfer.effectAllowed = "move"
+  }
+
+  HorizontalBorderDragStart(event: DragEvent) {
+    event.dataTransfer.effectAllowed = "move"
+  }
+
+  FullScreenClick() {
+    this.fullScreenEvent.emit(this.id);
+  }
+
+  BackgroundClick() {
+
   }
 }

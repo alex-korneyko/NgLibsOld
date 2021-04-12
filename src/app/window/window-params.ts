@@ -1,18 +1,23 @@
+import {Type} from '@angular/core';
+
 export class WindowParams {
   private readonly _id: number;
+  private readonly _windowContent: Type<any>
   private _xPos: number;
   private _yPos: number;
   private _zPos: number;
   private _xSize: number;
   private _ySize: number;
+  private _isFullScreen = false;
   private _isActive: boolean;
   private _isHidden: boolean;
 
-  constructor(x: number, y: number, z: number, xSize: number, ySize: number) {
+  constructor(xPos: number, yPos: number, zPos: number, xSize: number, ySize: number, content: Type<any>) {
     this._id = new Date().valueOf();
-    this._xPos = x;
-    this._yPos = y;
-    this._zPos = z;
+    this._windowContent = content;
+    this._xPos = xPos;
+    this._yPos = yPos;
+    this._zPos = zPos;
     this._xSize = xSize;
     this._ySize = ySize;
     this._isActive = true;
@@ -76,5 +81,17 @@ export class WindowParams {
 
   set ySize(value: number) {
     this._ySize = value;
+  }
+
+  get windowContent(): Type<any> {
+    return this._windowContent;
+  }
+
+  get isFullScreen(): boolean {
+    return this._isFullScreen;
+  }
+
+  set isFullScreen(value: boolean) {
+    this._isFullScreen = value;
   }
 }

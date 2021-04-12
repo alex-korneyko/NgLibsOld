@@ -1,4 +1,4 @@
-<div style="height: 100%; background-color: #eaeaea"
+<div style="height: calc(100% - 30px); width: 100%; background-color: #eaeaea; position: absolute; top: 0; left: 0"
      (dragover)="deskTopService.DragOver($event)"
      (drop)="deskTopService.Drop($event)"
 >
@@ -6,6 +6,7 @@
               [id]="window.id"
               [params]="window"
               (windowClick)="deskTopService.WindowClick($event)"
+              (fullScreenEvent)="deskTopService.FullScreenEventHandler($event)"
               (closeEvent)="deskTopService.CloseEventHandler($event)"
               (dragenter)="deskTopService.DragEnter($event)"
               (windowHeaderMouseDown)="deskTopService.HeaderMouseDown($event)"
