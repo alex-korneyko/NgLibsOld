@@ -9,6 +9,8 @@ import { WorkspaceComponent } from './workcpace/workspace.component';
 import { TestWindowContentComponent } from './test-window-content/test-window-content.component';
 import { WindowContentDirective } from './window/window-content.directive';
 import {FormsModule} from '@angular/forms';
+import { MainMenuComponent } from './main-menu/main-menu.component';
+import { MainMenuItemComponent } from './main-menu/main-menu-item/main-menu-item.component';
 
 @NgModule({
   declarations: [
@@ -19,6 +21,8 @@ import {FormsModule} from '@angular/forms';
     WorkspaceComponent,
     TestWindowContentComponent,
     WindowContentDirective,
+    MainMenuComponent,
+    MainMenuItemComponent,
   ],
   imports: [
     BrowserModule,

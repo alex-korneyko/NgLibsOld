@@ -4,11 +4,13 @@ import {WindowEvent} from './window-event';
 import {WindowEventType} from './window-event-type.enum';
 import {WindowContentDirective} from './window-content.directive';
 import {IWindowContent} from './iwindow-content';
+import {WindowService} from './window.service';
 
 @Component({
   selector: 'app-window',
   templateUrl: './window.component.html',
-  styleUrls: ['./window.component.css']
+  styleUrls: ['./window.component.css'],
+  providers: [WindowService]
 })
 export class WindowComponent implements OnInit, OnDestroy {
 
@@ -48,7 +50,7 @@ export class WindowComponent implements OnInit, OnDestroy {
   @Output()
   resizeBottomBorder = new EventEmitter<WindowEvent>();
 
-  constructor(private componentFactoryResolver: ComponentFactoryResolver) { }
+  constructor(public windowService: WindowService, private componentFactoryResolver: ComponentFactoryResolver) { }
 
   ngOnInit(): void {
     let componentFactory = this.componentFactoryResolver.resolveComponentFactory(this.params.windowContent);
@@ -68,6 +70,7 @@ export class WindowComponent implements OnInit, OnDestroy {
   }
 
   WindowAreaClick = (event: MouseEvent) => {
+    event.stopPropagation();
     this.windowClick.emit(this.id);
   }
 

@@ -1,0 +1,20 @@
+.btn-menu {
+  border-radius: 4px;
+  border: 0;
+  font-weight: bold;
+  color: #343434;
+  height: 28px;
+  margin-top: 1px;
+  box-shadow: 0 0;
+  line-height: 10px;
+  background-image: linear-gradient(lightgray, grey);
+  width: 100px;
+}
+
+.btn-menu:hover {
+  background-image: linear-gradient(#eeeeee, #a3a3a3);
+}
+
+.btn-menu:active {
+  background-image: linear-gradient(#a3a3a3, #eeeeee);
+}

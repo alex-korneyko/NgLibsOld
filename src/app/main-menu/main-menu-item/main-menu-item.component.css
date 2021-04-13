@@ -1,0 +1,10 @@
+.main-menu-item {
+  width: 100%;
+  height: 25px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.main-menu-item:hover {
+  background-color: #b8b8b8;
+}

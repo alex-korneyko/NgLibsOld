@@ -1,10 +1,19 @@
-<h3>Hello {{testWindowContentService.textContent}}</h3>
+<h4>TestWinContent {{testWindowContentService.textContent}}</h4>
 
 <div class="input-group mb-3">
   <div class="input-group-prepend">
-    <span class="input-group-text" id="basic-addon1">Text</span>
+    <span class="input-group-text" id="basic-addon1">LocalService</span>
   </div>
   <input type="text" class="form-control" aria-describedby="basic-addon1" [(ngModel)]="testWindowContentService.textContent">
+</div>
+
+<h4>WinService {{windowService.winServiceData}}</h4>
+
+<div class="input-group mb-3">
+  <div class="input-group-prepend">
+    <span class="input-group-text" id="basic-addon2">WinService</span>
+  </div>
+  <input type="text" class="form-control" aria-describedby="basic-addon2" [(ngModel)]="windowService.winServiceData">
 </div>
 
 <button class="btn btn-sm btn-primary" (click)="AddWindow()">Add window</button>

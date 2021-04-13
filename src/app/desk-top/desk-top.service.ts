@@ -13,6 +13,8 @@ export class DeskTopService {
   currentWindowEvent: WindowEvent;
   testName = "Alex";
 
+  mainMenuIsShown = false;
+
   constructor() { }
 
   AddWindow = (windowContentComponent: Type<any>): number => {
@@ -26,7 +28,7 @@ export class DeskTopService {
       }
     });
 
-    this.currentWindow = new WindowParams(100, 50, maxZ + 10, 450, 300, windowContentComponent);
+    this.currentWindow = new WindowParams(windowContentComponent, maxZ + 10);
     this.windows.push(this.currentWindow);
 
     return this.currentWindow.id;
@@ -54,10 +56,10 @@ export class DeskTopService {
   WindowClick = (windowId: number) => {
     this.windows.sort((win1, win2) => win1.zPos > win2.zPos ? 1 : -1);
     for (let i = 0; i < this.windows.length; i++) {
+      this.windows[i].isActive = false;
+      this.mainMenuIsShown = false;
       this.windows[i].zPos = i + 10;
     }
-
-    this.windows.forEach(win => win.isActive = false);
 
     this.currentWindow = this.GetWindow(windowId);
     this.currentWindow.isActive = true;
@@ -122,5 +124,18 @@ export class DeskTopService {
   FullScreenEventHandler(event: number) {
     let windowParams = this.GetWindow(event);
     windowParams.isFullScreen = !windowParams.isFullScreen;
+  }
+
+  ShowMenu(event: MouseEvent) {
+    event.stopPropagation();
+    this.mainMenuIsShown = !this.mainMenuIsShown;
+  }
+
+  WorkSpaceMouseClick(event: MouseEvent) {
+    this.mainMenuIsShown = false;
+  }
+
+  TaskPanelMouseClick(event: MouseEvent) {
+    this.mainMenuIsShown = false;
   }
 }

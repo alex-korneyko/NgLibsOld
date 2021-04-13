@@ -3,23 +3,19 @@ import {Type} from '@angular/core';
 export class WindowParams {
   private readonly _id: number;
   private readonly _windowContent: Type<any>
-  private _xPos: number;
-  private _yPos: number;
+  private _xPos = 100;
+  private _yPos = 50;
   private _zPos: number;
-  private _xSize: number;
-  private _ySize: number;
+  private _xSize = 450;
+  private _ySize = 300;
   private _isFullScreen = false;
   private _isActive: boolean;
   private _isHidden: boolean;
 
-  constructor(xPos: number, yPos: number, zPos: number, xSize: number, ySize: number, content: Type<any>) {
+  constructor(content: Type<any>, zPos: number) {
     this._id = new Date().valueOf();
     this._windowContent = content;
-    this._xPos = xPos;
-    this._yPos = yPos;
     this._zPos = zPos;
-    this._xSize = xSize;
-    this._ySize = ySize;
     this._isActive = true;
   }
 

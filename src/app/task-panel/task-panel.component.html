@@ -1,3 +1,5 @@
-<div style="position: absolute; right: 0; bottom: 0; width: 100%; background-color: gray; z-index: 10000; height: 30px">
-  <button class="btn btn-sm btn-primary" (click)="deskTopService.AddWindow(testWindow)">Add window</button>
+<div style="position: absolute; right: 0; bottom: 0; width: 100%; background-color: dimgray; z-index: 10000; height: 30px"
+     (click)="deskTopService.TaskPanelMouseClick($event)"
+>
+  <button class="btn btn-menu ml-1" (click)="deskTopService.ShowMenu($event)">Menu</button>
 </div>
