@@ -2,5 +2,6 @@
   <app-main-menu-item
     *ngFor="let menuItem of menuItems"
     [mainMenuItemParam]="menuItem"
+    (applicationClickEvent)="StartApplication($event)"
   ></app-main-menu-item>
 </div>

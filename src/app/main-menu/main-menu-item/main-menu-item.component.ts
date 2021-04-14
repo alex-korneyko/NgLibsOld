@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, Input, OnInit, Output, Type, EventEmitter} from '@angular/core';
 import {MainMenuItemParam} from './main-menu-item-param';
 
 @Component({
@@ -11,9 +11,16 @@ export class MainMenuItemComponent implements OnInit {
   @Input()
   mainMenuItemParam: MainMenuItemParam;
 
+  @Output()
+  applicationClickEvent = new EventEmitter<Type<any>>()
+
   constructor() { }
 
   ngOnInit(): void {
   }
 
+  ApplicationClick(event: MouseEvent) {
+    event.stopPropagation();
+    this.applicationClickEvent.emit(this.mainMenuItemParam.application);
+  }
 }

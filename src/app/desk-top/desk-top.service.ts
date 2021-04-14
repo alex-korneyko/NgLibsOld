@@ -3,9 +3,7 @@ import {WindowParams} from '../window/window-params';
 import {WindowEvent} from '../window/window-event';
 import {WindowEventType} from '../window/window-event-type.enum';
 
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable()
 export class DeskTopService {
 
   windows = new Array<WindowParams>();

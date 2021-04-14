@@ -1,7 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit, Type} from '@angular/core';
 import {DeskTopService} from '../desk-top/desk-top.service';
 import {MainMenuItemParam} from './main-menu-item/main-menu-item-param';
-import {TestWindowContentComponent} from '../test-window-content/test-window-content.component';
+import {MicroApplications} from '../web-desktop-applications/micro.applications';
 
 @Component({
   selector: 'app-main-menu',
@@ -15,13 +15,13 @@ export class MainMenuComponent implements OnInit {
   constructor(public deskTopService: DeskTopService) { }
 
   ngOnInit(): void {
-    this.menuItems.push(new MainMenuItemParam("Test window content", this.TestWindowContentCreate))
+    MicroApplications.applications.forEach(app => {
+      this.menuItems.push(new MainMenuItemParam(app.title, app.microAppForm))
+    })
   }
 
-  TestWindowContentCreate = (event: MouseEvent) => {
-    event.stopPropagation();
-    this.deskTopService.AddWindow(TestWindowContentComponent)
+  StartApplication(event: Type<any>) {
+    this.deskTopService.AddWindow(event)
     this.deskTopService.mainMenuIsShown = false;
   }
-
 }
