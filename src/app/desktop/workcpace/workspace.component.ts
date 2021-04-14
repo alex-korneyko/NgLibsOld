@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {DeskTopService} from '../desk-top/desk-top.service';
+import {DesktopService} from '../desktop.service';
 
 @Component({
   selector: 'app-workspace',
@@ -9,7 +9,7 @@ import {DeskTopService} from '../desk-top/desk-top.service';
 export class WorkspaceComponent implements OnInit {
   title = 'Workspace';
 
-  constructor(public deskTopService: DeskTopService) { }
+  constructor(public deskTopService: DesktopService) { }
 
   ngOnInit(): void {
   }

@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 
 @Injectable()
-export class WindowService {
+export class MicroApplicationFormService {
 
   constructor() { }
 

@@ -1,4 +1,4 @@
-export enum WindowEventType {
+export enum MicroApplicationFormEventType {
   NONE,
   DRAG_WINDOW,
   RESIZE_LEFT,

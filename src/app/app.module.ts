@@ -4,19 +4,17 @@ import {BrowserModule} from '@angular/platform-browser';
 import {AppComponent} from './app.component';
 import {TestWindowContentComponent} from './test-window-content/test-window-content.component';
 import {FormsModule} from '@angular/forms';
-import {WebDesktopApplicationsModule} from './web-desktop-applications/web-desktop-applications.module';
+import {WebDesktopApplicationsModule} from './desktop/web-desktop-applications/web-desktop-applications.module';
 
 @NgModule({
   declarations: [
     AppComponent,
-
     TestWindowContentComponent,
-
   ],
   imports: [
     BrowserModule,
     FormsModule,
-    WebDesktopApplicationsModule.forRoot([
+    WebDesktopApplicationsModule.microApplications([
       {title: "Test Content Window", microAppForm: TestWindowContentComponent}
     ]),
   ],

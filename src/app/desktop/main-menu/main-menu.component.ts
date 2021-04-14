@@ -1,5 +1,5 @@
 import {Component, OnInit, Type} from '@angular/core';
-import {DeskTopService} from '../desk-top/desk-top.service';
+import {DesktopService} from '../desktop.service';
 import {MainMenuItemParam} from './main-menu-item/main-menu-item-param';
 import {MicroApplications} from '../web-desktop-applications/micro.applications';
 
@@ -12,7 +12,7 @@ export class MainMenuComponent implements OnInit {
 
   menuItems = new Array<MainMenuItemParam>()
 
-  constructor(public deskTopService: DeskTopService) { }
+  constructor(public deskTopService: DesktopService) { }
 
   ngOnInit(): void {
     MicroApplications.applications.forEach(app => {

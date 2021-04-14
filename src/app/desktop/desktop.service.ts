@@ -1,14 +1,14 @@
 import {Injectable, Type} from '@angular/core';
-import {WindowParams} from '../window/window-params';
-import {WindowEvent} from '../window/window-event';
-import {WindowEventType} from '../window/window-event-type.enum';
+import {MicroApplicationFormParams} from './micro-application-form/micro-application-form-params';
+import {MicroApplicationFormEvent} from './micro-application-form/micro-application-form-event';
+import {MicroApplicationFormEventType} from './micro-application-form/micro-application-form-event-type.enum';
 
 @Injectable()
-export class DeskTopService {
+export class DesktopService {
 
-  windows = new Array<WindowParams>();
-  currentWindow: WindowParams;
-  currentWindowEvent: WindowEvent;
+  windows = new Array<MicroApplicationFormParams>();
+  currentWindow: MicroApplicationFormParams;
+  currentWindowEvent: MicroApplicationFormEvent;
   testName = "Alex";
 
   mainMenuIsShown = false;
@@ -26,7 +26,7 @@ export class DeskTopService {
       }
     });
 
-    this.currentWindow = new WindowParams(windowContentComponent, maxZ + 10);
+    this.currentWindow = new MicroApplicationFormParams(windowContentComponent, maxZ + 10);
     this.windows.push(this.currentWindow);
 
     return this.currentWindow.id;
@@ -67,7 +67,7 @@ export class DeskTopService {
   DragOver = (event: DragEvent) => {
     let offsetX = event.clientX;
     let offsetY = event.clientY;
-    if (this.currentWindowEvent?.windowEventType === WindowEventType.DRAG_WINDOW) {
+    if (this.currentWindowEvent?.windowEventType === MicroApplicationFormEventType.DRAG_WINDOW) {
       this.currentWindow.xPos = offsetX - this.currentWindowEvent.mouseEvent.offsetX;
       this.currentWindow.yPos = offsetY - this.currentWindowEvent.mouseEvent.offsetY;
     }
@@ -82,38 +82,38 @@ export class DeskTopService {
     this.currentWindowEvent = null;
   }
 
-  private GetWindow = (windowId: number): WindowParams => {
+  private GetWindow = (windowId: number): MicroApplicationFormParams => {
     let index = this.windows.findIndex(win => win.id === windowId);
     if (index > -1) {
       return this.windows[index];
     }
   }
 
-  HeaderMouseUp(event: WindowEvent) {
+  HeaderMouseUp(event: MicroApplicationFormEvent) {
     this.currentWindowEvent = null;
   }
 
-  HeaderMouseDown = (event: WindowEvent) => {
+  HeaderMouseDown = (event: MicroApplicationFormEvent) => {
     this.currentWindowEvent = event;
   }
 
-  ResizeBottomBorder(event: WindowEvent) {
+  ResizeBottomBorder(event: MicroApplicationFormEvent) {
     let windowParams = this.GetWindow(event.windowId);
     windowParams.ySize += event.dragEvent.offsetY
   }
 
-  ResizeTopBorder(event: WindowEvent) {
+  ResizeTopBorder(event: MicroApplicationFormEvent) {
     let windowParams = this.GetWindow(event.windowId);
     windowParams.ySize -= event.dragEvent.offsetY;
     windowParams.yPos += event.dragEvent.offsetY;
   }
 
-  ResizeRightBorder(event: WindowEvent) {
+  ResizeRightBorder(event: MicroApplicationFormEvent) {
     let windowParams = this.GetWindow(event.windowId);
     windowParams.xSize += event.dragEvent.offsetX
   }
 
-  ResizeLeftBorder(event: WindowEvent) {
+  ResizeLeftBorder(event: MicroApplicationFormEvent) {
     let windowParams = this.GetWindow(event.windowId);
     windowParams.xSize -= event.dragEvent.offsetX;
     windowParams.xPos += event.dragEvent.offsetX

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import {DeskTopService} from '../desk-top/desk-top.service';
-import {TestWindowContentComponent} from '../test-window-content/test-window-content.component';
+import {DesktopService} from '../desktop.service';
+import {TestWindowContentComponent} from '../../test-window-content/test-window-content.component';
 
 @Component({
   selector: 'app-task-panel',
@@ -11,7 +11,7 @@ export class TaskPanelComponent implements OnInit {
 
   testWindow = TestWindowContentComponent;
 
-  constructor(public deskTopService: DeskTopService) { }
+  constructor(public deskTopService: DesktopService) { }
 
   ngOnInit(): void {
   }

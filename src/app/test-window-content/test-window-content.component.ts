@@ -1,8 +1,8 @@
 import {Component, OnInit} from '@angular/core';
-import {DeskTopService} from '../desk-top/desk-top.service';
+import {DesktopService} from '../desktop/desktop.service';
 import {TestWindowContentService} from './test-window-content.service';
-import {WindowContent} from '../window-content';
-import {WindowService} from '../window/window.service';
+import {MicroApplicationContent} from '../desktop/micro-application-form/micro-application-content';
+import {MicroApplicationFormService} from '../desktop/micro-application-form/micro-application-form.service';
 
 @Component({
   selector: 'app-test-window-content',
@@ -10,9 +10,9 @@ import {WindowService} from '../window/window.service';
   styleUrls: ['./test-window-content.component.css'],
   providers: [TestWindowContentService]
 })
-export class TestWindowContentComponent extends WindowContent implements OnInit {
+export class TestWindowContentComponent extends MicroApplicationContent implements OnInit {
 
-  constructor(deskTopService: DeskTopService, public windowService: WindowService, public testWindowContentService: TestWindowContentService) {
+  constructor(deskTopService: DesktopService, public windowService: MicroApplicationFormService, public testWindowContentService: TestWindowContentService) {
     super(deskTopService);
   }
 

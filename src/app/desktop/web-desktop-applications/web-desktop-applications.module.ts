@@ -1,24 +1,24 @@
 import {ModuleWithProviders, NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
-import {MicroApplication} from '../desk-top/micro-application';
-import {WindowComponent} from '../window/window.component';
-import {DeskTopComponent} from '../desk-top/desk-top.component';
+import {MicroApplication} from '../micro-application';
+import {MicroApplicationFormComponent} from '../micro-application-form/micro-application-form.component';
+import {DesktopComponent} from '../desktop.component';
 import {TaskPanelComponent} from '../task-panel/task-panel.component';
 import {WorkspaceComponent} from '../workcpace/workspace.component';
-import {WindowContentDirective} from '../window/window-content.directive';
+import {MicroApplicationFormContentDirective} from '../micro-application-form/micro-application-form-content.directive';
 import {MainMenuComponent} from '../main-menu/main-menu.component';
 import {MainMenuItemComponent} from '../main-menu/main-menu-item/main-menu-item.component';
-import {DeskTopService} from '../desk-top/desk-top.service';
+import {DesktopService} from '../desktop.service';
 import {MicroApplications} from './micro.applications';
 
 
 @NgModule({
   declarations: [
-    WindowComponent,
-    DeskTopComponent,
+    MicroApplicationFormComponent,
+    DesktopComponent,
     TaskPanelComponent,
     WorkspaceComponent,
-    WindowContentDirective,
+    MicroApplicationFormContentDirective,
     MainMenuComponent,
     MainMenuItemComponent,
   ],
@@ -26,15 +26,15 @@ import {MicroApplications} from './micro.applications';
     CommonModule
   ],
   providers: [
-    DeskTopService
+    DesktopService
   ],
   exports: [
-    DeskTopComponent
+    DesktopComponent
   ]
 })
 export class WebDesktopApplicationsModule {
 
-  public static forRoot(applications: MicroApplication[]): ModuleWithProviders<WebDesktopApplicationsModule> {
+  public static microApplications(applications: MicroApplication[]): ModuleWithProviders<WebDesktopApplicationsModule> {
     MicroApplications.applications.push(...applications);
 
     return {ngModule: WebDesktopApplicationsModule}
