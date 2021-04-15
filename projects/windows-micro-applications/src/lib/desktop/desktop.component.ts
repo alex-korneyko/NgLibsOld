@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-desk-top',
+  selector: 'wma-desk-top',
   templateUrl: './desktop.component.html',
   styleUrls: ['./desktop.component.css']
 })

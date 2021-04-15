@@ -2,7 +2,7 @@ import {Component, Input, OnInit, Output, Type, EventEmitter} from '@angular/cor
 import {MainMenuItemParam} from './main-menu-item-param';
 
 @Component({
-  selector: 'app-main-menu-item',
+  selector: 'wma-main-menu-item',
   templateUrl: './main-menu-item.component.html',
   styleUrls: ['./main-menu-item.component.css']
 })

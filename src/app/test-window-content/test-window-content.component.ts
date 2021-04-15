@@ -1,8 +1,8 @@
 import {Component, OnInit} from '@angular/core';
-import {DesktopService} from '../desktop/desktop.service';
+import {DesktopService} from '../../../projects/windows-micro-applications/src/lib/desktop/desktop.service';
 import {TestWindowContentService} from './test-window-content.service';
-import {MicroApplicationContent} from '../desktop/micro-application-form/micro-application-content';
-import {MicroApplicationFormService} from '../desktop/micro-application-form/micro-application-form.service';
+import {MicroApplicationFormContent} from '../../../projects/windows-micro-applications/src/lib/desktop/micro-application-form/micro-application-form-content';
+import {MicroApplicationFormService} from '../../../projects/windows-micro-applications/src/lib/desktop/micro-application-form/micro-application-form.service';
 
 @Component({
   selector: 'app-test-window-content',
@@ -10,7 +10,7 @@ import {MicroApplicationFormService} from '../desktop/micro-application-form/mic
   styleUrls: ['./test-window-content.component.css'],
   providers: [TestWindowContentService]
 })
-export class TestWindowContentComponent extends MicroApplicationContent implements OnInit {
+export class TestWindowContentComponent extends MicroApplicationFormContent implements OnInit {
 
   constructor(deskTopService: DesktopService, public windowService: MicroApplicationFormService, public testWindowContentService: TestWindowContentService) {
     super(deskTopService);

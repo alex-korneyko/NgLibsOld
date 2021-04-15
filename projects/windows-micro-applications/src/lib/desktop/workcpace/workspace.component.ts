@@ -2,7 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {DesktopService} from '../desktop.service';
 
 @Component({
-  selector: 'app-workspace',
+  selector: 'wma-workspace',
   templateUrl: './workspace.component.html',
   styleUrls: ['./workspace.component.css']
 })

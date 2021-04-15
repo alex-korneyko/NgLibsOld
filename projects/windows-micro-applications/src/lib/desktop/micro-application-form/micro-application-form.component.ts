@@ -3,11 +3,11 @@ import {MicroApplicationFormParams} from './micro-application-form-params';
 import {MicroApplicationFormEvent} from './micro-application-form-event';
 import {MicroApplicationFormEventType} from './micro-application-form-event-type.enum';
 import {MicroApplicationFormContentDirective} from './micro-application-form-content.directive';
-import {IMicroApplicationContent} from './i-micro-application-content';
+import {MicroApplicationContent} from './micro-application-content';
 import {MicroApplicationFormService} from './micro-application-form.service';
 
 @Component({
-  selector: 'app-window',
+  selector: 'wma-form',
   templateUrl: './micro-application-form.component.html',
   styleUrls: ['./micro-application-form.component.css'],
   providers: [MicroApplicationFormService]
@@ -57,7 +57,7 @@ export class MicroApplicationFormComponent implements OnInit, OnDestroy {
     let viewContainerRef = this.windowHost.viewContainerRef;
     viewContainerRef.clear();
 
-    let windowContentRef = viewContainerRef.createComponent<IMicroApplicationContent>(componentFactory);
+    let windowContentRef = viewContainerRef.createComponent<MicroApplicationContent>(componentFactory);
     windowContentRef.instance.id = this.id;
   }
 

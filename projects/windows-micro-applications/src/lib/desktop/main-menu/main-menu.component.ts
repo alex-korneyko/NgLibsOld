@@ -4,7 +4,7 @@ import {MainMenuItemParam} from './main-menu-item/main-menu-item-param';
 import {MicroApplications} from '../web-desktop-applications/micro.applications';
 
 @Component({
-  selector: 'app-main-menu',
+  selector: 'wma-main-menu',
   templateUrl: './main-menu.component.html',
   styleUrls: ['./main-menu.component.css']
 })

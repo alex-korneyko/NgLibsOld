@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import {DesktopService} from '../desktop.service';
-import {TestWindowContentComponent} from '../../test-window-content/test-window-content.component';
+import {TestWindowContentComponent} from '../../../../../../src/app/test-window-content/test-window-content.component';
 
 @Component({
-  selector: 'app-task-panel',
+  selector: 'wma-task-panel',
   templateUrl: './task-panel.component.html',
   styleUrls: ['./task-panel.component.css']
 })

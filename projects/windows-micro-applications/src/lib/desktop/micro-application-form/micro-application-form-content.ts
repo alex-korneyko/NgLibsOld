@@ -1,7 +1,7 @@
 import {DesktopService} from '../desktop.service';
-import {IMicroApplicationContent} from './i-micro-application-content';
+import {MicroApplicationContent} from './micro-application-content';
 
-export class MicroApplicationContent implements IMicroApplicationContent{
+export class MicroApplicationFormContent implements MicroApplicationContent{
 
   id: number;
 
