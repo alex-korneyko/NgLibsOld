@@ -1,7 +1,28 @@
 <div class="main-menu">
-  <wma-main-menu-item
-    *ngFor="let microApplication of microApplications"
-    [microApplication]="microApplication"
-    (applicationClickEvent)="StartApplication($event)"
-  ></wma-main-menu-item>
+  <div style="height: 100%; width: 250px; display: block; background-color: lightgray">
+    <div style="width: 100%; font-weight: bold; padding-left: 5px">
+      <p style="margin: 0">Applications:</p>
+    </div>
+    <hr style="margin: 3px">
+    <div *ngFor="let microApplication of microApplications">
+      <wma-main-menu-item
+        *ngIf="microApplication.type === type.Application"
+        [microApplication]="microApplication"
+        (applicationClickEvent)="StartApplication($event)"
+      ></wma-main-menu-item>
+    </div>
+  </div>
+  <div style="height: 100%; flex: 1; display: block">
+    <div style="width: 100%; font-weight: bold; padding-left: 5px">
+      <p style="margin: 0">Services:</p>
+    </div>
+    <hr style="margin: 3px">
+    <div *ngFor="let microApplication of microApplications">
+      <wma-main-menu-item
+        *ngIf="microApplication.type === type.Service"
+        [microApplication]="microApplication"
+        (applicationClickEvent)="StartApplication($event)"
+      ></wma-main-menu-item>
+    </div>
+  </div>
 </div>

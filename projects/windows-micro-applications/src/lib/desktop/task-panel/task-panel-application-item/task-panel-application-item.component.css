@@ -16,9 +16,9 @@
 }
 
 .task-panel-application.is-active {
-  background-image: linear-gradient(#bbd5de, #57cae2);
+  background-image: linear-gradient(#a8d1d2, #2fa4ad);
 }
 
 .task-panel-application.is-active:hover {
-  background-image: linear-gradient(#e1fcfd, #54cbe3);
+  background-image: linear-gradient(#cefbfc, #3ccdd7);
 }

@@ -1,8 +1,8 @@
-import {Component, OnInit, Type} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {DesktopService} from '../desktop.service';
-import {MainMenuItemParam} from './main-menu-item/main-menu-item-param';
 import {MicroApplications} from '../micro.applications';
 import {MicroApplication} from '../micro-application';
+import {MicroApplicationType} from '../micro-application-type.enum';
 
 @Component({
   selector: 'wma-main-menu',
@@ -11,8 +11,8 @@ import {MicroApplication} from '../micro-application';
 })
 export class MainMenuComponent implements OnInit {
 
-  menuItems = new Array<MainMenuItemParam>()
   microApplications = MicroApplications.applications;
+  type = MicroApplicationType;
 
   constructor(public deskTopService: DesktopService) { }
 

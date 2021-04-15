@@ -1,5 +1,4 @@
-import {Component, Input, OnInit, Output, Type, EventEmitter} from '@angular/core';
-import {MainMenuItemParam} from './main-menu-item-param';
+import {Component, Input, OnInit, Output, EventEmitter} from '@angular/core';
 import {MicroApplication} from '../../micro-application';
 
 @Component({
