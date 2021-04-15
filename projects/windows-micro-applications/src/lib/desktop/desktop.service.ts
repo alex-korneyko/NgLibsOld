@@ -2,23 +2,32 @@ import {Injectable, Type} from '@angular/core';
 import {MicroApplicationFormParams} from './micro-application-form/micro-application-form-params';
 import {MicroApplicationFormEvent} from './micro-application-form/micro-application-form-event';
 import {MicroApplicationFormEventType} from './micro-application-form/micro-application-form-event-type.enum';
+import {WorkspaceParams} from './workcpace/workspace-params';
 
 @Injectable()
 export class DesktopService {
 
   windows = new Array<MicroApplicationFormParams>();
+
   currentWindow: MicroApplicationFormParams;
   currentWindowEvent: MicroApplicationFormEvent;
-  testName = "Alex";
 
   mainMenuIsShown = false;
 
-  constructor() { }
+  screenX: number;
+  screenY: number;
+
+  workspaceParams = new WorkspaceParams()
+  workspaceSizeMessage: string;
+
+  constructor() {
+    this.screenX = screen.width;
+    this.screenY = screen.height;
+  }
 
   AddWindow = (windowContentComponent: Type<any>): number => {
-    this.windows.forEach(win => win.isActive = false);
-
     let maxZ = 0;
+
     this.windows.forEach(win => {
       win.isActive = false;
       if (win.zPos > maxZ) {
@@ -135,5 +144,24 @@ export class DesktopService {
 
   TaskPanelMouseClick(event: MouseEvent) {
     this.mainMenuIsShown = false;
+  }
+
+  WorkspaceAreResize(event: any) {
+    this.workspaceParams.xSize = event.clientWidth
+    this.workspaceParams.ySize = event.clientHeight;
+  }
+
+  CheckWorkspaceSize(): boolean {
+    if (this.screenX < 1200 || this.screenY < 800) {
+      this.workspaceSizeMessage = "Your screen size is too small";
+      return false;
+    }
+
+    if (this.workspaceParams.xSize < 1150 || this.workspaceParams.ySize < 600) {
+      this.workspaceSizeMessage = "Your browser size is too small";
+      return false;
+    }
+
+    return true;
   }
 }

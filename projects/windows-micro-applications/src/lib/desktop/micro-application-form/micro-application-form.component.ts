@@ -50,9 +50,10 @@ export class MicroApplicationFormComponent implements OnInit, OnDestroy {
   @Output()
   resizeBottomBorder = new EventEmitter<MicroApplicationFormEvent>();
 
-  constructor(public windowService: MicroApplicationFormService, private componentFactoryResolver: ComponentFactoryResolver) { }
+  constructor(public formService: MicroApplicationFormService, private componentFactoryResolver: ComponentFactoryResolver) { }
 
   ngOnInit(): void {
+    this.formService.formParams = this.params;
     let componentFactory = this.componentFactoryResolver.resolveComponentFactory(this.params.windowContent);
     let viewContainerRef = this.windowHost.viewContainerRef;
     viewContainerRef.clear();
@@ -131,5 +132,9 @@ export class MicroApplicationFormComponent implements OnInit, OnDestroy {
 
   BackgroundClick() {
 
+  }
+
+  WindowResize(event: UIEvent) {
+    console.log(event)
   }
 }

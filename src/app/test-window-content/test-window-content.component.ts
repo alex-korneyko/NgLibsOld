@@ -12,11 +12,13 @@ import {MicroApplicationFormService} from '../../../projects/windows-micro-appli
 })
 export class TestWindowContentComponent extends MicroApplicationFormContent implements OnInit {
 
-  constructor(deskTopService: DesktopService, public windowService: MicroApplicationFormService, public testWindowContentService: TestWindowContentService) {
-    super(deskTopService);
+  constructor(deskTopService: DesktopService, public formService: MicroApplicationFormService, public testWindowContentService: TestWindowContentService) {
+    super(deskTopService, formService);
   }
 
   ngOnInit(): void {
+    this.formService.formParams.xSize = 600;
+    this.formService.formParams.ySize = 500;
   }
 
   AddWindow() {

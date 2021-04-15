@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, ElementRef, OnInit, Output, ViewChild, EventEmitter} from '@angular/core';
 import {DesktopService} from '../desktop.service';
 
 @Component({
@@ -9,8 +9,20 @@ import {DesktopService} from '../desktop.service';
 export class WorkspaceComponent implements OnInit {
   title = 'Workspace';
 
-  constructor(public deskTopService: DesktopService) { }
+  @ViewChild("WorkSpace", {static: true})
+  workspaceArea: ElementRef
+
+  @Output()
+  workspaceAreaOnresize = new EventEmitter<any>();
+
+  constructor(public deskTopService: DesktopService) {
+  }
 
   ngOnInit(): void {
+    this.workspaceAreaOnresize.emit(this.workspaceArea.nativeElement)
+
+    window.onresize = () => {
+      this.workspaceAreaOnresize.emit(this.workspaceArea.nativeElement)
+    };
   }
 }

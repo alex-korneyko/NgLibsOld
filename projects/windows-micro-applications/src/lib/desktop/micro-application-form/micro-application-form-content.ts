@@ -1,11 +1,12 @@
 import {DesktopService} from '../desktop.service';
 import {MicroApplicationContent} from './micro-application-content';
+import {MicroApplicationFormService} from './micro-application-form.service';
 
-export class MicroApplicationFormContent implements MicroApplicationContent{
+export abstract class MicroApplicationFormContent implements MicroApplicationContent{
 
   id: number;
 
-  constructor(public deskTopService: DesktopService) {
+  protected constructor(public deskTopService: DesktopService, public formService: MicroApplicationFormService) {
   }
 
   CloseWindow = (windowId: number) => {
