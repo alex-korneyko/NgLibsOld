@@ -15,7 +15,13 @@
     "lib": [
       "es2018",
       "dom"
-    ]
+    ],
+    "paths": {
+      "windows-micro-applications": [
+        "dist/windows-micro-applications/windows-micro-applications",
+        "dist/windows-micro-applications"
+      ]
+    }
   },
   "angularCompilerOptions": {
     "enableI18nLegacyMessageIdFormat": false

@@ -123,6 +123,46 @@
           }
         }
       }
+    },
+    "WindowsMicroApplications": {
+      "projectType": "library",
+      "root": "projects/windows-micro-applications",
+      "sourceRoot": "projects/windows-micro-applications/src",
+      "prefix": "wma",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:ng-packagr",
+          "options": {
+            "tsConfig": "projects/windows-micro-applications/tsconfig.lib.json",
+            "project": "projects/windows-micro-applications/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/windows-micro-applications/tsconfig.lib.prod.json"
+            }
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/windows-micro-applications/src/test.ts",
+            "tsConfig": "projects/windows-micro-applications/tsconfig.spec.json",
+            "karmaConfig": "projects/windows-micro-applications/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/windows-micro-applications/tsconfig.lib.json",
+              "projects/windows-micro-applications/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
     }
   },
   "defaultProject": "Windows"
