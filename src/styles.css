@@ -3,23 +3,3 @@ body {
   overflow-x: hidden;
   overflow-y: hidden;
 }
-
-.window-header-btn {
-  margin: 3px;
-  font-size: small;
-  color: lightgray;
-  /*font-weight: bold;*/
-  cursor: pointer;
-}
-
-.window-header-btn.window-background-btn:hover {
-  color: gold;
-}
-
-.window-header-btn.window-fullscreen-btn:hover {
-  color: aqua;
-}
-
-.window-header-btn.window-close-btn:hover {
-  color: red;
-}

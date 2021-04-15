@@ -1,7 +1,7 @@
 <div class="main-menu">
   <wma-main-menu-item
-    *ngFor="let menuItem of menuItems"
-    [mainMenuItemParam]="menuItem"
+    *ngFor="let microApplication of microApplications"
+    [microApplication]="microApplication"
     (applicationClickEvent)="StartApplication($event)"
   ></wma-main-menu-item>
 </div>

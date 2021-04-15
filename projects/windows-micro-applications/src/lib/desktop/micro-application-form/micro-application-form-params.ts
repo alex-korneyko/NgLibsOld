@@ -3,7 +3,8 @@ import {MicroApplicationFormContent} from './micro-application-form-content';
 
 export class MicroApplicationFormParams {
   readonly id: number;
-  readonly windowContent: Type<MicroApplicationFormContent>
+  readonly windowContent: Type<MicroApplicationFormContent>;
+  readonly created: Date;
   xPos = 100;
   yPos = 50;
   zPos: number;
@@ -17,12 +18,16 @@ export class MicroApplicationFormParams {
   isBackground = false;
   isActive: boolean;
   isHidden: boolean;
+  isSingleton: boolean;
+  header: string;
 
   constructor(content: Type<MicroApplicationFormContent>, zPos: number) {
-    this.id = new Date().valueOf();
+    this.created = new Date();
+    this.id = this.created.valueOf();
     this.windowContent = content;
     this.zPos = zPos;
     this.isActive = true;
+    this.isSingleton = true;
 
     if (this.xSize < this.xMinSize) {
       this.xSize = this.xMinSize;

@@ -23,24 +23,49 @@
          (dragstart)="VerticalBorderDragStart($event)"
     ></div>
 
-    <div style="width: calc(100%); height: 100%; display: inline-block">
-      <div style="width: 100%; height: 25px; text-align: right" draggable="true"
+    <div style="width: calc(100%); height: 100%; display: inline-block; box-shadow: 5px 5px 5px dimgray;">
+
+      <div style="width: 100%; height: 25px; display: flex" draggable="true"
            [ngStyle]="{
-            'background-color': params.isActive ? '#3a55bb' : '#b6b6b6'
+            'background-color': params.isActive ? '#036e86' : '#b6b6b6'
            }"
            (mousedown)="WindowHeaderMouseDown($event)"
            (mouseup)="WindowHeaderMouseUp($event)"
            (dragstart)="HeaderDragStart($event)"
-      >
-        <span class="window-header-btn window-background-btn fa fa-window-minimize" (click)="BackgroundClick()"></span>
-        <span class="window-header-btn window-fullscreen-btn fa fa-window-maximize"
-              *ngIf="!params.isFullScreen"
-              (click)="FullScreenClick()"></span>
-        <span class="window-header-btn window-fullscreen-btn fa fa-window-restore"
-              *ngIf="params.isFullScreen"
-              (click)="FullScreenClick()"></span>
-        <span class="window-header-btn window-close-btn fa fa-window-close mr-1" (click)="CloseClick()"></span>
+           >
+
+        <div style="display: block; flex: 1"
+             (dblclick)="FullScreenClick($event)"
+        >
+          <span style="color: white; font-weight: bold; margin-left: 5px">{{params.header}}</span>
+        </div>
+
+        <div style="display: block">
+          <button class="window-header-btn window-background-btn"
+                  (mouseup)="BackgroundClick($event)">
+            <i class="fa fa-window-minimize"></i>
+          </button>
+
+          <button class="window-header-btn window-fullscreen-btn"
+                  *ngIf="!params.isFullScreen"
+                  (mouseup)="FullScreenClick($event)">
+            <i class="fa fa-window-maximize"></i>
+          </button>
+
+          <button class="window-header-btn window-fullscreen-btn"
+                  *ngIf="params.isFullScreen"
+                  (mouseup)="FullScreenClick($event)">
+            <i class="fa fa-window-restore"></i>
+          </button>
+
+          <button class="window-header-btn window-close-btn"
+                  (mouseup)="CloseClick($event)">
+            <i class="fa fa-window-close"></i>
+          </button>
+        </div>
+
       </div>
+
       <div style="width: 100%; height: calc(100% - 25px); background-color: lightgray; border: 1px solid dimgray">
 
         <ng-template windowContent></ng-template>

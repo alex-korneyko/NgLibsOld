@@ -66,7 +66,8 @@ export class MicroApplicationFormComponent implements OnInit, OnDestroy {
     this.windowHost.viewContainerRef.clear();
   }
 
-  CloseClick = () => {
+  CloseClick = (event: MouseEvent) => {
+    event.stopPropagation();
     this.closeEvent.emit(this.id);
   }
 
@@ -126,15 +127,22 @@ export class MicroApplicationFormComponent implements OnInit, OnDestroy {
     event.dataTransfer.effectAllowed = "move"
   }
 
-  FullScreenClick() {
+  FullScreenClick(event: MouseEvent) {
+    event.stopPropagation();
     this.fullScreenEvent.emit(this.id);
   }
 
-  BackgroundClick() {
-
+  BackgroundClick(event: MouseEvent) {
+    event.stopPropagation();
+    this.params.isBackground = true;
+    this.params.isActive = false;
   }
 
   WindowResize(event: UIEvent) {
     console.log(event)
+  }
+
+  DragButton(event: DragEvent) {
+    console.log('DragButton', event);
   }
 }

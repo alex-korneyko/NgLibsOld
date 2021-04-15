@@ -8,7 +8,9 @@
   box-shadow: 0 0;
   line-height: 10px;
   background-image: linear-gradient(lightgray, grey);
-  width: 100px;
+  width: 80px;
+  margin-left: 2px;
+  display: block;
 }
 
 .btn-menu:hover {

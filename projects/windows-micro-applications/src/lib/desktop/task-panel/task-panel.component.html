@@ -1,5 +1,14 @@
-<div style="position: absolute; right: 0; bottom: 0; width: 100%; background-color: dimgray; z-index: 10000; height: 30px"
+<div style="position: absolute; right: 0; bottom: 0; width: 100%; background-color: dimgray; z-index: 10000; height: 30px; display: flex"
      (click)="deskTopService.TaskPanelMouseClick($event)"
 >
-  <button class="btn btn-menu ml-1" (click)="deskTopService.ShowMenu($event)">Menu</button>
+  <button class="btn btn-menu" (click)="deskTopService.ShowMenu($event)">Menu</button>
+  <div style="width: 1px; height: 80%; margin-left: 5px; margin-top: 4px; background-color: #343434; display: block"></div>
+  <div style="display: block; flex: 1; margin-left: 3px">
+    <div style="display: flex">
+      <wma-task-panel-application-item
+        *ngFor="let app of deskTopService.GetWindows()"
+        [microApplicationFormParams]="app"
+      ></wma-task-panel-application-item>
+    </div>
+  </div>
 </div>

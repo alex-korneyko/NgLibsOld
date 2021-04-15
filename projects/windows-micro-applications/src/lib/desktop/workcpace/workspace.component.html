@@ -4,21 +4,23 @@
      (drop)="deskTopService.Drop($event)"
      (click)="deskTopService.WorkSpaceMouseClick($event)"
 >
-  <wma-form *ngFor="let window of deskTopService.windows"
-            [id]="window.id"
-            [params]="window"
-            (windowClick)="deskTopService.WindowClick($event)"
-            (fullScreenEvent)="deskTopService.FullScreenEventHandler($event)"
-            (closeEvent)="deskTopService.CloseEventHandler($event)"
-            (dragenter)="deskTopService.DragEnter($event)"
-            (windowHeaderMouseDown)="deskTopService.HeaderMouseDown($event)"
-            (windowHeaderMouseUp)="deskTopService.HeaderMouseUp($event)"
-            (resizeTopBorder)="deskTopService.ResizeTopBorder($event)"
-            (resizeBottomBorder)="deskTopService.ResizeBottomBorder($event)"
-            (resizeRightBorder)="deskTopService.ResizeRightBorder($event)"
-            (resizeLeftBorder)="deskTopService.ResizeLeftBorder($event)"
-  >
-  </wma-form>
+  <div *ngFor="let window of deskTopService.windows">
+    <wma-form *ngIf="!window.isBackground"
+              [id]="window.id"
+              [params]="window"
+              (windowClick)="deskTopService.WindowClick($event)"
+              (fullScreenEvent)="deskTopService.FullScreenEventHandler($event)"
+              (closeEvent)="deskTopService.CloseEventHandler($event)"
+              (dragenter)="deskTopService.DragEnter($event)"
+              (windowHeaderMouseDown)="deskTopService.HeaderMouseDown($event)"
+              (windowHeaderMouseUp)="deskTopService.HeaderMouseUp($event)"
+              (resizeTopBorder)="deskTopService.ResizeTopBorder($event)"
+              (resizeBottomBorder)="deskTopService.ResizeBottomBorder($event)"
+              (resizeRightBorder)="deskTopService.ResizeRightBorder($event)"
+              (resizeLeftBorder)="deskTopService.ResizeLeftBorder($event)"
+    >
+    </wma-form>
+  </div>
 
   <wma-main-menu
     *ngIf="deskTopService.mainMenuIsShown"

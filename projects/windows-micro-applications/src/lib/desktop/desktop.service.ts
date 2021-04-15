@@ -3,6 +3,7 @@ import {MicroApplicationFormParams} from './micro-application-form/micro-applica
 import {MicroApplicationFormEvent} from './micro-application-form/micro-application-form-event';
 import {MicroApplicationFormEventType} from './micro-application-form/micro-application-form-event-type.enum';
 import {WorkspaceParams} from './workcpace/workspace-params';
+import {MicroApplication} from './micro-application';
 
 @Injectable()
 export class DesktopService {
@@ -25,8 +26,16 @@ export class DesktopService {
     this.screenY = screen.height;
   }
 
-  AddWindow = (windowContentComponent: Type<any>): number => {
+  AddWindow = (microApplication: MicroApplication): number => {
     let maxZ = 0;
+
+    let index = this.windows.findIndex(win => win.windowContent === microApplication.microAppForm);
+    if (index > -1) {
+      if (this.windows[index].isSingleton) {
+        this.ActivateWindow(this.windows[index]);
+        return this.currentWindow.id;
+      }
+    }
 
     this.windows.forEach(win => {
       win.isActive = false;
@@ -35,15 +44,21 @@ export class DesktopService {
       }
     });
 
-    this.currentWindow = new MicroApplicationFormParams(windowContentComponent, maxZ + 10);
+    this.currentWindow = new MicroApplicationFormParams(microApplication.microAppForm, maxZ + 10);
+    this.currentWindow.header = microApplication.title;
     this.windows.push(this.currentWindow);
 
     return this.currentWindow.id;
   }
 
-  SetActiveWindow(windowId: number) {
-    this.windows.forEach(win => win.isActive = false);
-    this.GetWindow(windowId).isActive = true;
+  GetWindows(): MicroApplicationFormParams[] {
+    return this.windows.sort((w1, w2) => w1.created > w2.created ? 1 : -1)
+  }
+
+  ActivateWindow(microApplicationFormParams: MicroApplicationFormParams) {
+    this.currentWindow = microApplicationFormParams;
+    microApplicationFormParams.isBackground = false;
+    this.WindowClick(microApplicationFormParams.id)
   }
 
   CloseWindow(windowId: number) {

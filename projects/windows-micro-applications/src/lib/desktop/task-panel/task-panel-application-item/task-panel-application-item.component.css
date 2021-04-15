@@ -1,0 +1,24 @@
+.task-panel-application {
+  width: 200px;
+  margin-top: 1px;
+  display: block;
+  height: 28px;
+  background-image: linear-gradient(lightgray, grey);
+  font-weight: 500;
+  padding: 2px 2px 2px 5px;
+  border-radius: 2px;
+  margin-left: 2px;
+  cursor: pointer;
+}
+
+.task-panel-application:hover {
+  background-image: linear-gradient(#eeeeee, #a3a3a3);
+}
+
+.task-panel-application.is-active {
+  background-image: linear-gradient(#bbd5de, #57cae2);
+}
+
+.task-panel-application.is-active:hover {
+  background-image: linear-gradient(#e1fcfd, #54cbe3);
+}

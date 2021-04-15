@@ -1,7 +1,8 @@
 import {Component, OnInit, Type} from '@angular/core';
 import {DesktopService} from '../desktop.service';
 import {MainMenuItemParam} from './main-menu-item/main-menu-item-param';
-import {MicroApplications} from '../web-desktop-applications/micro.applications';
+import {MicroApplications} from '../micro.applications';
+import {MicroApplication} from '../micro-application';
 
 @Component({
   selector: 'wma-main-menu',
@@ -11,17 +12,14 @@ import {MicroApplications} from '../web-desktop-applications/micro.applications'
 export class MainMenuComponent implements OnInit {
 
   menuItems = new Array<MainMenuItemParam>()
+  microApplications = MicroApplications.applications;
 
   constructor(public deskTopService: DesktopService) { }
 
-  ngOnInit(): void {
-    MicroApplications.applications.forEach(app => {
-      this.menuItems.push(new MainMenuItemParam(app.title, app.microAppForm))
-    })
-  }
+  ngOnInit(): void { }
 
-  StartApplication(event: Type<any>) {
-    this.deskTopService.AddWindow(event)
+  StartApplication(microApplication: MicroApplication) {
+    this.deskTopService.AddWindow(microApplication)
     this.deskTopService.mainMenuIsShown = false;
   }
 }

@@ -14,14 +14,11 @@ export class TestWindowContentComponent extends MicroApplicationFormContent impl
 
   constructor(deskTopService: DesktopService, public formService: MicroApplicationFormService, public testWindowContentService: TestWindowContentService) {
     super(deskTopService, formService);
+    formService.formParams.xSize = 600;
+    formService.formParams.ySize = 500;
+    formService.formParams.isSingleton = false;
   }
 
   ngOnInit(): void {
-    this.formService.formParams.xSize = 600;
-    this.formService.formParams.ySize = 500;
-  }
-
-  AddWindow() {
-    this.deskTopService.AddWindow(TestWindowContentComponent);
   }
 }

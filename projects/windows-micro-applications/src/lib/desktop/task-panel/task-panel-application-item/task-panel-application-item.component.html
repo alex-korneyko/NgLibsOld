@@ -1,0 +1,8 @@
+<div class="task-panel-application" title="{{microApplicationFormParams.header}}"
+     [ngClass]="{
+      'is-active': microApplicationFormParams.isActive
+     }"
+     (click)="ApplicationItemClick()"
+>
+  <span style="user-select: none">{{microApplicationFormParams.header}}</span>
+</div>

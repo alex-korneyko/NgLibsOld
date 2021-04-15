@@ -20,3 +20,22 @@
 .vertical-border:hover {
   cursor: ew-resize;
 }
+
+.window-header-btn {
+  font-size: small;
+  color: lightgray;
+  border: 0;
+  background-color: inherit;
+}
+
+.window-header-btn.window-background-btn:hover {
+  color: gold;
+}
+
+.window-header-btn.window-fullscreen-btn:hover {
+  color: aqua;
+}
+
+.window-header-btn.window-close-btn:hover {
+  color: red;
+}
