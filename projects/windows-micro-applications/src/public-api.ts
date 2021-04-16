@@ -3,5 +3,9 @@
  */
 
 export * from "./lib/desktop/desktop.component"
+export * from "./lib/desktop/desktop.service"
 export * from "./lib/desktop/web-desktop-applications.module"
 export * from "./lib/desktop/micro-application-form/micro-application-form-content"
+export * from "./lib/desktop/micro-application-form/micro-application-form.service"
+export * from "./lib/desktop/micro-application-form/micro-app-form"
+export * from "./lib/desktop/micro-application-type.enum"

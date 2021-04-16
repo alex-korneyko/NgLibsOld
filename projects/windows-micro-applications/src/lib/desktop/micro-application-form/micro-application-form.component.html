@@ -1,16 +1,16 @@
 <div style="position: absolute"
-     [id]="params.id"
+     [id]="microApplicationForm.id"
      [ngStyle]="{
-      'width': params.isFullScreen ? '100%' : params.xSize + 'px',
-      'height': params.isFullScreen ? '100%' : params.ySize + 'px',
-      'left': params.isFullScreen ? '0px' : params.xPos + 'px',
-      'top': params.isFullScreen ? '0px' : params.yPos + 'px',
-      'z-index': params.zPos
+      'width': microApplicationForm.isFullScreen ? '100%' : microApplicationForm.xSize + 'px',
+      'height': microApplicationForm.isFullScreen ? '100%' : microApplicationForm.ySize + 'px',
+      'left': microApplicationForm.isFullScreen ? '0px' : microApplicationForm.xPos + 'px',
+      'top': microApplicationForm.isFullScreen ? '0px' : microApplicationForm.yPos + 'px',
+      'z-index': microApplicationForm.zPos
      }"
      (mousedown)="WindowAreaClick($event)"
 >
   <div class="horizontal-border" draggable="true"
-       *ngIf="!params.isFullScreen"
+       *ngIf="!microApplicationForm.isFullScreen"
        (drag)="DragTopBorder($event)"
        (dragstart)="HorizontalBorderDragStart($event)"
   ></div>
@@ -18,7 +18,7 @@
   <div style="width: 100%; height: calc(100%); display: flex">
 
     <div class="vertical-border" draggable="true"
-         *ngIf="!params.isFullScreen"
+         *ngIf="!microApplicationForm.isFullScreen"
          (drag)="DragLeftBorder($event)"
          (dragstart)="VerticalBorderDragStart($event)"
     ></div>
@@ -27,7 +27,7 @@
 
       <div style="width: 100%; height: 25px; display: flex" draggable="true"
            [ngStyle]="{
-            'background-color': params.isActive ? '#036e86' : '#b6b6b6'
+            'background-color': microApplicationForm.isActive ? '#036e86' : '#b6b6b6'
            }"
            (mousedown)="WindowHeaderMouseDown($event)"
            (mouseup)="WindowHeaderMouseUp($event)"
@@ -37,7 +37,7 @@
         <div style="display: block; flex: 1"
              (dblclick)="FullScreenClick($event)"
         >
-          <span style="color: white; font-weight: bold; margin-left: 5px">{{params.header}}</span>
+          <span style="color: white; font-weight: bold; margin-left: 5px">{{microApplicationForm.header}}</span>
         </div>
 
         <div style="display: block">
@@ -47,13 +47,13 @@
           </button>
 
           <button class="window-header-btn window-fullscreen-btn"
-                  *ngIf="!params.isFullScreen"
+                  *ngIf="!microApplicationForm.isFullScreen"
                   (mouseup)="FullScreenClick($event)">
             <i class="fa fa-window-maximize"></i>
           </button>
 
           <button class="window-header-btn window-fullscreen-btn"
-                  *ngIf="params.isFullScreen"
+                  *ngIf="microApplicationForm.isFullScreen"
                   (mouseup)="FullScreenClick($event)">
             <i class="fa fa-window-restore"></i>
           </button>
@@ -74,14 +74,14 @@
     </div>
 
     <div class="vertical-border" draggable="true"
-         *ngIf="!params.isFullScreen"
+         *ngIf="!microApplicationForm.isFullScreen"
          (drag)="DragRightBorder($event)"
          (dragstart)="VerticalBorderDragStart($event)"
     ></div>
   </div>
 
   <div class="horizontal-border" draggable="true"
-       *ngIf="!params.isFullScreen"
+       *ngIf="!microApplicationForm.isFullScreen"
        (drag)="DragBottomBorder($event)"
        (dragstart)="HorizontalBorderDragStart($event)"
   ></div>

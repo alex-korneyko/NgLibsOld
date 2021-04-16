@@ -1,5 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {MicroApplicationFormParams} from '../../micro-application-form/micro-application-form-params';
+import {MicroAppForm} from '../../micro-application-form/micro-app-form';
 import {DesktopService} from '../../desktop.service';
 
 @Component({
@@ -10,7 +10,7 @@ import {DesktopService} from '../../desktop.service';
 export class TaskPanelApplicationItemComponent implements OnInit {
 
   @Input()
-  microApplicationFormParams: MicroApplicationFormParams
+  microApplicationFormParams: MicroAppForm
 
   constructor(public desktopService: DesktopService) { }
 
@@ -21,9 +21,9 @@ export class TaskPanelApplicationItemComponent implements OnInit {
     if (this.microApplicationFormParams.isActive) {
       this.microApplicationFormParams.isActive = false;
       this.microApplicationFormParams.isBackground = true;
-      this.desktopService.currentWindow = null;
+      this.desktopService.activeForm = null;
     } else {
-      this.desktopService.ActivateWindow(this.microApplicationFormParams)
+      this.desktopService.ActivateForm(this.microApplicationFormParams)
     }
   }
 

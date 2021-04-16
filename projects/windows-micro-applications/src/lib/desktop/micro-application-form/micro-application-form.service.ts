@@ -1,12 +1,10 @@
 import { Injectable } from '@angular/core';
-import {MicroApplicationFormParams} from './micro-application-form-params';
+import {MicroAppForm} from './micro-app-form';
 
 @Injectable()
 export class MicroApplicationFormService {
 
-  formParams: MicroApplicationFormParams;
+  formParams: MicroAppForm;
 
   constructor() { }
-
-  winServiceData = "WinService"
 }

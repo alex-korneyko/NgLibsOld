@@ -6,7 +6,8 @@ import {MicroApplicationFormService} from '../../../projects/windows-micro-appli
 @Component({
   selector: 'app-test-service-application',
   templateUrl: './test-service-application.component.html',
-  styleUrls: ['./test-service-application.component.css']
+  styleUrls: ['./test-service-application.component.css'],
+  providers: [MicroApplicationFormService]
 })
 export class TestServiceApplicationComponent extends MicroApplicationFormContent implements OnInit {
 

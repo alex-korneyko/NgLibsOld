@@ -1,9 +1,9 @@
 import {Type} from '@angular/core';
 import {MicroApplicationFormContent} from './micro-application-form-content';
 
-export class MicroApplicationFormParams {
+export class MicroAppForm {
   readonly id: number;
-  readonly windowContent: Type<MicroApplicationFormContent>;
+  readonly formContent: Type<MicroApplicationFormContent>;
   readonly created: Date;
   xPos = 100;
   yPos = 50;
@@ -21,11 +21,10 @@ export class MicroApplicationFormParams {
   isSingleton: boolean;
   header: string;
 
-  constructor(content: Type<MicroApplicationFormContent>, zPos: number) {
+  constructor(content: Type<MicroApplicationFormContent>) {
     this.created = new Date();
     this.id = this.created.valueOf();
-    this.windowContent = content;
-    this.zPos = zPos;
+    this.formContent = content;
     this.isActive = true;
     this.isSingleton = true;
 

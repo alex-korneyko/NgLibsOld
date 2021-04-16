@@ -19,7 +19,7 @@ export class MainMenuComponent implements OnInit {
   ngOnInit(): void { }
 
   StartApplication(microApplication: MicroApplication) {
-    this.deskTopService.AddWindow(microApplication)
+    this.deskTopService.StartApplication(microApplication)
     this.deskTopService.mainMenuIsShown = false;
   }
 }

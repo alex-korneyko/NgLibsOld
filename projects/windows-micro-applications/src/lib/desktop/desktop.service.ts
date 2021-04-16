@@ -1,16 +1,18 @@
 import {Injectable, Type} from '@angular/core';
-import {MicroApplicationFormParams} from './micro-application-form/micro-application-form-params';
+import {MicroAppForm} from './micro-application-form/micro-app-form';
 import {MicroApplicationFormEvent} from './micro-application-form/micro-application-form-event';
 import {MicroApplicationFormEventType} from './micro-application-form/micro-application-form-event-type.enum';
 import {WorkspaceParams} from './workcpace/workspace-params';
 import {MicroApplication} from './micro-application';
 
-@Injectable()
+@Injectable({
+  providedIn: 'root'
+})
 export class DesktopService {
 
-  windows = new Array<MicroApplicationFormParams>();
+  forms = new Array<MicroAppForm>();
 
-  currentWindow: MicroApplicationFormParams;
+  activeForm: MicroAppForm;
   currentWindowEvent: MicroApplicationFormEvent;
 
   mainMenuIsShown = false;
@@ -26,74 +28,78 @@ export class DesktopService {
     this.screenY = screen.height;
   }
 
-  AddWindow = (microApplication: MicroApplication): number => {
-    let maxZ = 0;
+  StartApplication = (microApplication: MicroApplication) => {
 
-    let index = this.windows.findIndex(win => win.windowContent === microApplication.microAppForm);
+    let microApplicationForm = new MicroAppForm(microApplication.formContentComponent);
+
+    if (this.CheckForSingleton(microApplicationForm)) {
+      return;
+    }
+
+    this.forms.push(microApplicationForm);
+    this.ActivateForm(microApplicationForm);
+    this.activeForm.header = microApplication.title;
+  }
+
+  AddNewForm = (microApplicationForm: MicroAppForm) => {
+    if (this.CheckForSingleton(microApplicationForm)) {
+      return;
+    }
+
+    this.forms.push(microApplicationForm);
+    this.ActivateForm(microApplicationForm);
+  }
+
+  private CheckForSingleton(form: MicroAppForm): boolean {
+    let index = this.forms.findIndex(winForm => winForm.formContent === form.formContent);
     if (index > -1) {
-      if (this.windows[index].isSingleton) {
-        this.ActivateWindow(this.windows[index]);
-        return this.currentWindow.id;
+      if (this.forms[index].isSingleton) {
+        this.ActivateForm(this.forms[index]);
+        return true;
       }
     }
-
-    this.windows.forEach(win => {
-      win.isActive = false;
-      if (win.zPos > maxZ) {
-        maxZ = win.zPos;
-      }
-    });
-
-    this.currentWindow = new MicroApplicationFormParams(microApplication.microAppForm, maxZ + 10);
-    this.currentWindow.header = microApplication.title;
-    this.windows.push(this.currentWindow);
-
-    return this.currentWindow.id;
+    return false;
   }
 
-  GetWindows(): MicroApplicationFormParams[] {
-    return this.windows.sort((w1, w2) => w1.created > w2.created ? 1 : -1)
+  GetWindowsSortedByCreation(): MicroAppForm[] {
+    return this.forms.sort((w1, w2) => w1.created > w2.created ? 1 : -1)
   }
 
-  ActivateWindow(microApplicationFormParams: MicroApplicationFormParams) {
-    this.currentWindow = microApplicationFormParams;
-    microApplicationFormParams.isBackground = false;
-    this.WindowClick(microApplicationFormParams.id)
-  }
-
-  CloseWindow(windowId: number) {
-    let index = this.windows.findIndex(win => win.id === windowId);
+  CloseApplication(windowId: number) {
+    let index = this.forms.findIndex(win => win.id === windowId);
     if (index > -1) {
-      this.windows.splice(index, 1);
+      this.forms.splice(index, 1);
     }
   }
 
-  CloseEventHandler(windowId: number) {
-    let index = this.windows.findIndex(win => win.id === windowId);
+  CloseEventHandler(microApplicationForm: MicroAppForm) {
+    let index = this.forms.findIndex(winForm => winForm.id === microApplicationForm.id);
     if (index > -1) {
-      this.windows.splice(index, 1);
+      this.forms.splice(index, 1);
     }
   }
 
-  WindowClick = (windowId: number) => {
-    this.windows.sort((win1, win2) => win1.zPos > win2.zPos ? 1 : -1);
-    for (let i = 0; i < this.windows.length; i++) {
-      this.windows[i].isActive = false;
+  ActivateForm(microApplicationForm: MicroAppForm) {
+    this.activeForm = microApplicationForm;
+    microApplicationForm.isBackground = false;
+
+    this.forms.sort((win1, win2) => win1.zPos > win2.zPos ? 1 : -1);
+    for (let i = 0; i < this.forms.length; i++) {
+      this.forms[i].isActive = false;
       this.mainMenuIsShown = false;
-      this.windows[i].zPos = i + 10;
+      this.forms[i].zPos = i + 10;
     }
 
-    this.currentWindow = this.GetWindow(windowId);
-    this.currentWindow.isActive = true;
-    this.currentWindow.zPos = this.windows.length * 10 + 10;
+    this.activeForm.isActive = true;
+    this.activeForm.zPos = this.forms.length * 10 + 10;
   }
 
   DragOver = (event: DragEvent) => {
     let offsetX = event.clientX;
     let offsetY = event.clientY;
     if (this.currentWindowEvent?.windowEventType === MicroApplicationFormEventType.DRAG_WINDOW) {
-      this.currentWindow.xPos = offsetX - this.currentWindowEvent.mouseEvent.offsetX;
-      this.currentWindow.yPos = offsetY - this.currentWindowEvent.mouseEvent.offsetY;
+      this.activeForm.xPos = offsetX - this.currentWindowEvent.mouseEvent.offsetX;
+      this.activeForm.yPos = offsetY - this.currentWindowEvent.mouseEvent.offsetY;
     }
     event.preventDefault();
   }
@@ -106,10 +112,10 @@ export class DesktopService {
     this.currentWindowEvent = null;
   }
 
-  private GetWindow = (windowId: number): MicroApplicationFormParams => {
-    let index = this.windows.findIndex(win => win.id === windowId);
+  private GetWindow = (windowId: number): MicroAppForm => {
+    let index = this.forms.findIndex(win => win.id === windowId);
     if (index > -1) {
-      return this.windows[index];
+      return this.forms[index];
     }
   }
 
@@ -143,9 +149,8 @@ export class DesktopService {
     windowParams.xPos += event.dragEvent.offsetX
   }
 
-  FullScreenEventHandler(event: number) {
-    let windowParams = this.GetWindow(event);
-    windowParams.isFullScreen = !windowParams.isFullScreen;
+  FullScreenEventHandler(microApplicationForm: MicroAppForm) {
+    microApplicationForm.isFullScreen = !microApplicationForm.isFullScreen;
   }
 
   ShowMenu(event: MouseEvent) {

@@ -4,11 +4,11 @@
      (drop)="deskTopService.Drop($event)"
      (click)="deskTopService.WorkSpaceMouseClick($event)"
 >
-  <div *ngFor="let window of deskTopService.windows">
+  <div *ngFor="let window of deskTopService.forms">
     <wma-form *ngIf="!window.isBackground"
               [id]="window.id"
-              [params]="window"
-              (windowClick)="deskTopService.WindowClick($event)"
+              [microApplicationForm]="window"
+              (windowClick)="deskTopService.ActivateForm($event)"
               (fullScreenEvent)="deskTopService.FullScreenEventHandler($event)"
               (closeEvent)="deskTopService.CloseEventHandler($event)"
               (dragenter)="deskTopService.DragEnter($event)"

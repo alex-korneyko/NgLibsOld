@@ -2,24 +2,25 @@ import {NgModule} from '@angular/core';
 import {BrowserModule} from '@angular/platform-browser';
 
 import {AppComponent} from './app.component';
-import {TestWindowContentComponent} from './test-window-content/test-window-content.component';
 import {FormsModule} from '@angular/forms';
-import {WebDesktopApplicationsModule} from '../../projects/windows-micro-applications/src/lib/desktop/web-desktop-applications.module';
-import {MicroApplicationType} from '../../projects/windows-micro-applications/src/lib/desktop/micro-application-type.enum';
+import {MicroApplicationType, WebDesktopApplicationsModule} from 'windows-micro-applications';
 import {TestServiceApplicationComponent} from './test-service-application/test-service-application.component';
+import {SimpleToDoComponent} from './simple-to-do/simple-to-do.component';
+import { SimpleToDoTaskEditorComponent } from './simple-to-do/simple-to-do-task-editor/simple-to-do-task-editor.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    TestWindowContentComponent,
     TestServiceApplicationComponent,
+    SimpleToDoComponent,
+    SimpleToDoTaskEditorComponent,
   ],
   imports: [
     BrowserModule,
     FormsModule,
     WebDesktopApplicationsModule.microApplications([
-      {title: "Test Content Window", microAppForm: TestWindowContentComponent, type: MicroApplicationType.Application},
-      {title: "Test service", microAppForm: TestServiceApplicationComponent, type: MicroApplicationType.Service}
+      {title: "Test service", formContentComponent: TestServiceApplicationComponent, type: MicroApplicationType.Service},
+      {title: "Simple ToDo", formContentComponent: SimpleToDoComponent, type: MicroApplicationType.Application}
     ]),
   ],
   providers: [],

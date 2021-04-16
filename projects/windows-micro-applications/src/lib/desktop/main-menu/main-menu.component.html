@@ -4,12 +4,14 @@
       <p style="margin: 0">Applications:</p>
     </div>
     <hr style="margin: 3px">
-    <div *ngFor="let microApplication of microApplications">
-      <wma-main-menu-item
-        *ngIf="microApplication.type === type.Application"
-        [microApplication]="microApplication"
-        (applicationClickEvent)="StartApplication($event)"
-      ></wma-main-menu-item>
+    <div style="padding: 2px">
+      <div *ngFor="let microApplication of microApplications">
+        <wma-main-menu-item
+          *ngIf="microApplication.type === type.Application"
+          [microApplication]="microApplication"
+          (applicationClickEvent)="StartApplication($event)"
+        ></wma-main-menu-item>
+      </div>
     </div>
   </div>
   <div style="height: 100%; flex: 1; display: block">
@@ -17,12 +19,14 @@
       <p style="margin: 0">Services:</p>
     </div>
     <hr style="margin: 3px">
-    <div *ngFor="let microApplication of microApplications">
-      <wma-main-menu-item
-        *ngIf="microApplication.type === type.Service"
-        [microApplication]="microApplication"
-        (applicationClickEvent)="StartApplication($event)"
-      ></wma-main-menu-item>
+    <div style="padding: 2px">
+      <div *ngFor="let microApplication of microApplications">
+        <wma-main-menu-item
+          *ngIf="microApplication.type === type.Service"
+          [microApplication]="microApplication"
+          (applicationClickEvent)="StartApplication($event)"
+        ></wma-main-menu-item>
+      </div>
     </div>
   </div>
 </div>

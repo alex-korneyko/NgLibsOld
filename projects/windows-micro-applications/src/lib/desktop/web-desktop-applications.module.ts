@@ -22,7 +22,7 @@ import {TaskPanelApplicationItemComponent} from './task-panel/task-panel-applica
     MicroApplicationFormContentDirective,
     MainMenuComponent,
     MainMenuItemComponent,
-    TaskPanelApplicationItemComponent
+    TaskPanelApplicationItemComponent,
   ],
   imports: [
     CommonModule

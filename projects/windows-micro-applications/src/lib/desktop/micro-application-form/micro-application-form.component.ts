@@ -1,5 +1,5 @@
 import {Component, ComponentFactoryResolver, EventEmitter, Input, OnDestroy, OnInit, Output, Type, ViewChild} from '@angular/core';
-import {MicroApplicationFormParams} from './micro-application-form-params';
+import {MicroAppForm} from './micro-app-form';
 import {MicroApplicationFormEvent} from './micro-application-form-event';
 import {MicroApplicationFormEventType} from './micro-application-form-event-type.enum';
 import {MicroApplicationFormContentDirective} from './micro-application-form-content.directive';
@@ -21,16 +21,16 @@ export class MicroApplicationFormComponent implements OnInit, OnDestroy {
   id: number;
 
   @Input()
-  params: MicroApplicationFormParams;
+  microApplicationForm: MicroAppForm;
 
   @Output()
-  windowClick = new EventEmitter<number>();
+  windowClick = new EventEmitter<MicroAppForm>();
 
   @Output()
-  fullScreenEvent = new EventEmitter<number>();
+  fullScreenEvent = new EventEmitter<MicroAppForm>();
 
   @Output()
-  closeEvent = new EventEmitter<number>();
+  closeEvent = new EventEmitter<MicroAppForm>();
 
   @Output()
   windowHeaderMouseDown = new EventEmitter<MicroApplicationFormEvent>();
@@ -53,8 +53,8 @@ export class MicroApplicationFormComponent implements OnInit, OnDestroy {
   constructor(public formService: MicroApplicationFormService, private componentFactoryResolver: ComponentFactoryResolver) { }
 
   ngOnInit(): void {
-    this.formService.formParams = this.params;
-    let componentFactory = this.componentFactoryResolver.resolveComponentFactory(this.params.windowContent);
+    this.formService.formParams = this.microApplicationForm;
+    let componentFactory = this.componentFactoryResolver.resolveComponentFactory(this.microApplicationForm.formContent);
     let viewContainerRef = this.windowHost.viewContainerRef;
     viewContainerRef.clear();
 
@@ -68,12 +68,12 @@ export class MicroApplicationFormComponent implements OnInit, OnDestroy {
 
   CloseClick = (event: MouseEvent) => {
     event.stopPropagation();
-    this.closeEvent.emit(this.id);
+    this.closeEvent.emit(this.microApplicationForm);
   }
 
   WindowAreaClick = (event: MouseEvent) => {
     event.stopPropagation();
-    this.windowClick.emit(this.id);
+    this.windowClick.emit(this.microApplicationForm);
   }
 
   WindowHeaderMouseDown = (event: MouseEvent) => {
@@ -129,13 +129,13 @@ export class MicroApplicationFormComponent implements OnInit, OnDestroy {
 
   FullScreenClick(event: MouseEvent) {
     event.stopPropagation();
-    this.fullScreenEvent.emit(this.id);
+    this.fullScreenEvent.emit(this.microApplicationForm);
   }
 
   BackgroundClick(event: MouseEvent) {
     event.stopPropagation();
-    this.params.isBackground = true;
-    this.params.isActive = false;
+    this.microApplicationForm.isBackground = true;
+    this.microApplicationForm.isActive = false;
   }
 
   WindowResize(event: UIEvent) {

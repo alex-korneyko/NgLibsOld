@@ -6,7 +6,7 @@
   <div style="display: block; flex: 1; margin-left: 3px">
     <div style="display: flex">
       <wma-task-panel-application-item
-        *ngFor="let app of deskTopService.GetWindows()"
+        *ngFor="let app of deskTopService.GetWindowsSortedByCreation()"
         [microApplicationFormParams]="app"
       ></wma-task-panel-application-item>
     </div>

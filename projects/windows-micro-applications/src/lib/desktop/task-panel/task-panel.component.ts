@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import {DesktopService} from '../desktop.service';
-import {TestWindowContentComponent} from '../../../../../../src/app/test-window-content/test-window-content.component';
 
 @Component({
   selector: 'wma-task-panel',
@@ -8,8 +7,6 @@ import {TestWindowContentComponent} from '../../../../../../src/app/test-window-
   styleUrls: ['./task-panel.component.css']
 })
 export class TaskPanelComponent implements OnInit {
-
-  testWindow = TestWindowContentComponent;
 
   constructor(public deskTopService: DesktopService) { }
 
