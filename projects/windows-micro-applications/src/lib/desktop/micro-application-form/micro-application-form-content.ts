@@ -1,26 +1,18 @@
-import {DesktopService} from '../desktop.service';
 import {MicroApplicationContent} from './micro-application-content';
-import {MicroApplicationFormService} from './micro-application-form.service';
 import {MicroAppForm} from './micro-app-form';
 
 export abstract class MicroApplicationFormContent implements MicroApplicationContent{
 
   id: number;
-  children = new Array<MicroAppForm>();
-  parent: MicroAppForm;
+  form: MicroAppForm
 
-  protected constructor(public deskTopService: DesktopService, public formService: MicroApplicationFormService) {
-  }
-
-  CloseWindow = () => {
-
-    this.deskTopService.CloseApplication(this.id);
-
+  CloseWindow = (parent?: MicroAppForm) => {
+    this.form.Close(parent);
   }
 
   AddChildren(form: MicroAppForm): void {
-    this.children.push(form);
-    this.deskTopService.AddNewForm(form);
+    this.form.AddChildren(form);
   }
 
+  abstract FormInit () ;
 }

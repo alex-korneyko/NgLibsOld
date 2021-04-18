@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {DesktopService, MicroApplicationFormContent, MicroApplicationFormService} from 'windows-micro-applications';
+import {DesktopService, MicroApplicationFormContent} from 'windows-micro-applications';
 import {SimpleToDoTaskEditorComponent} from './simple-to-do-task-editor/simple-to-do-task-editor.component';
 import {MicroAppForm} from 'windows-micro-applications';
 
@@ -10,20 +10,23 @@ import {MicroAppForm} from 'windows-micro-applications';
 })
 export class SimpleToDoComponent extends MicroApplicationFormContent implements OnInit {
 
-  constructor(private desktopService: DesktopService, microApplicationFormService: MicroApplicationFormService) {
-    super(desktopService, microApplicationFormService);
-    microApplicationFormService.formParams.xSize = 700;
+  constructor(private desktopService: DesktopService) {
+    super();
   }
 
   ngOnInit(): void {
   }
 
   AddTaskBtnClick() {
-    let microApplicationForm = new MicroAppForm(SimpleToDoTaskEditorComponent);
+    let microApplicationForm = new MicroAppForm(SimpleToDoTaskEditorComponent, this.desktopService);
     this.AddChildren(microApplicationForm)
   }
 
   CloseAppBtnClick() {
     this.CloseWindow();
+  }
+
+  FormInit(): void {
+    this.form.xSize = 700;
   }
 }

@@ -3,9 +3,10 @@ import {MicroAppForm} from './micro-app-form';
 export interface MicroApplicationContent {
 
   id: number;
-  parent: MicroAppForm;
-  children: Array<MicroAppForm>;
+  form: MicroAppForm
+
+  FormInit: () => void;
 
   AddChildren: (form: MicroAppForm) => void;
-  CloseWindow: () => void;
+  CloseWindow: (parent?: MicroAppForm) => void;
 }

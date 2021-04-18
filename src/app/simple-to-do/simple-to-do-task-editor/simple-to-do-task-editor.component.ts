@@ -1,7 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import {MicroApplicationFormContent} from 'windows-micro-applications';
-import {DesktopService} from 'windows-micro-applications';
-import {MicroApplicationFormService} from 'windows-micro-applications';
 
 @Component({
   selector: 'app-simple-to-do-task-editor',
@@ -10,12 +8,13 @@ import {MicroApplicationFormService} from 'windows-micro-applications';
 })
 export class SimpleToDoTaskEditorComponent extends MicroApplicationFormContent implements OnInit {
 
-  constructor(desktopService: DesktopService, microApplicationFormService: MicroApplicationFormService) {
-    super(desktopService, microApplicationFormService);
-    microApplicationFormService.formParams.header = "Task editor";
+  ngOnInit(): void {
   }
 
-  ngOnInit(): void {
+  FormInit(): void {
+    this.form.header = "Task Editor";
+    this.form.closeWithParent = true;
+    this.form.xSize = 600
   }
 
 }

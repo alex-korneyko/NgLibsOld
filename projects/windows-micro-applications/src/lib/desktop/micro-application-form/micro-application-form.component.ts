@@ -1,4 +1,15 @@
-import {Component, ComponentFactoryResolver, EventEmitter, Input, OnDestroy, OnInit, Output, Type, ViewChild} from '@angular/core';
+import {
+  AfterViewChecked,
+  Component,
+  ComponentFactoryResolver,
+  EventEmitter,
+  Input,
+  OnDestroy,
+  OnInit,
+  Output,
+  Type,
+  ViewChild
+} from '@angular/core';
 import {MicroAppForm} from './micro-app-form';
 import {MicroApplicationFormEvent} from './micro-application-form-event';
 import {MicroApplicationFormEventType} from './micro-application-form-event-type.enum';
@@ -50,7 +61,8 @@ export class MicroApplicationFormComponent implements OnInit, OnDestroy {
   @Output()
   resizeBottomBorder = new EventEmitter<MicroApplicationFormEvent>();
 
-  constructor(public formService: MicroApplicationFormService, private componentFactoryResolver: ComponentFactoryResolver) { }
+  constructor(public formService: MicroApplicationFormService, private componentFactoryResolver: ComponentFactoryResolver) {
+  }
 
   ngOnInit(): void {
     this.formService.formParams = this.microApplicationForm;
@@ -60,6 +72,8 @@ export class MicroApplicationFormComponent implements OnInit, OnDestroy {
 
     let windowContentRef = viewContainerRef.createComponent<MicroApplicationContent>(componentFactory);
     windowContentRef.instance.id = this.id;
+    windowContentRef.instance.form = this.microApplicationForm;
+    windowContentRef.instance.FormInit();
   }
 
   ngOnDestroy() {
@@ -68,6 +82,7 @@ export class MicroApplicationFormComponent implements OnInit, OnDestroy {
 
   CloseClick = (event: MouseEvent) => {
     event.stopPropagation();
+    this.microApplicationForm.Close()
     this.closeEvent.emit(this.microApplicationForm);
   }
 

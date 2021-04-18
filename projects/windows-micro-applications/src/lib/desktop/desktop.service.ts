@@ -30,7 +30,7 @@ export class DesktopService {
 
   StartApplication = (microApplication: MicroApplication) => {
 
-    let microApplicationForm = new MicroAppForm(microApplication.formContentComponent);
+    let microApplicationForm = new MicroAppForm(microApplication.formContentComponent, this);
 
     if (this.CheckForSingleton(microApplicationForm)) {
       return;
@@ -53,7 +53,7 @@ export class DesktopService {
   private CheckForSingleton(form: MicroAppForm): boolean {
     let index = this.forms.findIndex(winForm => winForm.formContent === form.formContent);
     if (index > -1) {
-      if (this.forms[index].isSingleton) {
+      if (this.forms[index].isSingleton && this.forms[index].parent === form.parent) {
         this.ActivateForm(this.forms[index]);
         return true;
       }
@@ -65,18 +65,15 @@ export class DesktopService {
     return this.forms.sort((w1, w2) => w1.created > w2.created ? 1 : -1)
   }
 
-  CloseApplication(windowId: number) {
-    let index = this.forms.findIndex(win => win.id === windowId);
+  CloseForm(microApplicationForm: MicroAppForm) {
+    let index = this.forms.findIndex(win => win.id === microApplicationForm.id);
     if (index > -1) {
       this.forms.splice(index, 1);
     }
   }
 
   CloseEventHandler(microApplicationForm: MicroAppForm) {
-    let index = this.forms.findIndex(winForm => winForm.id === microApplicationForm.id);
-    if (index > -1) {
-      this.forms.splice(index, 1);
-    }
+    // this.CloseForm(microApplicationForm);
   }
 
   ActivateForm(microApplicationForm: MicroAppForm) {
