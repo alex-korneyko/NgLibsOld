@@ -11,6 +11,10 @@ export abstract class MicroApplicationFormContent implements MicroApplicationCon
   }
 
   AddChildren(form: MicroAppForm): void {
+    if (form.xPos === this.form.xPos && form.yPos === this.form.yPos) {
+      form.xPos = this.form.xPos + 30;
+      form.yPos = this.form.yPos + 30;
+    }
     this.form.AddChildren(form);
   }
 

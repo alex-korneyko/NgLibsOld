@@ -8,7 +8,7 @@ export class MicroAppForm {
   readonly formContent: Type<MicroApplicationFormContent>;
   readonly children = new Array<MicroAppForm>()
   parent: MicroAppForm;
-  closeWithParent = false;
+  closeWithChildren = false;
   readonly created: Date;
   xPos = 100;
   yPos = 50;
@@ -19,12 +19,13 @@ export class MicroAppForm {
   ySize = 0;
   allowFullScreen = true;
   isFullScreen = false;
-  isModal = false;
+  private _isModal = false;
   isBackground = false;
   isActive: boolean;
   isHidden: boolean;
   isSingleton: boolean;
   header: string;
+  isBlockedByChildren = false;
 
   constructor(content: Type<MicroApplicationFormContent>) {
     this.created = new Date();
@@ -44,15 +45,31 @@ export class MicroAppForm {
 
   AddChildren = (form: MicroAppForm) => {
     form.parent = this;
+    if (form.isModal) {
+      this.isBlockedByChildren = true;
+    }
     this.children.push(form);
     this.desktopService.AddNewForm(form);
   }
 
   Close(parent?: MicroAppForm) {
+    if (this.parent != null) {
+      this.parent.isBlockedByChildren = false;
+      this.desktopService.ActivateForm(this.parent);
+    }
     this.children.forEach(form => form.Close(this));
 
-    if (parent == null || this.closeWithParent) {
+    if (parent == null || this.closeWithChildren) {
       this.desktopService.CloseForm(this)
     }
+  }
+
+  get isModal(): boolean {
+    return this._isModal;
+  }
+
+  set isModal(value: boolean) {
+    this.parent.isBlockedByChildren = value;
+    this._isModal = value;
   }
 }

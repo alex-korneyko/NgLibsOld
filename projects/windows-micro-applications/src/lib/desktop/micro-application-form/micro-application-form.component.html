@@ -1,10 +1,10 @@
 <div style="position: absolute"
      [id]="microApplicationForm.id"
      [ngStyle]="{
-      'width': microApplicationForm.isFullScreen ? '100%' : microApplicationForm.xSize + 'px',
-      'height': microApplicationForm.isFullScreen ? '100%' : microApplicationForm.ySize + 'px',
-      'left': microApplicationForm.isFullScreen ? '0px' : microApplicationForm.xPos + 'px',
-      'top': microApplicationForm.isFullScreen ? '0px' : microApplicationForm.yPos + 'px',
+      'width': microApplicationForm.isFullScreen ? '100%' : microApplicationForm.xSize + 10 + 'px',
+      'height': microApplicationForm.isFullScreen ? '100%' : microApplicationForm.ySize + 10 + 'px',
+      'left': microApplicationForm.isFullScreen ? '0px' : microApplicationForm.xPos - 5 + 'px',
+      'top': microApplicationForm.isFullScreen ? '0px' : microApplicationForm.yPos - 5 + 'px',
       'z-index': microApplicationForm.zPos
      }"
      (mousedown)="WindowAreaClick($event)"
@@ -87,3 +87,14 @@
   ></div>
 
 </div>
+
+<div style="position: absolute; background-color: black; opacity: .2"
+     *ngIf="microApplicationForm.isBlockedByChildren"
+     [ngStyle]="{
+      'width': microApplicationForm.isFullScreen ? '100%' : microApplicationForm.xSize + 'px',
+      'height': microApplicationForm.isFullScreen ? '100%' : microApplicationForm.ySize + 10 + 'px',
+      'left': microApplicationForm.isFullScreen ? '0px' : microApplicationForm.xPos + 'px',
+      'top': microApplicationForm.isFullScreen ? '0px' : microApplicationForm.yPos + 'px',
+      'z-index': microApplicationForm.zPos + 5
+     }"
+></div>

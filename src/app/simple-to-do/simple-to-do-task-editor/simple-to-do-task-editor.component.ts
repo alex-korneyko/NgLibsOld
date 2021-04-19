@@ -14,6 +14,7 @@ export class SimpleToDoTaskEditorComponent extends MicroApplicationFormContent i
   FormInit(): void {
     this.form.header = "Task Editor";
     this.form.closeWithParent = true;
+    this.form.isModal = true;
     this.form.xSize = 600
   }
 

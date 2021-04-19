@@ -47,6 +47,7 @@ export class DesktopService {
       return;
     }
 
+    microApplicationForm.desktopService = this;
     this.forms.push(microApplicationForm);
     this.ActivateForm(microApplicationForm);
   }
@@ -85,11 +86,11 @@ export class DesktopService {
     for (let i = 0; i < this.forms.length; i++) {
       this.forms[i].isActive = false;
       this.mainMenuIsShown = false;
-      this.forms[i].zPos = i + 10;
+      this.forms[i].zPos = i * 10;
     }
 
     this.activeForm.isActive = true;
-    this.activeForm.zPos = this.forms.length * 10 + 10;
+    this.activeForm.zPos = this.forms.length * 10;
   }
 
   DragOver = (event: DragEvent) => {
