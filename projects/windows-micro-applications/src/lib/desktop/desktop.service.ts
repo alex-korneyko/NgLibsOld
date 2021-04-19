@@ -1,4 +1,4 @@
-import {Injectable, Type} from '@angular/core';
+import {Injectable} from '@angular/core';
 import {MicroAppForm} from './micro-application-form/micro-app-form';
 import {MicroApplicationFormEvent} from './micro-application-form/micro-application-form-event';
 import {MicroApplicationFormEventType} from './micro-application-form/micro-application-form-event-type.enum';
@@ -30,7 +30,8 @@ export class DesktopService {
 
   StartApplication = (microApplication: MicroApplication) => {
 
-    let microApplicationForm = new MicroAppForm(microApplication.formContentComponent, this);
+    let microApplicationForm = new MicroAppForm(microApplication.formContentComponent);
+    microApplicationForm.desktopService = this;
 
     if (this.CheckForSingleton(microApplicationForm)) {
       return;
@@ -126,22 +127,34 @@ export class DesktopService {
 
   ResizeBottomBorder(event: MicroApplicationFormEvent) {
     let windowParams = this.GetWindow(event.windowId);
-    windowParams.ySize += event.dragEvent.offsetY
+    if (windowParams.ySize + event.dragEvent.offsetY < windowParams.yMinSize) {
+      return;
+    }
+    windowParams.ySize += event.dragEvent.offsetY;
   }
 
   ResizeTopBorder(event: MicroApplicationFormEvent) {
     let windowParams = this.GetWindow(event.windowId);
+    if (windowParams.ySize - event.dragEvent.offsetY < windowParams.yMinSize) {
+      return;
+    }
     windowParams.ySize -= event.dragEvent.offsetY;
     windowParams.yPos += event.dragEvent.offsetY;
   }
 
   ResizeRightBorder(event: MicroApplicationFormEvent) {
     let windowParams = this.GetWindow(event.windowId);
+    if (windowParams.xSize + event.dragEvent.offsetX < windowParams.xMinSize) {
+      return;
+    }
     windowParams.xSize += event.dragEvent.offsetX
   }
 
   ResizeLeftBorder(event: MicroApplicationFormEvent) {
     let windowParams = this.GetWindow(event.windowId);
+    if (windowParams.xSize - event.dragEvent.offsetX < windowParams.xMinSize) {
+      return;
+    }
     windowParams.xSize -= event.dragEvent.offsetX;
     windowParams.xPos += event.dragEvent.offsetX
   }

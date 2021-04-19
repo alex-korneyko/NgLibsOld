@@ -4,7 +4,7 @@ import {DesktopService} from '../desktop.service';
 
 export class MicroAppForm {
   readonly id: number;
-  readonly desktopService: DesktopService;
+  desktopService: DesktopService;
   readonly formContent: Type<MicroApplicationFormContent>;
   readonly children = new Array<MicroAppForm>()
   parent: MicroAppForm;
@@ -26,8 +26,7 @@ export class MicroAppForm {
   isSingleton: boolean;
   header: string;
 
-  constructor(content: Type<MicroApplicationFormContent>, desktopService: DesktopService) {
-    this.desktopService = desktopService;
+  constructor(content: Type<MicroApplicationFormContent>) {
     this.created = new Date();
     this.id = this.created.valueOf();
     this.formContent = content;

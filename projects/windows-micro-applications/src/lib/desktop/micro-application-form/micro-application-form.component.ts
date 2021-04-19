@@ -1,5 +1,4 @@
 import {
-  AfterViewChecked,
   Component,
   ComponentFactoryResolver,
   EventEmitter,
@@ -7,7 +6,6 @@ import {
   OnDestroy,
   OnInit,
   Output,
-  Type,
   ViewChild
 } from '@angular/core';
 import {MicroAppForm} from './micro-app-form';
@@ -15,13 +13,12 @@ import {MicroApplicationFormEvent} from './micro-application-form-event';
 import {MicroApplicationFormEventType} from './micro-application-form-event-type.enum';
 import {MicroApplicationFormContentDirective} from './micro-application-form-content.directive';
 import {MicroApplicationContent} from './micro-application-content';
-import {MicroApplicationFormService} from './micro-application-form.service';
+import {DesktopService} from '../desktop.service';
 
 @Component({
   selector: 'wma-form',
   templateUrl: './micro-application-form.component.html',
   styleUrls: ['./micro-application-form.component.css'],
-  providers: [MicroApplicationFormService]
 })
 export class MicroApplicationFormComponent implements OnInit, OnDestroy {
 
@@ -61,11 +58,12 @@ export class MicroApplicationFormComponent implements OnInit, OnDestroy {
   @Output()
   resizeBottomBorder = new EventEmitter<MicroApplicationFormEvent>();
 
-  constructor(public formService: MicroApplicationFormService, private componentFactoryResolver: ComponentFactoryResolver) {
+  constructor(private desktopService: DesktopService, private componentFactoryResolver: ComponentFactoryResolver) {
   }
 
   ngOnInit(): void {
-    this.formService.formParams = this.microApplicationForm;
+    // this.formService.formParams = this.microApplicationForm;
+    this.microApplicationForm.desktopService = this.desktopService;
     let componentFactory = this.componentFactoryResolver.resolveComponentFactory(this.microApplicationForm.formContent);
     let viewContainerRef = this.windowHost.viewContainerRef;
     viewContainerRef.clear();
@@ -151,13 +149,5 @@ export class MicroApplicationFormComponent implements OnInit, OnDestroy {
     event.stopPropagation();
     this.microApplicationForm.isBackground = true;
     this.microApplicationForm.isActive = false;
-  }
-
-  WindowResize(event: UIEvent) {
-    console.log(event)
-  }
-
-  DragButton(event: DragEvent) {
-    console.log('DragButton', event);
   }
 }
