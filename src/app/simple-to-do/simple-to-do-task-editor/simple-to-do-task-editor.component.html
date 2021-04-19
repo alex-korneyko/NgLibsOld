@@ -1,1 +1,32 @@
-<p>simple-to-do-task-editor works!</p>
+<div style="width: 100%; padding: 5px">
+  <h5>{{simpleToDoService.currentTask.id != null ? 'Edit task' : 'New task'}}</h5>
+  <div style="width: 100%; height: 200px">
+    <div class="input-group input-group-sm">
+      <div class="input-group-prepend">
+        <span class="input-group-text" style="width: 100px" id="task-name">Task name</span>
+      </div>
+      <input type="text" class="form-control" aria-describedby="task-name"
+             [(ngModel)]="simpleToDoService.currentTask.name"
+      >
+    </div>
+
+    <div class="input-group input-group-sm mt-1">
+      <div class="input-group-prepend" >
+        <span class="input-group-text" style="width: 100px" id="task-description">Description</span>
+      </div>
+      <input type="text" class="form-control" aria-describedby="task-description"
+             [(ngModel)]="simpleToDoService.currentTask.description"
+      >
+    </div>
+  </div>
+
+  <div style="display: flex; width: 100%">
+    <div style="flex: 1"></div>
+    <div>
+      <button class="btn btn-sm btn-primary" style="width: 100px" (click)="OkClick()">Ok</button>
+      <button class="btn btn-sm btn-secondary ml-1" style="width: 100px" (click)="CancelClick()">Cancel</button>
+    </div>
+  </div>
+
+
+</div>

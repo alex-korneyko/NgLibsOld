@@ -1,5 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit, EventEmitter} from '@angular/core';
 import {MicroApplicationFormContent} from 'windows-micro-applications';
+import {ToDoTask} from '../../domain/to-do-task';
+import {SimpleToDoService} from '../simple-to-do.service';
 
 @Component({
   selector: 'app-simple-to-do-task-editor',
@@ -8,14 +10,33 @@ import {MicroApplicationFormContent} from 'windows-micro-applications';
 })
 export class SimpleToDoTaskEditorComponent extends MicroApplicationFormContent implements OnInit {
 
+  constructor(public simpleToDoService: SimpleToDoService) {
+    super();
+  }
+
   ngOnInit(): void {
+    if (this.simpleToDoService.currentTask == null) {
+      this.simpleToDoService.currentTask = new ToDoTask("");
+    }
   }
 
   FormInit(): void {
     this.form.header = "Task Editor";
-    this.form.closeWithParent = true;
     this.form.isModal = true;
     this.form.xSize = 600
   }
 
+  OkClick() {
+    if (this.simpleToDoService.currentTask.id == null) {
+      this.simpleToDoService.currentTask.id = new Date().valueOf();
+      this.simpleToDoService.tasks.push(this.simpleToDoService.currentTask);
+    }
+
+    this.CancelClick();
+  }
+
+  CancelClick() {
+    this.simpleToDoService.currentTask = null;
+    this.CloseWindow();
+  }
 }

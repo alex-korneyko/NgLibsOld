@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
-import {MicroApplicationFormContent} from 'windows-micro-applications';
+import {Component, OnInit} from '@angular/core';
+import {MicroAppForm, MicroApplicationFormContent} from 'windows-micro-applications';
 import {SimpleToDoTaskEditorComponent} from './simple-to-do-task-editor/simple-to-do-task-editor.component';
-import {MicroAppForm} from 'windows-micro-applications';
+import {SimpleToDoService} from './simple-to-do.service';
+import {ToDoTask} from '../domain/to-do-task';
 
 @Component({
   selector: 'app-simple-to-do',
@@ -10,20 +11,36 @@ import {MicroAppForm} from 'windows-micro-applications';
 })
 export class SimpleToDoComponent extends MicroApplicationFormContent implements OnInit {
 
+
+  constructor(public simpleToDoService: SimpleToDoService) {
+    super()
+  }
+
   ngOnInit(): void {
-  }
-
-  AddTaskBtnClick() {
-    let microApplicationForm = new MicroAppForm(SimpleToDoTaskEditorComponent);
-    this.AddChildren(microApplicationForm)
-  }
-
-  CloseAppBtnClick() {
-    this.CloseWindow();
   }
 
   FormInit(): void {
     this.form.xSize = 700;
   }
 
+  AddTaskBtnClick() {
+    this.simpleToDoService.currentTask = null;
+    this.EditTaskBtnClick();
+  }
+
+  TaskClickHandler(event: ToDoTask) {
+    this.simpleToDoService.currentTask = event;
+  }
+
+  EditTaskBtnClick() {
+    let microApplicationForm = new MicroAppForm(SimpleToDoTaskEditorComponent);
+    this.AddChildren(microApplicationForm)
+  }
+
+  DeleteTaskBtnClick() {
+    let index = this.simpleToDoService.tasks.findIndex(task => task.id === this.simpleToDoService.currentTask.id);
+    if (index > -1) {
+      this.simpleToDoService.tasks.splice(index, 1);
+    }
+  }
 }

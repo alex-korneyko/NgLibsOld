@@ -1,0 +1,11 @@
+<div style="width: 100%" (click)="TaskClick()">
+  <div style="display: flex; border: 1px solid dimgray; font-weight: 500; margin: 3px 3px 0 3px; cursor: default"
+       [ngStyle]="{
+        'background-color': isSelected ? 'white' : 'lightgray'
+       }"
+  >
+    <p class="ml-1">{{task.name}}</p>
+    <p class="ml-5">{{task.taskStatus}}</p>
+    <p class="ml-5">{{task.description}}</p>
+  </div>
+</div>
