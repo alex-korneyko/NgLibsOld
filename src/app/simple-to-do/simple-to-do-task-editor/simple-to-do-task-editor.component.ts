@@ -9,7 +9,6 @@ import {SimpleToDoService} from '../simple-to-do.service';
   styleUrls: ['./simple-to-do-task-editor.component.css']
 })
 export class SimpleToDoTaskEditorComponent extends MicroApplicationFormContent implements OnInit {
-
   constructor(public simpleToDoService: SimpleToDoService) {
     super();
   }
@@ -20,11 +19,13 @@ export class SimpleToDoTaskEditorComponent extends MicroApplicationFormContent i
     }
   }
 
-  FormInit(): void {
+  FormOnInit(): void {
     this.form.header = "Task Editor";
     this.form.isModal = true;
     this.form.xSize = 600
   }
+
+  FormOnDestroy(): void {}
 
   OkClick() {
     if (this.simpleToDoService.currentTask.id == null) {

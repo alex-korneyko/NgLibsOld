@@ -1,12 +1,13 @@
 import {MicroApplicationContent} from './micro-application-content';
 import {MicroAppForm} from './micro-app-form';
 
-export abstract class MicroApplicationFormContent implements MicroApplicationContent{
+export abstract class MicroApplicationFormContent implements MicroApplicationContent {
 
   id: number;
   form: MicroAppForm
 
   CloseWindow = (parent?: MicroAppForm) => {
+    this.FormOnDestroy();
     this.form.Close(parent);
   }
 
@@ -18,5 +19,7 @@ export abstract class MicroApplicationFormContent implements MicroApplicationCon
     this.form.AddChildren(form);
   }
 
-  abstract FormInit () ;
+  abstract FormOnInit(): void;
+
+  abstract FormOnDestroy(): void;
 }

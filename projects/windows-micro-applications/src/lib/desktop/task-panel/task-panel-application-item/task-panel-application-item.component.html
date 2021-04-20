@@ -1,6 +1,7 @@
 <div class="task-panel-application" title="{{microApplicationFormParams.header}}"
      [ngClass]="{
-      'is-active': microApplicationFormParams.isActive
+      'is-active': microApplicationFormParams.isActive,
+      'is-blocked': microApplicationFormParams.isBlockedByChildren
      }"
      (click)="ApplicationItemClick()"
 >

@@ -18,12 +18,16 @@ export class TaskPanelApplicationItemComponent implements OnInit {
   }
 
   ApplicationItemClick() {
-    if (this.microApplicationFormParams.isActive) {
+    if (this.microApplicationFormParams.isBlockedByChildren) {
+      return;
+    }
+
+    if (this.microApplicationFormParams.isActive && !this.microApplicationFormParams.isModal) {
       this.microApplicationFormParams.isActive = false;
       this.microApplicationFormParams.isBackground = true;
       this.desktopService.activeForm = null;
     } else {
-      this.desktopService.ActivateForm(this.microApplicationFormParams)
+      this.desktopService.ActivateForm(this.microApplicationFormParams);
     }
   }
 

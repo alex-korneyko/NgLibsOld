@@ -8,12 +8,15 @@ import {MicroApplicationFormContent, MicroApplicationFormService} from 'windows-
   providers: [MicroApplicationFormService]
 })
 export class TestServiceApplicationComponent extends MicroApplicationFormContent implements OnInit {
-
   ngOnInit(): void {
   }
 
-  FormInit(): void {
-    this.form.xSize = 900;
+  FormOnInit(): void {
+    this.form.xSize = 850;
+  }
+
+  FormOnDestroy(): void {
+    throw new Error('Method not implemented.');
   }
 
 }

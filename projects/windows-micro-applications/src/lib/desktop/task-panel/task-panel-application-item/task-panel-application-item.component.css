@@ -8,11 +8,15 @@
   padding: 2px 2px 2px 5px;
   border-radius: 2px;
   margin-left: 2px;
-  cursor: pointer;
+  cursor: default;
 }
 
 .task-panel-application:hover {
   background-image: linear-gradient(#eeeeee, #a3a3a3);
+}
+
+.task-panel-application.is-blocked {
+  color: #6d6d6d;
 }
 
 .task-panel-application.is-active {
@@ -21,4 +25,8 @@
 
 .task-panel-application.is-active:hover {
   background-image: linear-gradient(#cefbfc, #3ccdd7);
+}
+
+.task-panel-application.is-blocked:hover {
+  background-image: linear-gradient(lightgray, grey);
 }

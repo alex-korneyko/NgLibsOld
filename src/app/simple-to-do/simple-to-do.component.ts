@@ -3,6 +3,7 @@ import {MicroAppForm, MicroApplicationFormContent} from 'windows-micro-applicati
 import {SimpleToDoTaskEditorComponent} from './simple-to-do-task-editor/simple-to-do-task-editor.component';
 import {SimpleToDoService} from './simple-to-do.service';
 import {ToDoTask} from '../domain/to-do-task';
+import {TaskInfoWindowComponent} from './task-info-window/task-info-window.component';
 
 @Component({
   selector: 'app-simple-to-do',
@@ -10,17 +11,20 @@ import {ToDoTask} from '../domain/to-do-task';
   styleUrls: ['./simple-to-do.component.css']
 })
 export class SimpleToDoComponent extends MicroApplicationFormContent implements OnInit {
-
-
   constructor(public simpleToDoService: SimpleToDoService) {
     super()
   }
 
   ngOnInit(): void {
+
   }
 
-  FormInit(): void {
+  FormOnInit(): void {
     this.form.xSize = 700;
+    this.form.closeWithChildren = true;
+  }
+
+  FormOnDestroy(): void {
   }
 
   AddTaskBtnClick() {
@@ -34,6 +38,7 @@ export class SimpleToDoComponent extends MicroApplicationFormContent implements 
 
   EditTaskBtnClick() {
     let microApplicationForm = new MicroAppForm(SimpleToDoTaskEditorComponent);
+
     this.AddChildren(microApplicationForm)
   }
 
@@ -42,5 +47,19 @@ export class SimpleToDoComponent extends MicroApplicationFormContent implements 
     if (index > -1) {
       this.simpleToDoService.tasks.splice(index, 1);
     }
+
+    index = this.form.children.findIndex(form => form.params?.task.id === this.simpleToDoService.currentTask.id);
+    if (index > -1) {
+      this.form.children[index].Close();
+    }
+  }
+
+  TaskDoubleClickHandler(task: ToDoTask) {
+    let microAppForm = new MicroAppForm(TaskInfoWindowComponent, {
+      task: task,
+
+    });
+    microAppForm.header = this.simpleToDoService.currentTask.name;
+    this.AddChildren(microAppForm)
   }
 }

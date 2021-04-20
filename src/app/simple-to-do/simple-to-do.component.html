@@ -4,6 +4,7 @@
     <app-task-list-item *ngFor="let task of simpleToDoService.tasks"
                         [task]="task"
                         (taskClickEvent)="TaskClickHandler($event)"
+                        (taskDoubleClickEvent)="TaskDoubleClickHandler($event)"
                         [isSelected]="simpleToDoService.currentTask?.id === task.id"
     ></app-task-list-item>
   </div>

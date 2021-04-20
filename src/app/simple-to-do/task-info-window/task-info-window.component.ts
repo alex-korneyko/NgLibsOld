@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
-import {MicroApplicationFormContent} from '../../../../projects/windows-micro-applications/src/lib/desktop/micro-application-form/micro-application-form-content';
+import {Component, OnInit} from '@angular/core';
+import {MicroApplicationFormContent} from 'windows-micro-applications';
+import {ToDoTask} from '../../domain/to-do-task';
 
 @Component({
   selector: 'app-task-info-window',
@@ -7,6 +8,7 @@ import {MicroApplicationFormContent} from '../../../../projects/windows-micro-ap
   styleUrls: ['./task-info-window.component.css']
 })
 export class TaskInfoWindowComponent extends MicroApplicationFormContent implements OnInit {
+  task: ToDoTask;
 
   constructor() {
     super();
@@ -15,6 +17,12 @@ export class TaskInfoWindowComponent extends MicroApplicationFormContent impleme
   ngOnInit(): void {
   }
 
-  FormInit() {
+  FormOnInit(): void {
+    this.form.isSingleton = false;
+    this.task = this.form.params.task;
+  }
+
+  FormOnDestroy(): void {
+    throw new Error('Method not implemented.');
   }
 }

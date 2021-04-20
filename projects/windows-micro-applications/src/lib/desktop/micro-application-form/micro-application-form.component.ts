@@ -71,7 +71,7 @@ export class MicroApplicationFormComponent implements OnInit, OnDestroy {
     let windowContentRef = viewContainerRef.createComponent<MicroApplicationContent>(componentFactory);
     windowContentRef.instance.id = this.id;
     windowContentRef.instance.form = this.microApplicationForm;
-    windowContentRef.instance.FormInit();
+    windowContentRef.instance.FormOnInit();
   }
 
   ngOnDestroy() {

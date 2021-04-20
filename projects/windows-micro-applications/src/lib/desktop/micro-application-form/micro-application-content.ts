@@ -5,7 +5,9 @@ export interface MicroApplicationContent {
   id: number;
   form: MicroAppForm
 
-  FormInit: () => void;
+  FormOnInit(): void;
+
+  FormOnDestroy(): void;
 
   AddChildren: (form: MicroAppForm) => void;
   CloseWindow: (parent?: MicroAppForm) => void;

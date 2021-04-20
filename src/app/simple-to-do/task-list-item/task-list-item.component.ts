@@ -17,6 +17,9 @@ export class TaskListItemComponent implements OnInit {
   @Output()
   taskClickEvent = new EventEmitter<ToDoTask>();
 
+  @Output()
+  taskDoubleClickEvent = new EventEmitter<ToDoTask>();
+
   constructor() { }
 
   ngOnInit(): void {
@@ -24,5 +27,9 @@ export class TaskListItemComponent implements OnInit {
 
   TaskClick() {
     this.taskClickEvent.emit(this.task);
+  }
+
+  TaskDoubleClick() {
+    this.taskDoubleClickEvent.emit(this.task);
   }
 }

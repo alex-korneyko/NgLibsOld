@@ -6,6 +6,7 @@ export class MicroAppForm {
   readonly id: number;
   desktopService: DesktopService;
   readonly formContent: Type<MicroApplicationFormContent>;
+  params: any;
   readonly children = new Array<MicroAppForm>()
   parent: MicroAppForm;
   closeWithChildren = false;
@@ -27,10 +28,11 @@ export class MicroAppForm {
   header: string;
   isBlockedByChildren = false;
 
-  constructor(content: Type<MicroApplicationFormContent>) {
+  constructor(content: Type<MicroApplicationFormContent>, params?: any) {
     this.created = new Date();
     this.id = this.created.valueOf();
     this.formContent = content;
+    this.params = params;
     this.isActive = true;
     this.isSingleton = true;
 
