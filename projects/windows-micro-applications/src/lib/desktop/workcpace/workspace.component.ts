@@ -13,16 +13,16 @@ export class WorkspaceComponent implements OnInit {
   workspaceArea: ElementRef
 
   @Output()
-  workspaceAreaOnresize = new EventEmitter<any>();
+  workspaceAreaOnResize = new EventEmitter<any>();
 
   constructor(public deskTopService: DesktopService) {
   }
 
   ngOnInit(): void {
-    this.workspaceAreaOnresize.emit(this.workspaceArea.nativeElement)
+    this.deskTopService.windowOnResizeHandlers.push(() => {
+      this.workspaceAreaOnResize.emit(this.workspaceArea.nativeElement)
+    })
 
-    window.onresize = () => {
-      this.workspaceAreaOnresize.emit(this.workspaceArea.nativeElement)
-    };
+    this.workspaceAreaOnResize.emit(this.workspaceArea.nativeElement)
   }
 }

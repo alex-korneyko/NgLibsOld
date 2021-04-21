@@ -1,10 +1,12 @@
-<div style="position: absolute; right: 0; bottom: 0; width: 100%; background-color: dimgray; z-index: 10000; height: 30px; display: flex"
+<div class="task-panel"
      (click)="deskTopService.TaskPanelMouseClick($event)"
 >
   <button class="btn btn-menu" (click)="deskTopService.ShowMenu($event)">Menu</button>
-  <div style="width: 1px; height: 80%; margin-left: 5px; margin-top: 4px; background-color: #343434; display: block"></div>
-  <div style="display: block; flex: 1; margin-left: 3px">
-    <div style="display: flex">
+
+  <div class="task-panel-divider"></div>
+
+  <div #taskPanelArea class="task-panel-tasks-area">
+    <div class="task-panel-tasks-container">
       <wma-task-panel-application-item
         *ngFor="let app of deskTopService.GetWindowsSortedByCreation()"
         [microApplicationFormParams]="app"

@@ -1,3 +1,33 @@
+.task-panel {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  background-color: dimgray;
+  z-index: 10000;
+  height: 30px;
+  display: flex
+}
+
+.task-panel-divider {
+  width: 1px;
+  height: 80%;
+  margin-left: 5px;
+  margin-top: 4px;
+  background-color: #343434;
+  display: block
+}
+
+.task-panel-tasks-area {
+  display: block;
+  flex: 1;
+  margin-left: 3px
+}
+
+.task-panel-tasks-container {
+  display: flex;
+}
+
 .btn-menu {
   border-radius: 4px;
   border: 0;

@@ -9,5 +9,15 @@ export class SimpleToDoService {
   tasks = new Array<ToDoTask>();
   currentTask: ToDoTask;
 
-  constructor() { }
+  constructor() {
+    // this.tasks.push(...[
+    //   new ToDoTask("aaa"),
+    //   new ToDoTask("bbb"),
+    //   new ToDoTask("ccc"),
+    //   new ToDoTask("ddd"),
+    //   new ToDoTask("eee"),
+    //   new ToDoTask("fff"),
+    //   new ToDoTask("ggg"),
+    // ])
+  }
 }

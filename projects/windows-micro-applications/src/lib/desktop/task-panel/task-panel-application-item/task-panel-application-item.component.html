@@ -3,7 +3,12 @@
       'is-active': microApplicationFormParams.isActive,
       'is-blocked': microApplicationFormParams.isBlockedByChildren
      }"
+     [ngStyle]="{
+      'width': desktopService.taskPanelItemActualWidth + 'px'
+     }"
      (click)="ApplicationItemClick()"
 >
-  <span style="user-select: none">{{microApplicationFormParams.header}}</span>
+  <div class="task-panel-item-name">
+    <span>{{microApplicationFormParams.header}}</span>
+  </div>
 </div>

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, ElementRef, OnInit, Output, ViewChild, EventEmitter} from '@angular/core';
 import {DesktopService} from '../desktop.service';
 
 @Component({
@@ -8,9 +8,20 @@ import {DesktopService} from '../desktop.service';
 })
 export class TaskPanelComponent implements OnInit {
 
+  @ViewChild("taskPanelArea", {static: true})
+  taskPanelArea: ElementRef;
+
+  @Output()
+  taskPanelAreaOnResize = new EventEmitter<any>();
+
   constructor(public deskTopService: DesktopService) { }
 
   ngOnInit(): void {
+    this.deskTopService.windowOnResizeHandlers.push(() => {
+      this.taskPanelAreaOnResize.emit(this.taskPanelArea.nativeElement);
+    })
+
+    this.taskPanelAreaOnResize.emit(this.taskPanelArea.nativeElement);
   }
 
 }

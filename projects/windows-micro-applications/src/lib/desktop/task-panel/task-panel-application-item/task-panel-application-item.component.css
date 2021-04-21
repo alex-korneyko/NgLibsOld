@@ -1,5 +1,4 @@
 .task-panel-application {
-  width: 200px;
   margin-top: 1px;
   display: block;
   height: 28px;
@@ -9,6 +8,13 @@
   border-radius: 2px;
   margin-left: 2px;
   cursor: default;
+}
+
+.task-panel-item-name {
+  user-select: none;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .task-panel-application:hover {

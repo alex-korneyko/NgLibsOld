@@ -2,8 +2,9 @@ import {Injectable} from '@angular/core';
 import {MicroAppForm} from './micro-application-form/micro-app-form';
 import {MicroApplicationFormEvent} from './micro-application-form/micro-application-form-event';
 import {MicroApplicationFormEventType} from './micro-application-form/micro-application-form-event-type.enum';
-import {WorkspaceParams} from './workcpace/workspace-params';
+import {HtmlObjectCoordinates} from './workcpace/html-object-coordinates';
 import {MicroApplication} from './micro-application';
+import {ifStmt} from '@angular/compiler/src/output/output_ast';
 
 @Injectable({
   providedIn: 'root'
@@ -17,15 +18,26 @@ export class DesktopService {
 
   mainMenuIsShown = false;
 
+  windowOnResizeHandlers = new Array<Function>()
+
   screenX: number;
   screenY: number;
 
-  workspaceParams = new WorkspaceParams()
+  taskPanelParams = new HtmlObjectCoordinates();
+  workspaceParams = new HtmlObjectCoordinates()
+  workspaceSizeError = false;
   workspaceSizeMessage: string;
+
+  readonly taskPanelItemWidth = 200;
+  taskPanelItemActualWidth = 200;
 
   constructor() {
     this.screenX = screen.width;
     this.screenY = screen.height;
+
+    window.onresize = () => {
+      this.windowOnResizeHandlers.forEach(handler => handler.apply(this))
+    }
   }
 
   StartApplication = (microApplication: MicroApplication) => {
@@ -38,6 +50,7 @@ export class DesktopService {
     }
 
     this.forms.push(microApplicationForm);
+    this.CheckAndRearrangeTasksOnTaskPanel();
     this.ActivateForm(microApplicationForm);
     this.activeForm.header = microApplication.title;
   }
@@ -49,6 +62,7 @@ export class DesktopService {
 
     microApplicationForm.desktopService = this;
     this.forms.push(microApplicationForm);
+    this.CheckAndRearrangeTasksOnTaskPanel();
     this.ActivateForm(microApplicationForm);
   }
 
@@ -91,6 +105,9 @@ export class DesktopService {
 
     this.activeForm.isActive = true;
     this.activeForm.zPos = this.forms.length * 10;
+    if (this.activeForm.isModal) {
+      this.activeForm.parent.zPos = this.activeForm.zPos - 5;
+    }
   }
 
   DragOver = (event: DragEvent) => {
@@ -177,22 +194,60 @@ export class DesktopService {
     this.mainMenuIsShown = false;
   }
 
-  WorkspaceAreResize(event: any) {
+  WorkspaceAreOnResizeHandler(event: any) {
     this.workspaceParams.xSize = event.clientWidth
     this.workspaceParams.ySize = event.clientHeight;
+
+    this.CheckWorkspaceSize();
   }
 
-  CheckWorkspaceSize(): boolean {
+  TaskPanelAreaOnResizeHandler(event: any) {
+    this.taskPanelParams.xSize = event.clientWidth;
+    this.taskPanelParams.ySize = event.clientHeight;
+
+    this.CheckAndRearrangeTasksOnTaskPanel();
+  }
+
+  private CheckWorkspaceSize() {
     if (this.screenX < 1200 || this.screenY < 800) {
       this.workspaceSizeMessage = "Your screen size is too small";
-      return false;
+      this.workspaceSizeError = true;
+      return;
     }
 
     if (this.workspaceParams.xSize < 1150 || this.workspaceParams.ySize < 600) {
       this.workspaceSizeMessage = "Your browser size is too small";
-      return false;
+      this.workspaceSizeError = true
+      return;
     }
 
-    return true;
+    this.workspaceSizeError = false;
+
+    this.CheckAndRearrangeForms();
+  }
+
+  private CheckAndRearrangeForms() {
+    this.forms.forEach(form => {
+      if (form.xPos > this.workspaceParams.xSize - 20) {
+        form.xPos -= 50;
+      }
+      if (form.yPos > this.workspaceParams.ySize - 20) {
+        form.yPos -= 50;
+      }
+    })
+  }
+
+  private CheckAndRearrangeTasksOnTaskPanel() {
+    if (this.forms.length === 0) {
+      return;
+    }
+
+    let taskPanelItemCalcWidth = (this.workspaceParams.xSize - 90) / this.forms.length;
+
+    if (taskPanelItemCalcWidth > this.taskPanelItemWidth) {
+      this.taskPanelItemActualWidth = 200;
+    } else {
+      this.taskPanelItemActualWidth = taskPanelItemCalcWidth;
+    }
   }
 }

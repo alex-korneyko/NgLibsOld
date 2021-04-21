@@ -2,14 +2,16 @@
 >
 
   <wma-workspace
-    (workspaceAreaOnresize)="desktopService.WorkspaceAreResize($event)"
+    (workspaceAreaOnResize)="desktopService.WorkspaceAreOnResizeHandler($event)"
   ></wma-workspace>
 
-  <wma-task-panel></wma-task-panel>
+  <wma-task-panel
+    (taskPanelAreaOnResize)="desktopService.TaskPanelAreaOnResizeHandler($event)"
+  ></wma-task-panel>
 
 </div>
 
-<div *ngIf="!desktopService.CheckWorkspaceSize()">
+<div *ngIf="desktopService.workspaceSizeError">
   <div style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background-color: black; opacity: .7; z-index: 11000"  >
     <h3 style="color: black; opacity: 1">{{desktopService.workspaceSizeMessage}}</h3>
   </div>
