@@ -7,7 +7,7 @@ export abstract class MicroApplicationFormContent implements MicroApplicationCon
   form: MicroAppForm
 
   CloseWindow = (parent?: MicroAppForm) => {
-    this.FormOnDestroy();
+    this.FormBeforeDestroy();
     this.form.Close(parent);
   }
 
@@ -19,7 +19,30 @@ export abstract class MicroApplicationFormContent implements MicroApplicationCon
     this.form.AddChildren(form);
   }
 
-  abstract FormOnInit(): void;
+  FormOnInit(): void {
+  }
 
-  abstract FormOnDestroy(): void;
+  FormBeforeDestroy(): void {
+  }
+
+  FormAfterDestroy(): void {
+  }
+
+  FormBeforeMaximize(): void {
+  }
+
+  FormAfterMaximize(): void {
+  }
+
+  FormAfterMinimize(): void {
+  }
+
+  FormBeforeMinimize(): void {
+  }
+
+  FormOnMove(): void {
+  }
+
+  FormOnResize(): void {
+  }
 }

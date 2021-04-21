@@ -11,6 +11,7 @@ import {TaskInfoWindowComponent} from './task-info-window/task-info-window.compo
   styleUrls: ['./simple-to-do.component.css']
 })
 export class SimpleToDoComponent extends MicroApplicationFormContent implements OnInit {
+
   constructor(public simpleToDoService: SimpleToDoService) {
     super()
   }
@@ -22,9 +23,6 @@ export class SimpleToDoComponent extends MicroApplicationFormContent implements 
   FormOnInit(): void {
     this.form.xSize = 700;
     this.form.closeWithChildren = true;
-  }
-
-  FormOnDestroy(): void {
   }
 
   AddTaskBtnClick() {
