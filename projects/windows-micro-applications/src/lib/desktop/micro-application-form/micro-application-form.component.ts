@@ -49,7 +49,7 @@ export class MicroApplicationFormComponent implements OnInit, AfterViewInit, OnD
   @Output()
   formDragEnd = new EventEmitter<MicroApplicationFormEvent>();
 
-  private formContentInstance: MicroApplicationContent;
+  formContentInstance: MicroApplicationContent;
 
   constructor(private desktopService: DesktopService, private componentFactoryResolver: ComponentFactoryResolver) {
   }

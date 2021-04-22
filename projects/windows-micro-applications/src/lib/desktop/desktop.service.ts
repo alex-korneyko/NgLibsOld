@@ -116,6 +116,7 @@ export class DesktopService {
     if (this.currentWindowEvent?.windowEventType === MicroApplicationFormEventType.DRAG_WINDOW) {
       this.activeForm.xPos = offsetX - this.currentWindowEvent.dragEvent.offsetX;
       this.activeForm.yPos = offsetY - this.currentWindowEvent.dragEvent.offsetY;
+      this.activeForm.formContainer.formContentInstance.FormOnMove();
     }
     event.preventDefault();
   }
