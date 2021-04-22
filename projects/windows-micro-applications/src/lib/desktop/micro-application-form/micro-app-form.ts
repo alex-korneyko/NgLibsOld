@@ -11,7 +11,7 @@ export class MicroAppForm {
   params: any;
   readonly children = new Array<MicroAppForm>()
   parent: MicroAppForm;
-  closeWithChildren = false;
+  closeIfParentClosed = false;
   readonly created: Date;
   xPos = 100;
   yPos = 50;
@@ -56,16 +56,18 @@ export class MicroAppForm {
     this.desktopService.AddNewForm(form);
   }
 
-  Close(parent?: MicroAppForm) {
-    if (this.parent != null) {
+  Close() {
+    if (this.isModal) {
       this.parent.isBlockedByChildren = false;
-      this.desktopService.ActivateForm(this.parent);
     }
-    this.children.forEach(form => form.Close(this));
 
-    if (parent == null || this.closeWithChildren) {
-      this.desktopService.CloseForm(this)
-    }
+    this.children.forEach(child => {
+      if (child.closeIfParentClosed) {
+        child.Close();
+      }
+    });
+
+    this.desktopService.CloseForm(this);
   }
 
   get isModal(): boolean {

@@ -7,13 +7,13 @@ export interface MicroApplicationContent {
   FormOnInit(): void;
   FormAfterInit(): void;
 
-  FormBeforeDestroy(): void;
+  FormOnDestroy(): void;
   FormAfterDestroy(): void;
 
-  FormBeforeMaximize(): void;
+  FormOnMaximize(): void;
   FormAfterMaximize(): void;
 
-  FormBeforeMinimize(): void;
+  FormOnMinimize(): void;
   FormAfterMinimize(): void;
 
   FormOnMove(): void;

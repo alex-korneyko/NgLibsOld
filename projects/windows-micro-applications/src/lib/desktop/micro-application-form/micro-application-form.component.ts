@@ -88,7 +88,7 @@ export class MicroApplicationFormComponent implements OnInit, AfterViewInit, OnD
 
   CloseClick = (event?: MouseEvent) => {
     event?.stopPropagation();
-    this.formContentInstance.FormBeforeDestroy();
+    this.formContentInstance.FormOnDestroy();
     this.closeEvent.emit(this.form);
     this.form.Close()
   }
@@ -155,14 +155,14 @@ export class MicroApplicationFormComponent implements OnInit, AfterViewInit, OnD
 
   FullScreenClick(event: MouseEvent) {
     event.stopPropagation();
-    this.formContentInstance.FormBeforeMaximize();
+    this.formContentInstance.FormOnMaximize();
     this.fullScreenEvent.emit(this.form);
     this.formContentInstance.FormAfterMaximize();
   }
 
   BackgroundClick(event: MouseEvent) {
     event.stopPropagation();
-    this.formContentInstance.FormBeforeMinimize();
+    this.formContentInstance.FormOnMinimize();
     this.form.isBackground = true;
     this.form.isActive = false;
     this.formContentInstance.FormAfterMinimize();

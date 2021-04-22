@@ -19,6 +19,7 @@ export class TaskInfoWindowComponent extends MicroApplicationFormContent impleme
 
   FormOnInit(): void {
     this.form.isSingleton = false;
+    this.form.closeIfParentClosed = true;
     this.task = this.form.params.task;
   }
 

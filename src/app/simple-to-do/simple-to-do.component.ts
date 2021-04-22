@@ -21,13 +21,15 @@ export class SimpleToDoComponent extends MicroApplicationFormContent implements 
   }
 
   FormOnInit(): void {
-    console.log("FormOnInit")
     this.form.xSize = 700;
-    this.form.closeWithChildren = true;
   }
 
-  FormAfterInit() {
-    console.log("FormAfterInit")
+  FormBeforeDestroy() {
+    console.log("FormBeforeDestroy")
+  }
+
+  FormAfterDestroy() {
+    console.log("FormAfterDestroy")
   }
 
   AddTaskBtnClick() {

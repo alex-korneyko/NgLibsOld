@@ -23,13 +23,13 @@ export abstract class MicroApplicationFormContent implements MicroApplicationCon
   FormAfterInit() {
   }
 
-  FormBeforeDestroy(): void {
+  FormOnDestroy(): void {
   }
 
   FormAfterDestroy(): void {
   }
 
-  FormBeforeMaximize(): void {
+  FormOnMaximize(): void {
   }
 
   FormAfterMaximize(): void {
@@ -38,7 +38,7 @@ export abstract class MicroApplicationFormContent implements MicroApplicationCon
   FormAfterMinimize(): void {
   }
 
-  FormBeforeMinimize(): void {
+  FormOnMinimize(): void {
   }
 
   FormOnMove(): void {
