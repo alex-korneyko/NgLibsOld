@@ -21,8 +21,13 @@ export class SimpleToDoComponent extends MicroApplicationFormContent implements 
   }
 
   FormOnInit(): void {
+    console.log("FormOnInit")
     this.form.xSize = 700;
     this.form.closeWithChildren = true;
+  }
+
+  FormAfterInit() {
+    console.log("FormAfterInit")
   }
 
   AddTaskBtnClick() {
@@ -59,5 +64,9 @@ export class SimpleToDoComponent extends MicroApplicationFormContent implements 
     });
     microAppForm.header = this.simpleToDoService.currentTask.name;
     this.AddChildren(microAppForm)
+  }
+
+  CloseFormBtnClick() {
+    this.CloseWindow();
   }
 }

@@ -1,4 +1,5 @@
 import {
+  AfterViewInit,
   Component,
   ComponentFactoryResolver,
   EventEmitter,
@@ -20,7 +21,7 @@ import {DesktopService} from '../desktop.service';
   templateUrl: './micro-application-form.component.html',
   styleUrls: ['./micro-application-form.component.css'],
 })
-export class MicroApplicationFormComponent implements OnInit, OnDestroy {
+export class MicroApplicationFormComponent implements OnInit, AfterViewInit, OnDestroy {
 
   @ViewChild(MicroApplicationFormContentDirective, {static: true})
   windowHost: MicroApplicationFormContentDirective;
@@ -29,7 +30,7 @@ export class MicroApplicationFormComponent implements OnInit, OnDestroy {
   id: number;
 
   @Input()
-  microApplicationForm: MicroAppForm;
+  form: MicroAppForm;
 
   @Output()
   windowClick = new EventEmitter<MicroAppForm>();
@@ -64,48 +65,52 @@ export class MicroApplicationFormComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
-    this.microApplicationForm.desktopService = this.desktopService;
-    let componentFactory = this.componentFactoryResolver.resolveComponentFactory(this.microApplicationForm.formContent);
+    this.form.desktopService = this.desktopService;
+    this.form.formContainer = this;
+    let componentFactory = this.componentFactoryResolver.resolveComponentFactory(this.form.formContent);
     let viewContainerRef = this.windowHost.viewContainerRef;
     viewContainerRef.clear();
 
     let windowContentRef = viewContainerRef.createComponent<MicroApplicationContent>(componentFactory);
     this.formContentInstance = windowContentRef.instance;
-    this.formContentInstance.id = this.id;
-    this.formContentInstance.form = this.microApplicationForm;
+    this.formContentInstance.form = this.form;
     this.formContentInstance.FormOnInit();
+  }
+
+  ngAfterViewInit() {
+    this.formContentInstance.FormAfterInit();
   }
 
   ngOnDestroy() {
     this.windowHost.viewContainerRef.clear();
+    this.formContentInstance.FormAfterDestroy();
   }
 
-  CloseClick = (event: MouseEvent) => {
+  CloseClick = (event?: MouseEvent) => {
+    event?.stopPropagation();
     this.formContentInstance.FormBeforeDestroy();
-    this.closeEvent.emit(this.microApplicationForm);
-    event.stopPropagation();
-    this.microApplicationForm.Close()
-    this.formContentInstance.FormAfterDestroy();
+    this.closeEvent.emit(this.form);
+    this.form.Close()
   }
 
   WindowAreaClick = (event: MouseEvent) => {
     event.stopPropagation();
-    this.windowClick.emit(this.microApplicationForm);
+    this.windowClick.emit(this.form);
   }
 
   WindowHeaderMouseDown = (event: MouseEvent) => {
-    let windowEvent = new MicroApplicationFormEvent(this.id, MicroApplicationFormEventType.DRAG_WINDOW);
+    let windowEvent = new MicroApplicationFormEvent(this.form, MicroApplicationFormEventType.DRAG_WINDOW);
     windowEvent.mouseEvent = event;
 
     this.windowHeaderMouseDown.emit(windowEvent);
   }
 
   WindowHeaderMouseUp(event: MouseEvent) {
-    this.windowHeaderMouseUp.emit(new MicroApplicationFormEvent(this.id, MicroApplicationFormEventType.NONE))
+    this.windowHeaderMouseUp.emit(new MicroApplicationFormEvent(this.form, MicroApplicationFormEventType.NONE))
   }
 
   DragRightBorder(event: DragEvent) {
-    let windowEvent = new MicroApplicationFormEvent(this.id, MicroApplicationFormEventType.RESIZE_RIGHT);
+    let windowEvent = new MicroApplicationFormEvent(this.form, MicroApplicationFormEventType.RESIZE_RIGHT);
     windowEvent.dragEvent = event;
 
     this.resizeRightBorder.emit(windowEvent)
@@ -113,7 +118,7 @@ export class MicroApplicationFormComponent implements OnInit, OnDestroy {
   }
 
   DragLeftBorder(event: DragEvent) {
-    let windowEvent = new MicroApplicationFormEvent(this.id, MicroApplicationFormEventType.RESIZE_LEFT);
+    let windowEvent = new MicroApplicationFormEvent(this.form, MicroApplicationFormEventType.RESIZE_LEFT);
     windowEvent.dragEvent = event;
 
     this.resizeLeftBorder.emit(windowEvent)
@@ -121,7 +126,7 @@ export class MicroApplicationFormComponent implements OnInit, OnDestroy {
   }
 
   DragTopBorder(event: DragEvent) {
-    let windowEvent = new MicroApplicationFormEvent(this.id, MicroApplicationFormEventType.RESIZE_UP);
+    let windowEvent = new MicroApplicationFormEvent(this.form, MicroApplicationFormEventType.RESIZE_UP);
     windowEvent.dragEvent = event;
 
     this.resizeTopBorder.emit(windowEvent);
@@ -129,7 +134,7 @@ export class MicroApplicationFormComponent implements OnInit, OnDestroy {
   }
 
   DragBottomBorder(event: DragEvent) {
-    let windowEvent = new MicroApplicationFormEvent(this.id, MicroApplicationFormEventType.RESIZE_DOWN);
+    let windowEvent = new MicroApplicationFormEvent(this.form, MicroApplicationFormEventType.RESIZE_DOWN);
     windowEvent.dragEvent = event;
 
     this.resizeBottomBorder.emit(windowEvent);
@@ -151,15 +156,15 @@ export class MicroApplicationFormComponent implements OnInit, OnDestroy {
   FullScreenClick(event: MouseEvent) {
     event.stopPropagation();
     this.formContentInstance.FormBeforeMaximize();
-    this.fullScreenEvent.emit(this.microApplicationForm);
+    this.fullScreenEvent.emit(this.form);
     this.formContentInstance.FormAfterMaximize();
   }
 
   BackgroundClick(event: MouseEvent) {
     event.stopPropagation();
     this.formContentInstance.FormBeforeMinimize();
-    this.microApplicationForm.isBackground = true;
-    this.microApplicationForm.isActive = false;
+    this.form.isBackground = true;
+    this.form.isActive = false;
     this.formContentInstance.FormAfterMinimize();
   }
 }

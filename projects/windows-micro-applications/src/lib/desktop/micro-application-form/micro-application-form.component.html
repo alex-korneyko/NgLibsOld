@@ -1,16 +1,16 @@
 <div style="position: absolute"
-     [id]="microApplicationForm.id"
+     [id]="form.id"
      [ngStyle]="{
-      'width': microApplicationForm.isFullScreen ? '100%' : microApplicationForm.xSize + 10 + 'px',
-      'height': microApplicationForm.isFullScreen ? '100%' : microApplicationForm.ySize + 10 + 'px',
-      'left': microApplicationForm.isFullScreen ? '0px' : microApplicationForm.xPos - 5 + 'px',
-      'top': microApplicationForm.isFullScreen ? '0px' : microApplicationForm.yPos - 5 + 'px',
-      'z-index': microApplicationForm.zPos
+      'width': form.isFullScreen ? '100%' : form.xSize + 10 + 'px',
+      'height': form.isFullScreen ? '100%' : form.ySize + 10 + 'px',
+      'left': form.isFullScreen ? '0px' : form.xPos - 5 + 'px',
+      'top': form.isFullScreen ? '0px' : form.yPos - 5 + 'px',
+      'z-index': form.zPos
      }"
      (mousedown)="WindowAreaClick($event)"
 >
   <div class="horizontal-border" draggable="true"
-       *ngIf="!microApplicationForm.isFullScreen"
+       *ngIf="!form.isFullScreen"
        (drag)="DragTopBorder($event)"
        (dragstart)="HorizontalBorderDragStart($event)"
   ></div>
@@ -18,7 +18,7 @@
   <div style="width: 100%; height: calc(100%); display: flex">
 
     <div class="vertical-border" draggable="true"
-         *ngIf="!microApplicationForm.isFullScreen"
+         *ngIf="!form.isFullScreen"
          (drag)="DragLeftBorder($event)"
          (dragstart)="VerticalBorderDragStart($event)"
     ></div>
@@ -27,7 +27,7 @@
 
       <div style="width: 100%; height: 25px; display: flex" draggable="true"
            [ngStyle]="{
-            'background-color': microApplicationForm.isActive ? '#036e86' : '#b6b6b6'
+            'background-color': form.isActive ? '#036e86' : '#b6b6b6'
            }"
            (mousedown)="WindowHeaderMouseDown($event)"
            (mouseup)="WindowHeaderMouseUp($event)"
@@ -37,7 +37,7 @@
         <div style="display: block; flex: 1"
              (dblclick)="FullScreenClick($event)"
         >
-          <span style="color: white; font-weight: bold; margin-left: 5px">{{microApplicationForm.header}}</span>
+          <span style="color: white; font-weight: bold; margin-left: 5px">{{form.header}}</span>
         </div>
 
         <div style="display: block">
@@ -47,13 +47,13 @@
           </button>
 
           <button class="window-header-btn window-fullscreen-btn"
-                  *ngIf="!microApplicationForm.isFullScreen"
+                  *ngIf="!form.isFullScreen"
                   (mouseup)="FullScreenClick($event)">
             <i class="fa fa-window-maximize"></i>
           </button>
 
           <button class="window-header-btn window-fullscreen-btn"
-                  *ngIf="microApplicationForm.isFullScreen"
+                  *ngIf="form.isFullScreen"
                   (mouseup)="FullScreenClick($event)">
             <i class="fa fa-window-restore"></i>
           </button>
@@ -74,14 +74,14 @@
     </div>
 
     <div class="vertical-border" draggable="true"
-         *ngIf="!microApplicationForm.isFullScreen"
+         *ngIf="!form.isFullScreen"
          (drag)="DragRightBorder($event)"
          (dragstart)="VerticalBorderDragStart($event)"
     ></div>
   </div>
 
   <div class="horizontal-border" draggable="true"
-       *ngIf="!microApplicationForm.isFullScreen"
+       *ngIf="!form.isFullScreen"
        (drag)="DragBottomBorder($event)"
        (dragstart)="HorizontalBorderDragStart($event)"
   ></div>
@@ -89,12 +89,12 @@
 </div>
 
 <div style="position: absolute; background-color: black; opacity: .2"
-     *ngIf="microApplicationForm.isBlockedByChildren"
+     *ngIf="form.isBlockedByChildren"
      [ngStyle]="{
-      'width': microApplicationForm.isFullScreen ? '100%' : microApplicationForm.xSize + 'px',
-      'height': microApplicationForm.isFullScreen ? '100%' : microApplicationForm.ySize + 10 + 'px',
-      'left': microApplicationForm.isFullScreen ? '0px' : microApplicationForm.xPos + 'px',
-      'top': microApplicationForm.isFullScreen ? '0px' : microApplicationForm.yPos + 'px',
-      'z-index': microApplicationForm.zPos + 5
+      'width': form.isFullScreen ? '100%' : form.xSize + 'px',
+      'height': form.isFullScreen ? '100%' : form.ySize + 10 + 'px',
+      'left': form.isFullScreen ? '0px' : form.xPos + 'px',
+      'top': form.isFullScreen ? '0px' : form.yPos + 'px',
+      'z-index': form.zPos + 5
      }"
 ></div>

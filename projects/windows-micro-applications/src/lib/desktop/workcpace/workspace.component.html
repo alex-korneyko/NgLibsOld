@@ -7,7 +7,7 @@
   <div *ngFor="let window of deskTopService.forms">
     <wma-form *ngIf="!window.isBackground"
               [id]="window.id"
-              [microApplicationForm]="window"
+              [form]="window"
               (windowClick)="deskTopService.ActivateForm($event)"
               (fullScreenEvent)="deskTopService.FullScreenEventHandler($event)"
               (closeEvent)="deskTopService.CloseEventHandler($event)"

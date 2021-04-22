@@ -2,10 +2,10 @@ import {MicroAppForm} from './micro-app-form';
 
 export interface MicroApplicationContent {
 
-  id: number;
   form: MicroAppForm
 
   FormOnInit(): void;
+  FormAfterInit(): void;
 
   FormBeforeDestroy(): void;
   FormAfterDestroy(): void;
@@ -20,5 +20,5 @@ export interface MicroApplicationContent {
   FormOnResize(): void;
 
   AddChildren: (form: MicroAppForm) => void;
-  CloseWindow: (parent?: MicroAppForm) => void;
+  CloseWindow: () => void;
 }

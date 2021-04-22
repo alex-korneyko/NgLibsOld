@@ -128,13 +128,6 @@ export class DesktopService {
     this.currentWindowEvent = null;
   }
 
-  private GetWindow = (windowId: number): MicroAppForm => {
-    let index = this.forms.findIndex(win => win.id === windowId);
-    if (index > -1) {
-      return this.forms[index];
-    }
-  }
-
   HeaderMouseUp(event: MicroApplicationFormEvent) {
     this.currentWindowEvent = null;
   }
@@ -144,37 +137,33 @@ export class DesktopService {
   }
 
   ResizeBottomBorder(event: MicroApplicationFormEvent) {
-    let windowParams = this.GetWindow(event.windowId);
-    if (windowParams.ySize + event.dragEvent.offsetY < windowParams.yMinSize) {
+    if (event.form.ySize + event.dragEvent.offsetY < event.form.yMinSize) {
       return;
     }
-    windowParams.ySize += event.dragEvent.offsetY;
+    event.form.ySize += event.dragEvent.offsetY;
   }
 
   ResizeTopBorder(event: MicroApplicationFormEvent) {
-    let windowParams = this.GetWindow(event.windowId);
-    if (windowParams.ySize - event.dragEvent.offsetY < windowParams.yMinSize) {
+    if (event.form.ySize - event.dragEvent.offsetY < event.form.yMinSize) {
       return;
     }
-    windowParams.ySize -= event.dragEvent.offsetY;
-    windowParams.yPos += event.dragEvent.offsetY;
+    event.form.ySize -= event.dragEvent.offsetY;
+    event.form.yPos += event.dragEvent.offsetY;
   }
 
   ResizeRightBorder(event: MicroApplicationFormEvent) {
-    let windowParams = this.GetWindow(event.windowId);
-    if (windowParams.xSize + event.dragEvent.offsetX < windowParams.xMinSize) {
+    if (event.form.xSize + event.dragEvent.offsetX < event.form.xMinSize) {
       return;
     }
-    windowParams.xSize += event.dragEvent.offsetX
+    event.form.xSize += event.dragEvent.offsetX
   }
 
   ResizeLeftBorder(event: MicroApplicationFormEvent) {
-    let windowParams = this.GetWindow(event.windowId);
-    if (windowParams.xSize - event.dragEvent.offsetX < windowParams.xMinSize) {
+    if (event.form.xSize - event.dragEvent.offsetX < event.form.xMinSize) {
       return;
     }
-    windowParams.xSize -= event.dragEvent.offsetX;
-    windowParams.xPos += event.dragEvent.offsetX
+    event.form.xSize -= event.dragEvent.offsetX;
+    event.form.xPos += event.dragEvent.offsetX
   }
 
   FullScreenEventHandler(microApplicationForm: MicroAppForm) {

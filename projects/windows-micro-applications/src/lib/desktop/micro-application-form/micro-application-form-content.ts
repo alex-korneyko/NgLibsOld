@@ -3,12 +3,10 @@ import {MicroAppForm} from './micro-app-form';
 
 export abstract class MicroApplicationFormContent implements MicroApplicationContent {
 
-  id: number;
   form: MicroAppForm
 
-  CloseWindow = (parent?: MicroAppForm) => {
-    this.FormBeforeDestroy();
-    this.form.Close(parent);
+  CloseWindow = () => {
+    this.form.formContainer.CloseClick();
   }
 
   AddChildren(form: MicroAppForm): void {
@@ -20,6 +18,9 @@ export abstract class MicroApplicationFormContent implements MicroApplicationCon
   }
 
   FormOnInit(): void {
+  }
+
+  FormAfterInit() {
   }
 
   FormBeforeDestroy(): void {

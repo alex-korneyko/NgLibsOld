@@ -1,11 +1,13 @@
 import {Type} from '@angular/core';
 import {MicroApplicationFormContent} from './micro-application-form-content';
 import {DesktopService} from '../desktop.service';
+import {MicroApplicationFormComponent} from './micro-application-form.component';
 
 export class MicroAppForm {
   readonly id: number;
-  desktopService: DesktopService;
+  formContainer: MicroApplicationFormComponent;
   readonly formContent: Type<MicroApplicationFormContent>;
+  desktopService: DesktopService;
   params: any;
   readonly children = new Array<MicroAppForm>()
   parent: MicroAppForm;
