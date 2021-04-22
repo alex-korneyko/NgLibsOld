@@ -94,7 +94,7 @@ export class DesktopService {
 
   ActivateForm(microApplicationForm: MicroAppForm) {
     this.activeForm = microApplicationForm;
-    microApplicationForm.isBackground = false;
+    microApplicationForm.isMinimized = false;
 
     this.forms.sort((win1, win2) => win1.zPos > win2.zPos ? 1 : -1);
     for (let i = 0; i < this.forms.length; i++) {
@@ -167,7 +167,7 @@ export class DesktopService {
   }
 
   FullScreenEventHandler(microApplicationForm: MicroAppForm) {
-    microApplicationForm.isFullScreen = !microApplicationForm.isFullScreen;
+    microApplicationForm.isMaximized = !microApplicationForm.isMaximized;
   }
 
   ShowMenu(event: MouseEvent) {

@@ -1,4 +1,4 @@
-import {Component, Input, OnInit, EventEmitter} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {MicroApplicationFormContent} from 'windows-micro-applications';
 import {ToDoTask} from '../../domain/to-do-task';
 import {SimpleToDoService} from '../simple-to-do.service';
@@ -23,9 +23,10 @@ export class SimpleToDoTaskEditorComponent extends MicroApplicationFormContent i
     this.form.header = "Task Editor";
     this.form.isModal = true;
     this.form.xSize = 600
+    this.form.allowMinimize = false;
+    this.form.allowMaximize = false;
+    this.form.isResizable = false;
   }
-
-  FormOnDestroy(): void {}
 
   OkClick() {
     if (this.simpleToDoService.currentTask.id == null) {

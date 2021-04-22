@@ -24,7 +24,7 @@ export class TaskPanelApplicationItemComponent implements OnInit {
 
     if (this.microApplicationFormParams.isActive && !this.microApplicationFormParams.isModal) {
       this.microApplicationFormParams.isActive = false;
-      this.microApplicationFormParams.isBackground = true;
+      this.microApplicationFormParams.isMinimized = true;
       this.desktopService.activeForm = null;
     } else {
       this.desktopService.ActivateForm(this.microApplicationFormParams);

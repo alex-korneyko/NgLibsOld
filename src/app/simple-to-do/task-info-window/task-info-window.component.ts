@@ -22,8 +22,4 @@ export class TaskInfoWindowComponent extends MicroApplicationFormContent impleme
     this.form.closeIfParentClosed = true;
     this.task = this.form.params.task;
   }
-
-  FormOnDestroy(): void {
-    throw new Error('Method not implemented.');
-  }
 }

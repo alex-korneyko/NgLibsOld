@@ -1,16 +1,16 @@
 <div style="position: absolute"
      [id]="form.id"
      [ngStyle]="{
-      'width': form.isFullScreen ? '100%' : form.xSize + 10 + 'px',
-      'height': form.isFullScreen ? '100%' : form.ySize + 10 + 'px',
-      'left': form.isFullScreen ? '0px' : form.xPos - 5 + 'px',
-      'top': form.isFullScreen ? '0px' : form.yPos - 5 + 'px',
+      'width': form.isMaximized ? '100%' : form.xSize + 10 + 'px',
+      'height': form.isMaximized ? '100%' : form.ySize + 10 + 'px',
+      'left': form.isMaximized ? '0px' : form.xPos - 5 + 'px',
+      'top': form.isMaximized ? '0px' : form.yPos - 5 + 'px',
       'z-index': form.zPos
      }"
      (mousedown)="WindowAreaClick($event)"
 >
   <div class="horizontal-border" draggable="true"
-       *ngIf="!form.isFullScreen"
+       *ngIf="!form.isMaximized && form.isResizable"
        (drag)="DragTopBorder($event)"
        (dragstart)="HorizontalBorderDragStart($event)"
   ></div>
@@ -18,7 +18,7 @@
   <div style="width: 100%; height: calc(100%); display: flex">
 
     <div class="vertical-border" draggable="true"
-         *ngIf="!form.isFullScreen"
+         *ngIf="!form.isMaximized && form.isResizable"
          (drag)="DragLeftBorder($event)"
          (dragstart)="VerticalBorderDragStart($event)"
     ></div>
@@ -34,34 +34,37 @@
            (dragstart)="HeaderDragStart($event)"
            >
 
-        <div style="display: block; flex: 1"
-             (dblclick)="FullScreenClick($event)"
-        >
+        <div style="display: block; flex: 1" [id]="form.id + '-header-title'"
+             (dblclick)="FullScreenClick($event)">
           <span style="color: white; font-weight: bold; margin-left: 5px">{{form.header}}</span>
         </div>
 
         <div style="display: block">
-          <button class="window-header-btn window-background-btn"
-                  (mouseup)="BackgroundClick($event)">
-            <i class="fa fa-window-minimize"></i>
-          </button>
+          <div style="display: flex">
+            <button class="window-header-btn window-background-btn"
+                    *ngIf="form.allowMinimize"
+                    (mouseup)="BackgroundClick($event)">
+              <i class="fa fa-window-minimize"></i>
+            </button>
+            <div style="display: block"
+                 *ngIf="form.allowMaximize">
+              <button class="window-header-btn window-fullscreen-btn"
+                      *ngIf="!form.isMaximized"
+                      (mouseup)="FullScreenClick($event)">
+                <i class="fa fa-window-maximize"></i>
+              </button>
 
-          <button class="window-header-btn window-fullscreen-btn"
-                  *ngIf="!form.isFullScreen"
-                  (mouseup)="FullScreenClick($event)">
-            <i class="fa fa-window-maximize"></i>
-          </button>
-
-          <button class="window-header-btn window-fullscreen-btn"
-                  *ngIf="form.isFullScreen"
-                  (mouseup)="FullScreenClick($event)">
-            <i class="fa fa-window-restore"></i>
-          </button>
-
-          <button class="window-header-btn window-close-btn"
-                  (mouseup)="CloseClick($event)">
-            <i class="fa fa-window-close"></i>
-          </button>
+              <button class="window-header-btn window-fullscreen-btn"
+                      *ngIf="form.isMaximized"
+                      (mouseup)="FullScreenClick($event)">
+                <i class="fa fa-window-restore"></i>
+              </button>
+            </div>
+            <button class="window-header-btn window-close-btn"
+                    (mouseup)="CloseClick($event)">
+              <i class="fa fa-window-close"></i>
+            </button>
+          </div>
         </div>
 
       </div>
@@ -74,14 +77,14 @@
     </div>
 
     <div class="vertical-border" draggable="true"
-         *ngIf="!form.isFullScreen"
+         *ngIf="!form.isMaximized && form.isResizable"
          (drag)="DragRightBorder($event)"
          (dragstart)="VerticalBorderDragStart($event)"
     ></div>
   </div>
 
   <div class="horizontal-border" draggable="true"
-       *ngIf="!form.isFullScreen"
+       *ngIf="!form.isMaximized && form.isResizable"
        (drag)="DragBottomBorder($event)"
        (dragstart)="HorizontalBorderDragStart($event)"
   ></div>
@@ -91,10 +94,10 @@
 <div style="position: absolute; background-color: black; opacity: .2"
      *ngIf="form.isBlockedByChildren"
      [ngStyle]="{
-      'width': form.isFullScreen ? '100%' : form.xSize + 'px',
-      'height': form.isFullScreen ? '100%' : form.ySize + 10 + 'px',
-      'left': form.isFullScreen ? '0px' : form.xPos + 'px',
-      'top': form.isFullScreen ? '0px' : form.yPos + 'px',
+      'width': form.isMaximized ? '100%' : form.xSize + 'px',
+      'height': form.isMaximized ? '100%' : form.ySize + 10 + 'px',
+      'left': form.isMaximized ? '0px' : form.xPos + 'px',
+      'top': form.isMaximized ? '0px' : form.yPos + 'px',
       'z-index': form.zPos + 5
      }"
 ></div>

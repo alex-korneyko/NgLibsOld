@@ -5,7 +5,7 @@
      (click)="deskTopService.WorkSpaceMouseClick($event)"
 >
   <div *ngFor="let window of deskTopService.forms">
-    <wma-form *ngIf="!window.isBackground"
+    <wma-form *ngIf="!window.isMinimized"
               [id]="window.id"
               [form]="window"
               (windowClick)="deskTopService.ActivateForm($event)"

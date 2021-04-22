@@ -24,14 +24,6 @@ export class SimpleToDoComponent extends MicroApplicationFormContent implements 
     this.form.xSize = 700;
   }
 
-  FormBeforeDestroy() {
-    console.log("FormBeforeDestroy")
-  }
-
-  FormAfterDestroy() {
-    console.log("FormAfterDestroy")
-  }
-
   AddTaskBtnClick() {
     this.simpleToDoService.currentTask = null;
     this.EditTaskBtnClick();

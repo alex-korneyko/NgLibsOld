@@ -153,8 +153,11 @@ export class MicroApplicationFormComponent implements OnInit, AfterViewInit, OnD
     event.dataTransfer.effectAllowed = "move"
   }
 
-  FullScreenClick(event: MouseEvent) {
-    event.stopPropagation();
+  FullScreenClick(event?: MouseEvent) {
+    event?.stopPropagation();
+    if (!this.form.allowMaximize)
+      return;
+
     this.formContentInstance.FormOnMaximize();
     this.fullScreenEvent.emit(this.form);
     this.formContentInstance.FormAfterMaximize();
@@ -163,7 +166,7 @@ export class MicroApplicationFormComponent implements OnInit, AfterViewInit, OnD
   BackgroundClick(event: MouseEvent) {
     event.stopPropagation();
     this.formContentInstance.FormOnMinimize();
-    this.form.isBackground = true;
+    this.form.isMinimized = true;
     this.form.isActive = false;
     this.formContentInstance.FormAfterMinimize();
   }

@@ -20,10 +20,13 @@ export class MicroAppForm {
   yMinSize = 300;
   xSize = 0;
   ySize = 0;
-  allowFullScreen = true;
-  isFullScreen = false;
+  allowMaximize = true;
+  isMaximized = false;
+  private _allowAsWindow = true;
+  allowMinimize = true;
+  isMinimized = false;
   private _isModal = false;
-  isBackground = false;
+  private _isResizable = true;
   isActive: boolean;
   isHidden: boolean;
   isSingleton: boolean;
@@ -45,6 +48,11 @@ export class MicroAppForm {
     if (this.ySize < this.yMinSize) {
       this.ySize = this.yMinSize;
     }
+
+    if (!this._allowAsWindow) {
+      this.isMaximized = true;
+      this.allowMaximize = false;
+    }
   }
 
   AddChildren = (form: MicroAppForm) => {
@@ -59,6 +67,7 @@ export class MicroAppForm {
   Close() {
     if (this.isModal) {
       this.parent.isBlockedByChildren = false;
+      this.parent.isActive = true;
     }
 
     this.children.forEach(child => {
@@ -77,5 +86,25 @@ export class MicroAppForm {
   set isModal(value: boolean) {
     this.parent.isBlockedByChildren = value;
     this._isModal = value;
+  }
+
+
+  get allowAsWindow(): boolean {
+    return this._allowAsWindow;
+  }
+
+  set allowAsWindow(value: boolean) {
+    this._allowAsWindow = value;
+    this.allowMaximize = value;
+    this.isMaximized = !value;
+  }
+
+
+  get isResizable(): boolean {
+    return this._isResizable;
+  }
+
+  set isResizable(value: boolean) {
+    this._isResizable = value;
   }
 }

@@ -15,8 +15,4 @@ export class TestServiceApplicationComponent extends MicroApplicationFormContent
     this.form.xSize = 850;
   }
 
-  FormOnDestroy(): void {
-    throw new Error('Method not implemented.');
-  }
-
 }
