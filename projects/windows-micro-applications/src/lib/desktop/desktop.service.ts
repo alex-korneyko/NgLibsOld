@@ -114,8 +114,8 @@ export class DesktopService {
     let offsetX = event.clientX;
     let offsetY = event.clientY;
     if (this.currentWindowEvent?.windowEventType === MicroApplicationFormEventType.DRAG_WINDOW) {
-      this.activeForm.xPos = offsetX - this.currentWindowEvent.mouseEvent.offsetX;
-      this.activeForm.yPos = offsetY - this.currentWindowEvent.mouseEvent.offsetY;
+      this.activeForm.xPos = offsetX - this.currentWindowEvent.dragEvent.offsetX;
+      this.activeForm.yPos = offsetY - this.currentWindowEvent.dragEvent.offsetY;
     }
     event.preventDefault();
   }
@@ -126,14 +126,6 @@ export class DesktopService {
 
   Drop(event: DragEvent) {
     this.currentWindowEvent = null;
-  }
-
-  HeaderMouseUp(event: MicroApplicationFormEvent) {
-    this.currentWindowEvent = null;
-  }
-
-  HeaderMouseDown = (event: MicroApplicationFormEvent) => {
-    this.currentWindowEvent = event;
   }
 
   ResizeBottomBorder(event: MicroApplicationFormEvent) {
@@ -238,5 +230,13 @@ export class DesktopService {
     } else {
       this.taskPanelItemActualWidth = taskPanelItemCalcWidth;
     }
+  }
+
+  FormDragStartHandler(event: MicroApplicationFormEvent) {
+    this.currentWindowEvent = event;
+  }
+
+  FormDragEndHandler(event: MicroApplicationFormEvent) {
+    this.currentWindowEvent = null;
   }
 }

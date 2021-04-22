@@ -12,12 +12,12 @@
               (fullScreenEvent)="deskTopService.FullScreenEventHandler($event)"
               (closeEvent)="deskTopService.CloseEventHandler($event)"
               (dragenter)="deskTopService.DragEnter($event)"
-              (windowHeaderMouseDown)="deskTopService.HeaderMouseDown($event)"
-              (windowHeaderMouseUp)="deskTopService.HeaderMouseUp($event)"
               (resizeTopBorder)="deskTopService.ResizeTopBorder($event)"
               (resizeBottomBorder)="deskTopService.ResizeBottomBorder($event)"
               (resizeRightBorder)="deskTopService.ResizeRightBorder($event)"
               (resizeLeftBorder)="deskTopService.ResizeLeftBorder($event)"
+              (formDragStart)="deskTopService.FormDragStartHandler($event)"
+              (formDragEnd)="deskTopService.FormDragEndHandler($event)"
     >
     </wma-form>
   </div>

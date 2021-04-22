@@ -1,14 +1,4 @@
-import {
-  AfterViewInit,
-  Component,
-  ComponentFactoryResolver,
-  EventEmitter,
-  Input,
-  OnDestroy,
-  OnInit,
-  Output,
-  ViewChild
-} from '@angular/core';
+import {AfterViewInit, Component, ComponentFactoryResolver, EventEmitter, Input, OnDestroy, OnInit, Output, ViewChild} from '@angular/core';
 import {MicroAppForm} from './micro-app-form';
 import {MicroApplicationFormEvent} from './micro-application-form-event';
 import {MicroApplicationFormEventType} from './micro-application-form-event-type.enum';
@@ -42,12 +32,6 @@ export class MicroApplicationFormComponent implements OnInit, AfterViewInit, OnD
   closeEvent = new EventEmitter<MicroAppForm>();
 
   @Output()
-  windowHeaderMouseDown = new EventEmitter<MicroApplicationFormEvent>();
-
-  @Output()
-  windowHeaderMouseUp = new EventEmitter<MicroApplicationFormEvent>();
-
-  @Output()
   resizeLeftBorder = new EventEmitter<MicroApplicationFormEvent>();
 
   @Output()
@@ -58,6 +42,12 @@ export class MicroApplicationFormComponent implements OnInit, AfterViewInit, OnD
 
   @Output()
   resizeBottomBorder = new EventEmitter<MicroApplicationFormEvent>();
+
+  @Output()
+  formDragStart = new EventEmitter<MicroApplicationFormEvent>();
+
+  @Output()
+  formDragEnd = new EventEmitter<MicroApplicationFormEvent>();
 
   private formContentInstance: MicroApplicationContent;
 
@@ -93,20 +83,27 @@ export class MicroApplicationFormComponent implements OnInit, AfterViewInit, OnD
     this.form.Close()
   }
 
+  FullScreenClick(event?: MouseEvent) {
+    event?.stopPropagation();
+    if (!this.form.allowMaximize)
+      return;
+
+    this.formContentInstance.FormOnMaximize();
+    this.fullScreenEvent.emit(this.form);
+    this.formContentInstance.FormAfterMaximize();
+  }
+
+  BackgroundClick(event: MouseEvent) {
+    event.stopPropagation();
+    this.formContentInstance.FormOnMinimize();
+    this.form.isMinimized = true;
+    this.form.isActive = false;
+    this.formContentInstance.FormAfterMinimize();
+  }
+
   WindowAreaClick = (event: MouseEvent) => {
     event.stopPropagation();
     this.windowClick.emit(this.form);
-  }
-
-  WindowHeaderMouseDown = (event: MouseEvent) => {
-    let windowEvent = new MicroApplicationFormEvent(this.form, MicroApplicationFormEventType.DRAG_WINDOW);
-    windowEvent.mouseEvent = event;
-
-    this.windowHeaderMouseDown.emit(windowEvent);
-  }
-
-  WindowHeaderMouseUp(event: MouseEvent) {
-    this.windowHeaderMouseUp.emit(new MicroApplicationFormEvent(this.form, MicroApplicationFormEventType.NONE))
   }
 
   DragRightBorder(event: DragEvent) {
@@ -142,7 +139,16 @@ export class MicroApplicationFormComponent implements OnInit, AfterViewInit, OnD
   }
 
   HeaderDragStart(event: DragEvent) {
+    event.stopPropagation()
+    let formEvent = new MicroApplicationFormEvent(this.form, MicroApplicationFormEventType.DRAG_WINDOW);
+    formEvent.dragEvent = event;
+    this.formDragStart.emit(formEvent)
     event.dataTransfer.effectAllowed = "move";
+  }
+
+  HeaderDragEnd(event: DragEvent) {
+    event.stopPropagation();
+    this.formDragEnd.emit(new MicroApplicationFormEvent(this.form, MicroApplicationFormEventType.DRAG_WINDOW))
   }
 
   VerticalBorderDragStart(event: DragEvent) {
@@ -151,23 +157,5 @@ export class MicroApplicationFormComponent implements OnInit, AfterViewInit, OnD
 
   HorizontalBorderDragStart(event: DragEvent) {
     event.dataTransfer.effectAllowed = "move"
-  }
-
-  FullScreenClick(event?: MouseEvent) {
-    event?.stopPropagation();
-    if (!this.form.allowMaximize)
-      return;
-
-    this.formContentInstance.FormOnMaximize();
-    this.fullScreenEvent.emit(this.form);
-    this.formContentInstance.FormAfterMaximize();
-  }
-
-  BackgroundClick(event: MouseEvent) {
-    event.stopPropagation();
-    this.formContentInstance.FormOnMinimize();
-    this.form.isMinimized = true;
-    this.form.isActive = false;
-    this.formContentInstance.FormAfterMinimize();
   }
 }

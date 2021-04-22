@@ -8,7 +8,7 @@ export class MicroApplicationFormEvent {
   mouseEvent: MouseEvent;
 
 
-  constructor(form: MicroAppForm, windowEventType: MicroApplicationFormEventType) {
+  constructor(form: MicroAppForm, windowEventType?: MicroApplicationFormEventType) {
     this.windowEventType = MicroApplicationFormEventType.NONE;
     this.form = form;
     this.windowEventType = windowEventType;

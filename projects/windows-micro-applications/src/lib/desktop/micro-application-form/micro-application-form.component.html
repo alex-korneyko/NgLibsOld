@@ -29,9 +29,8 @@
            [ngStyle]="{
             'background-color': form.isActive ? '#036e86' : '#b6b6b6'
            }"
-           (mousedown)="WindowHeaderMouseDown($event)"
-           (mouseup)="WindowHeaderMouseUp($event)"
            (dragstart)="HeaderDragStart($event)"
+           (dragend)="HeaderDragEnd($event)"
            >
 
         <div style="display: block; flex: 1" [id]="form.id + '-header-title'"
@@ -43,25 +42,25 @@
           <div style="display: flex">
             <button class="window-header-btn window-background-btn"
                     *ngIf="form.allowMinimize"
-                    (mouseup)="BackgroundClick($event)">
+                    (click)="BackgroundClick($event)">
               <i class="fa fa-window-minimize"></i>
             </button>
             <div style="display: block"
                  *ngIf="form.allowMaximize">
               <button class="window-header-btn window-fullscreen-btn"
                       *ngIf="!form.isMaximized"
-                      (mouseup)="FullScreenClick($event)">
+                      (click)="FullScreenClick($event)">
                 <i class="fa fa-window-maximize"></i>
               </button>
 
               <button class="window-header-btn window-fullscreen-btn"
                       *ngIf="form.isMaximized"
-                      (mouseup)="FullScreenClick($event)">
+                      (click)="FullScreenClick($event)">
                 <i class="fa fa-window-restore"></i>
               </button>
             </div>
             <button class="window-header-btn window-close-btn"
-                    (mouseup)="CloseClick($event)">
+                    (click)="CloseClick($event)">
               <i class="fa fa-window-close"></i>
             </button>
           </div>
