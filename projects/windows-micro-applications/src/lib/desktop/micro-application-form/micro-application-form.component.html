@@ -23,9 +23,9 @@
          (dragstart)="VerticalBorderDragStart($event)"
     ></div>
 
-    <div style="width: calc(100%); height: 100%; display: inline-block; box-shadow: 5px 5px 5px dimgray;">
+    <div class="window-visible-area">
 
-      <div style="width: 100%; height: 25px; display: flex" draggable="true"
+      <div class="window-header" draggable="true"
            [ngStyle]="{
             'background-color': form.isActive ? '#036e86' : '#b6b6b6'
            }"
@@ -68,10 +68,8 @@
 
       </div>
 
-      <div style="width: 100%; height: calc(100% - 25px); background-color: lightgray; border: 1px solid dimgray">
-
+      <div class="content-area">
         <ng-template windowContent></ng-template>
-
       </div>
     </div>
 

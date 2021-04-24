@@ -5,6 +5,7 @@
   height: 28px;
   cursor: default;
   font-weight: 500;
+  user-select: none;
 }
 
 .bs-btn.xsm {
