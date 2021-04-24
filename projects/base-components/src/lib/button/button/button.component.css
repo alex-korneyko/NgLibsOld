@@ -1,0 +1,152 @@
+.bs-btn {
+  border: 0;
+  border-radius: 3px;
+  line-height: 0;
+  height: 28px;
+  cursor: default;
+  font-weight: 500;
+}
+
+.bs-btn.xsm {
+  height: 20px;
+  font-size: small;
+  font-weight: normal;
+}
+
+.bs-btn.sm {
+  height: 24px;
+  font-size: small;
+  font-weight: normal;
+}
+
+.bs-btn.lg {
+  height: 32px;
+  font-size: large;
+  font-weight: 550;
+}
+
+.bs-btn.light {
+  background: #dedede;
+  border: 1px solid dimgray;
+  color: #333333;
+}
+
+.bs-btn.light:hover {
+  background: #ececec;
+}
+
+.bs-btn.light:active {
+  background: #f6f5f5;
+}
+
+.bs-btn.blue {
+  background: #0064e5;
+  border: 1px solid #0000a0;
+  color: #eaf9ff;
+}
+
+.bs-btn.blue:hover {
+  background: #1e75e8;
+}
+
+.bs-btn.blue:active {
+  background: #2b7eff;
+}
+
+.bs-btn.blue-sea {
+  background: #268997;
+  border: 1px solid #1a5c66;
+  color: #eaf9ff;
+}
+
+.bs-btn.blue-sea:hover {
+  background: #2ca0af;
+}
+
+.bs-btn.blue-sea:active {
+  background: #31b7c7;
+}
+
+.bs-btn.grey {
+  background: #a3a3a3;
+  border: 1px solid dimgray;
+  color: #222222;
+}
+
+.bs-btn.grey:hover {
+  background: #b3b3b3;
+}
+
+.bs-btn.grey:active {
+  background: #c7c7c7;
+}
+
+.bs-btn.slate-grey {
+  background: #6a7e92;
+  border: 1px solid dimgray;
+  color: #eeeeee;
+}
+
+.bs-btn.slate-grey:hover {
+  background: #7c93aa;
+}
+
+.bs-btn.slate-grey:active {
+  background: #829bb8;
+}
+
+.bs-btn.green {
+  background: #049e00;
+  border: 1px solid #035e01;
+  color: #dbe8d4;
+}
+
+.bs-btn.green:hover {
+  background: #11b30d;
+}
+
+.bs-btn.green:active {
+  background: #1fc41b;
+}
+
+.bs-btn.red {
+  background: #c71b1b;
+  border: 1px solid #8b0000;
+  color: #e8d4d4;
+}
+
+.bs-btn.red:hover {
+  background: #de3232;
+}
+
+.bs-btn.red:active {
+  background: #f63333;
+}
+
+.bs-btn.yellow {
+  background: #d09e01;
+  border: 1px solid #866500;
+  color: black;
+}
+
+.bs-btn.yellow:hover {
+  background: #deac0f;
+}
+
+.bs-btn.yellow:active {
+  background: #f3bf1c;
+}
+
+.bs-btn.dark {
+  background: #1a1a1a;
+  border: 1px solid black;
+  color: lightgray;
+}
+
+.bs-btn.dark:hover {
+  background: #2d2d2d;
+}
+
+.bs-btn.dark:active {
+  background: #3b3b3b;
+}

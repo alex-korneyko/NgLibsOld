@@ -1,9 +1,10 @@
 import {Component, OnInit} from '@angular/core';
-import {MicroAppForm, MicroApplicationFormContent} from 'windows-micro-applications';
+import {MicroAppForm} from 'windows-micro-applications';
 import {SimpleToDoTaskEditorComponent} from './simple-to-do-task-editor/simple-to-do-task-editor.component';
 import {SimpleToDoService} from './simple-to-do.service';
 import {ToDoTask} from '../domain/to-do-task';
 import {TaskInfoWindowComponent} from './task-info-window/task-info-window.component';
+import {MicroApplicationFormContent} from 'windows-micro-applications';
 
 @Component({
   selector: 'app-simple-to-do',

@@ -17,8 +17,10 @@
       "dom"
     ],
     "paths": {
+      "base-components": [
+        "dist/base-components"
+      ],
       "windows-micro-applications": [
-        "dist/windows-micro-applications/windows-micro-applications",
         "dist/windows-micro-applications"
       ]
     }

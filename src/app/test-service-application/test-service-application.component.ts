@@ -1,5 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {MicroApplicationFormContent, MicroApplicationFormService} from 'windows-micro-applications';
+import {Size} from 'base-components';
+import {ColorStyle} from '../../../projects/base-components/src/lib/color-style.enum';
 
 @Component({
   selector: 'app-test-service-application',
@@ -11,8 +13,12 @@ export class TestServiceApplicationComponent extends MicroApplicationFormContent
   ngOnInit(): void {
   }
 
+  componentSize = Size;
+  color = ColorStyle;
+
   FormOnInit(): void {
-    this.form.xSize = 850;
+    this.form.xSize = 600;
+    this.form.ySize = 500;
   }
 
 }
