@@ -28,6 +28,6 @@ export class ComponentExamplesComponent extends MicroApplicationFormContent impl
   FormOnInit() {
     super.FormOnInit();
     this.form.xSize = 600;
-    this.form.ySize = 500;
+    this.form.ySize = 450;
   }
 }

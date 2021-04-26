@@ -10,11 +10,23 @@
      }"
      (mousedown)="WindowAreaClick($event)"
 >
-  <div class="horizontal-border" draggable="true"
-       *ngIf="!form.isMaximized && form.isResizable"
-       (drag)="DragTopBorder($event)"
-       (dragstart)="HorizontalBorderDragStart($event)"
-  ></div>
+  <div class="horizontal-border"
+       *ngIf="!form.isMaximized && form.isResizable">
+
+    <div class="horizontal-border-tl-br" draggable="true"
+         (drag)="DragTopLeftCorner($event)"
+    ></div>
+
+    <div class="horizontal-border-middle" draggable="true"
+         (drag)="DragTopBorder($event)"
+         (dragstart)="HorizontalBorderDragStart($event)">
+    </div>
+
+    <div class="horizontal-border-tr-bl" draggable="true"
+         (drag)="DragTopRightCorner($event)"
+    ></div>
+
+  </div>
 
   <div style="width: 100%; height: calc(100%); display: flex">
 
@@ -81,11 +93,23 @@
     ></div>
   </div>
 
-  <div class="horizontal-border" draggable="true"
-       *ngIf="!form.isMaximized && form.isResizable"
-       (drag)="DragBottomBorder($event)"
-       (dragstart)="HorizontalBorderDragStart($event)"
-  ></div>
+  <div class="horizontal-border"
+       *ngIf="!form.isMaximized && form.isResizable">
+
+    <div class="horizontal-border-tr-bl" draggable="true"
+         (drag)="DragBottomLeftCorner($event)"
+    ></div>
+
+    <div class="horizontal-border-middle" draggable="true"
+         (drag)="DragBottomBorder($event)"
+         (dragstart)="HorizontalBorderDragStart($event)"
+    ></div>
+
+    <div class="horizontal-border-tl-br" draggable="true"
+         (drag)="DragBottomRightCorner($event)"
+    ></div>
+
+  </div>
 
 </div>
 

@@ -158,4 +158,24 @@ export class MicroApplicationFormComponent implements OnInit, AfterViewInit, OnD
   HorizontalBorderDragStart(event: DragEvent) {
     event.dataTransfer.effectAllowed = "move"
   }
+
+  DragTopLeftCorner(event: DragEvent) {
+    this.DragTopBorder(event);
+    this.DragLeftBorder(event);
+  }
+
+  DragTopRightCorner(event: DragEvent) {
+    this.DragTopBorder(event);
+    this.DragRightBorder(event);
+  }
+
+  DragBottomLeftCorner(event: DragEvent) {
+    this.DragBottomBorder(event);
+    this.DragLeftBorder(event);
+  }
+
+  DragBottomRightCorner(event: DragEvent) {
+    this.DragBottomBorder(event);
+    this.DragRightBorder(event);
+  }
 }
