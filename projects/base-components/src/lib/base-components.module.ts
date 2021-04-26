@@ -4,13 +4,13 @@ import {BaseComponent} from './base.component';
 
 @NgModule({
   declarations: [
-    BaseComponent
+    BaseComponent,
   ],
   imports: [
-    CommonModule
+    CommonModule,
   ],
   exports: [
-    BaseComponent
+    BaseComponent,
   ]
 })
 export class BaseComponentsModule {

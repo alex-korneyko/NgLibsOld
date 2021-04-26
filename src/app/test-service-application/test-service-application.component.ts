@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {MicroApplicationFormContent, MicroApplicationFormService} from 'windows-micro-applications';
 import {Size} from 'base-components';
-import {ColorStyle} from '../../../projects/base-components/src/lib/color-style.enum';
+import {ColorStyle} from 'base-components';
 
 @Component({
   selector: 'app-test-service-application',

@@ -1,0 +1,18 @@
+.side-menu-list {
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  padding: 2px;
+  background: #ececec;
+  overflow-y: auto;
+}
+
+.side-menu-separator {
+  width: 3px;
+  background-color: dimgray;
+  cursor: col-resize;
+  position: absolute;
+  top: 0;
+  height: 100%
+}

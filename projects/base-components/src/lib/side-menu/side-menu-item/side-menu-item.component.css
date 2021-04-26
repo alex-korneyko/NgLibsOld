@@ -1,0 +1,33 @@
+.side-menu-item {
+  width: 100%;
+  font-weight: 500;
+  padding: 2px 5px;
+  user-select: none;
+  border-width: 1px;
+  border-style: solid;
+  border-color: transparent;
+  cursor: default;
+  color: #343434;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.side-menu-item.active {
+  background-image: linear-gradient(#a8d1d2, #2fa4ad);
+  border: 1px solid #2fa4ad;
+}
+
+.side-menu-item.active:hover {
+  background-image: linear-gradient(#a8d1d2, #2fa4ad);
+  border: 1px solid #2fa4ad;
+}
+
+.side-menu-item:hover {
+  border: 1px solid #2fa4ad;
+}
+
+.side-menu-item:active {
+  background-image: linear-gradient(#a8d1d2, #2fa4ad);
+  border: 1px solid #2fa4ad;
+}
