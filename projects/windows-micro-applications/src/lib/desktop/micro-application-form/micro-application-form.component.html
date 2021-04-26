@@ -1,6 +1,7 @@
 <div style="position: absolute"
      [id]="form.id"
      [ngStyle]="{
+      'display': form.isMinimized ? 'none' : 'block',
       'width': form.isMaximized ? '100%' : form.xSize + 10 + 'px',
       'height': form.isMaximized ? '100%' : form.ySize + 10 + 'px',
       'left': form.isMaximized ? '0px' : form.xPos - 5 + 'px',

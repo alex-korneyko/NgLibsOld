@@ -4,10 +4,10 @@
      (drop)="deskTopService.Drop($event)"
      (click)="deskTopService.WorkSpaceMouseClick($event)"
 >
-  <div *ngFor="let window of deskTopService.forms">
-    <wma-form *ngIf="!window.isMinimized"
-              [id]="window.id"
-              [form]="window"
+  <div *ngFor="let form of deskTopService.forms">
+    <wma-form
+              [id]="form.id"
+              [form]="form"
               (windowClick)="deskTopService.ActivateForm($event)"
               (fullScreenEvent)="deskTopService.FullScreenEventHandler($event)"
               (closeEvent)="deskTopService.CloseEventHandler($event)"
