@@ -1,5 +1,6 @@
-import {Component, Input, OnInit, EventEmitter, Output} from '@angular/core';
-import {SideMenuItemParam} from '../side-menu-item-param';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import {SideMenuListObject} from '../side-menu-list-object';
+import {Size} from '../../size.enum';
 
 @Component({
   selector: 'bs-side-menu-item',
@@ -9,20 +10,38 @@ import {SideMenuItemParam} from '../side-menu-item-param';
 export class SideMenuItemComponent implements OnInit {
 
   @Input()
-  menuItem: SideMenuItemParam;
+  menuItemListObject: SideMenuListObject;
+
+  @Input()
+  size: Size;
 
   @Input()
   isSelected: boolean;
 
   @Output()
-  menuItemClick = new EventEmitter<SideMenuItemParam>();
+  menuItemClick = new EventEmitter<SideMenuListObject>();
 
-  constructor() { }
+  sizeEnum = Size;
 
-  ngOnInit(): void {
-  }
+  nestingLevelIterationsCount: any[];
+
+  constructor() {}
+
+  ngOnInit(): void { }
 
   MenuItemClickHandler() {
-    this.menuItemClick.emit(this.menuItem);
+    this.menuItemClick.emit(this.menuItemListObject);
+  }
+
+  InnerMenuChevronClick() {
+    this.menuItemListObject.childrenIsOpen = !this.menuItemListObject.childrenIsOpen;
+    this.CloseChildren(this.menuItemListObject.children);
+  }
+
+  private CloseChildren(menuObjects: SideMenuListObject[]) {
+    menuObjects.forEach(item => {
+      item.childrenIsOpen = false;
+      this.CloseChildren(item.children);
+    })
   }
 }

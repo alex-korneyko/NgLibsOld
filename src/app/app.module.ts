@@ -15,6 +15,9 @@ import {BaseComponentsModule} from '../../projects/base-components/src/lib/base-
 import { ComponentExamplesComponent } from './component-examples/component-examples.component';
 import { ButtonsExampleComponent } from './component-examples/buttons-example/buttons-example.component';
 import { InputsExampleComponent } from './component-examples/inputs-example/inputs-example.component';
+import { ButtonSizesComponent } from './component-examples/buttons-example/button-sizes/button-sizes.component';
+import { ButtonColorsComponent } from './component-examples/buttons-example/button-colors/button-colors.component';
+import { ButtonOutlineColorsComponent } from './component-examples/buttons-example/button-outline-colors/button-outline-colors.component';
 
 @NgModule({
   declarations: [
@@ -27,6 +30,9 @@ import { InputsExampleComponent } from './component-examples/inputs-example/inpu
     ComponentExamplesComponent,
     ButtonsExampleComponent,
     InputsExampleComponent,
+    ButtonSizesComponent,
+    ButtonColorsComponent,
+    ButtonOutlineColorsComponent,
   ],
   imports: [
     BrowserModule,

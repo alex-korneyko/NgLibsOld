@@ -1,18 +1,14 @@
 <div #sideMenuContainer style="height: 100%; width: 100%; position: relative">
 
-  <div class="side-menu-list"
-       [ngStyle]="{
-        'width': menuWidth + 'px'
-       }"
-       (dragover)="DragOverLeftSideHandler($event)"
-  >
-    <bs-side-menu-item
-      *ngFor="let menuItem of menuItems"
-      [menuItem]="menuItem"
-      [isSelected]="menuItem === selectedMenuItem"
-      (menuItemClick)="MenuItemClickHandler($event)"
-    ></bs-side-menu-item>
-  </div>
+  <bs-side-menu-items-list
+    [sideMenuListObjects]="sideMenuListObjects"
+    [menuWidth]="menuWidth"
+    [separatorDragging]="separatorDragging"
+    [size]="size"
+    [selectedMenuItem]="selectedMenuItem"
+    (menuItemClick)="MenuItemClickHandler($event)"
+    (dragOverLeftSide)="DragOverLeftSideHandler($event)"
+  ></bs-side-menu-items-list>
 
   <div class="side-menu-separator" draggable="true"
        [ngStyle]="{

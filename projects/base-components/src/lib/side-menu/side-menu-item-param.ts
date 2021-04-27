@@ -5,8 +5,9 @@ export class SideMenuItemParam {
   menuItemTitle: string;
   children = new Array<SideMenuItemParam>();
 
-  constructor(menuItemComponent: Type<any>, menuItemTitle: string) {
+  constructor(menuItemComponent: Type<any>, menuItemTitle: string, children?: SideMenuItemParam[]) {
     this.menuItemComponent = menuItemComponent;
     this.menuItemTitle = menuItemTitle;
+    this.children = children;
   }
 }
