@@ -6,4 +6,5 @@ export interface MicroApplication {
   formContentComponent?: Type<any>;
   type?: MicroApplicationType;
   children?: MicroApplication[];
+  autostart?: boolean;
 }

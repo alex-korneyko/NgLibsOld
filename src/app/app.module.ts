@@ -36,7 +36,7 @@ import { InputsExampleComponent } from './component-examples/inputs-example/inpu
     SideMenuModule,
     WebDesktopApplicationsModule.microApplications([
       {title: "Test service", formContentComponent: TestServiceApplicationComponent, type: MicroApplicationType.Service},
-      {title: "Component examples", formContentComponent: ComponentExamplesComponent, type: MicroApplicationType.Service},
+      {title: "Component examples", formContentComponent: ComponentExamplesComponent, type: MicroApplicationType.Service, autostart: true},
       {title: "Simple ToDo", formContentComponent: SimpleToDoComponent, type: MicroApplicationType.Application}
     ]),
   ],
