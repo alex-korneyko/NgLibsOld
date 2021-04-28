@@ -1,0 +1,24 @@
+
+input {
+  height: calc(var(--std-height) - 2px);
+  line-height: calc(var(--std-height) - 2px);
+  font-size: calc(var(--std-height) - 12px);
+}
+
+input.xsm {
+  height: calc(var(--xsm-height) - 2px);
+  line-height: calc(var(--xsm-height) - 2px);
+  font-size: calc(var(--xsm-height) - 6px);
+}
+
+input.sm {
+  height: calc(var(--sm-height) - 2px);
+  line-height: calc(var(--sm-height) - 2px);
+  font-size: calc(var(--sm-height) - 9px);
+}
+
+input.lg {
+  height: calc(var(--lg-height) - 2px);
+  line-height: calc(var(--lg-height) - 2px);
+  font-size: calc(var(--lg-height) - 14px);
+}

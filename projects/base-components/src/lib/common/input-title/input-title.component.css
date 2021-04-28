@@ -1,0 +1,52 @@
+p {
+  margin: 0;
+  padding: 0 5px;
+  height: calc(var(--std-height) - 2px);
+  line-height: calc(var(--std-height) - 2px);
+  font-size: calc(var(--std-height) - 12px);
+  font-weight: 600;
+  cursor: default;
+  user-select: none;
+}
+
+p.xsm {
+  height: calc(var(--xsm-height) - 2px);
+  line-height: calc(var(--xsm-height) - 2px);
+  font-size: calc(var(--xsm-height) - 6px);
+}
+
+p.sm {
+  height: calc(var(--sm-height) - 2px);
+  line-height: calc(var(--sm-height) - 2px);
+  font-size: calc(var(--sm-height) - 9px);
+}
+
+p.lg {
+  height: calc(var(--lg-height) - 2px);
+  line-height: calc(var(--lg-height) - 2px);
+  font-size: calc(var(--lg-height) - 14px);
+}
+
+p.v-xsm {
+  height: calc(var(--xsm-height) - 6px);
+  line-height: calc(var(--xsm-height) - 8px);
+  font-size: 14px;
+}
+
+p.v-sm {
+  height: calc(var(--sm-height) - 8px);
+  line-height: calc(var(--sm-height) - 10px);
+  font-size: 14px;
+}
+
+p.v-std {
+  height: calc(var(--sm-height) - 6px);
+  line-height: calc(var(--sm-height) - 10px);
+  font-size: 15px;
+}
+
+p.v-lg {
+  height: calc(var(--lg-height) - 12px);
+  line-height: calc(var(--lg-height) - 16px);
+  font-size: 17px;
+}

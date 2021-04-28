@@ -5,7 +5,10 @@ import {ColorStyle} from '../../color-style.enum';
 @Component({
   selector: 'bs-button',
   templateUrl: './button.component.html',
-  styleUrls: ['./button.component.css']
+  styleUrls: [
+    './button.component.css',
+    '../../../styles/bs-variables.css'
+  ]
 })
 export class ButtonComponent implements OnInit {
 

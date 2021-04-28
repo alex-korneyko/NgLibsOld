@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {MicroApplicationFormContent, MicroApplicationFormService} from 'windows-micro-applications';
 import {Size} from 'base-components';
 import {ColorStyle} from 'base-components';
+import {TitlePosition} from 'base-components';
 
 @Component({
   selector: 'app-test-service-application',
@@ -15,10 +16,16 @@ export class TestServiceApplicationComponent extends MicroApplicationFormContent
 
   componentSize = Size;
   color = ColorStyle;
+  titlePosition = TitlePosition;
+
+  text = "Test text"
 
   FormOnInit(): void {
     this.form.xSize = 600;
     this.form.ySize = 500;
   }
 
+  TextInputOnChangeHandler() {
+    console.log(this.text);
+  }
 }

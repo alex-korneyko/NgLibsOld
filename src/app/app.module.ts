@@ -40,8 +40,6 @@ import { TextInputsExampleComponent } from './component-examples/inputs-example/
     BrowserModule,
     FormsModule,
     BaseComponentsModule,
-    ButtonModule,
-    SideMenuModule,
     WebDesktopApplicationsModule.microApplications([
       {title: "Test service", formContentComponent: TestServiceApplicationComponent, type: MicroApplicationType.Service, autostart: true},
       {title: "Component examples", formContentComponent: ComponentExamplesComponent, type: MicroApplicationType.Service},
