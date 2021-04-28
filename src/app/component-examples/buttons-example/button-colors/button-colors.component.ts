@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {ColorStyle, Size} from 'base-components';
 
 @Component({
   selector: 'app-button-colors',
@@ -6,6 +7,9 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./button-colors.component.css']
 })
 export class ButtonColorsComponent implements OnInit {
+
+  componentSize = Size;
+  color = ColorStyle;
 
   constructor() { }
 

@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ButtonSizesComponent } from './button-sizes.component';
+import { TextInputsExampleComponent } from './text-inputs-example.component';
 
-describe('ButtonSizesComponent', () => {
-  let component: ButtonSizesComponent;
-  let fixture: ComponentFixture<ButtonSizesComponent>;
+describe('TextInputsExampleComponent', () => {
+  let component: TextInputsExampleComponent;
+  let fixture: ComponentFixture<TextInputsExampleComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ButtonSizesComponent ]
+      declarations: [ TextInputsExampleComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(ButtonSizesComponent);
+    fixture = TestBed.createComponent(TextInputsExampleComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

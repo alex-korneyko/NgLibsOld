@@ -1,1 +1,25 @@
-<p>button-sizes works!</p>
+<div style="padding: 10px; width: 100%">
+
+  <div class="btn-line">
+    <bs-button [size]="componentSize.lg" [color]="color.Light">Large button</bs-button>
+  </div>
+
+  <div class="btn-line">
+    <bs-button [color]="color.Light">Normal button</bs-button>
+  </div>
+
+  <div class="btn-line">
+    <bs-button [size]="componentSize.sm" [color]="color.Light">Small button</bs-button>
+  </div>
+
+  <div class="btn-line">
+    <bs-button [size]="componentSize.xsm" [color]="color.Light">X-Small button</bs-button>
+  </div>
+
+  <hr>
+
+  <div class="btn-line">
+    <bs-button [width]="'250px'" [color]="color.Light">Normal button 250px width</bs-button>
+  </div>
+
+</div>

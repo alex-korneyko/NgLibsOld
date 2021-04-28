@@ -3,16 +3,14 @@
       'active': isSelected,
       'xsm': size == sizeEnum.xsm,
       'sm': size == sizeEnum.sm,
-      'lg': size == sizeEnum.lg
+      'lg': size == sizeEnum.lg,
+      'disabled': menuItemListObject.sideMenuItemParam.isDisabled
      }"
-     (click)="MenuItemClickHandler()">
-
-  <div class="side-menu-item-chevron"
-       *ngFor="let nestingLvl of [].constructor(menuItemListObject.nestingLevel); last as last; first as first; index as index">
-    <bs-middle-menu-element *ngIf="false"></bs-middle-menu-element>
-    <bs-detour-menu-element *ngIf="false"></bs-detour-menu-element>
-    <bs-last-menu-element *ngIf="false"></bs-last-menu-element>
-  </div>
+     [ngStyle]="{
+      'padding-left': menuItemListObject.nestingLevel * 10 + 'px'
+     }"
+     (click)="MenuItemClickHandler()"
+     (dblclick)="InnerMenuChevronClick()">
 
   <div class="side-menu-item-chevron"
        [ngClass]="{
@@ -24,8 +22,10 @@
     <div style="height: 100%"
          *ngIf="menuItemListObject.sideMenuItemParam.children?.length > 0"
          (click)="InnerMenuChevronClick()">
-      <i *ngIf="!menuItemListObject.childrenIsOpen" class="fa fa-chevron-right" style="font-size: x-small" aria-hidden="true"></i>
-      <i *ngIf="menuItemListObject.childrenIsOpen" class="fa fa-chevron-down" style="font-size: x-small" aria-hidden="true"></i>
+      <i *ngIf="!menuItemListObject.childrenIsOpen" class="fa fa-chevron-right" style="font-size: x-small"
+         aria-hidden="true"></i>
+      <i *ngIf="menuItemListObject.childrenIsOpen" class="fa fa-chevron-down" style="font-size: x-small"
+         aria-hidden="true"></i>
     </div>
   </div>
 

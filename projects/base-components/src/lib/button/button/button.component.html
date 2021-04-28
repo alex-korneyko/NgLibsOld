@@ -1,4 +1,5 @@
 <button class="bs-btn"
+        [disabled]="disabled"
         (click)="BtnClick($event)"
         [ngClass]="{
           'xsm': size === componentSizes.xsm,
@@ -13,6 +14,9 @@
           'red': color === colorStyle.Red,
           'yellow': color === colorStyle.Yellow,
           'dark': color === colorStyle.Dark
+        }"
+        [ngStyle]="{
+          'width': width
         }"
 >
   <ng-content></ng-content>

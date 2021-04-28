@@ -15,13 +15,20 @@
   white-space: nowrap;
 }
 
+.side-menu-item.disabled {
+  color: #a3a3a3;
+}
+
+.side-menu-item.disabled:hover {
+  border-color: transparent;
+}
+
 .side-menu-item.active {
   background-image: linear-gradient(#a8d1d2, #2fa4ad);
   border: 1px solid #2fa4ad;
 }
 
 .side-menu-item.active:hover {
-  background-image: linear-gradient(#a8d1d2, #2fa4ad);
   border: 1px solid #2fa4ad;
 }
 
@@ -29,10 +36,10 @@
   border: 1px solid #2fa4ad;
 }
 
-.side-menu-item:active {
-  background-image: linear-gradient(#a8d1d2, #2fa4ad);
-  border: 1px solid #2fa4ad;
-}
+/*.side-menu-item:active {*/
+/*  background-image: linear-gradient(#a8d1d2, #2fa4ad);*/
+/*  border: 1px solid #2fa4ad;*/
+/*}*/
 
 .side-menu-item.xsm {
   height: 20px;
@@ -70,15 +77,11 @@
   line-height: 22px;
 }
 
-.side-menu-item-chevron:hover {
-  background-image: linear-gradient(#cefbfc, #3ccdd7);
-}
-
 .side-menu-item-title {
   flex: 1;
   padding-left: 2px
 }
 
 .side-menu-item-title:hover {
-  background-image: linear-gradient(#cefbfc, #3ccdd7);
+  /*background-image: linear-gradient(#cefbfc, #3ccdd7);*/
 }

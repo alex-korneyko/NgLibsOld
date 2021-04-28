@@ -15,6 +15,12 @@ export class ButtonComponent implements OnInit {
   @Input()
   color: ColorStyle = ColorStyle.Grey;
 
+  @Input()
+  width = "auto"
+
+  @Input()
+  disabled = false;
+
   @Output()
   clickEvent = new EventEmitter<MouseEvent>();
 

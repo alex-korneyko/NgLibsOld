@@ -18,6 +18,7 @@ import { InputsExampleComponent } from './component-examples/inputs-example/inpu
 import { ButtonSizesComponent } from './component-examples/buttons-example/button-sizes/button-sizes.component';
 import { ButtonColorsComponent } from './component-examples/buttons-example/button-colors/button-colors.component';
 import { ButtonOutlineColorsComponent } from './component-examples/buttons-example/button-outline-colors/button-outline-colors.component';
+import { TextInputsExampleComponent } from './component-examples/inputs-example/text-inputs-example/text-inputs-example.component';
 
 @NgModule({
   declarations: [
@@ -33,6 +34,7 @@ import { ButtonOutlineColorsComponent } from './component-examples/buttons-examp
     ButtonSizesComponent,
     ButtonColorsComponent,
     ButtonOutlineColorsComponent,
+    TextInputsExampleComponent,
   ],
   imports: [
     BrowserModule,
@@ -41,8 +43,8 @@ import { ButtonOutlineColorsComponent } from './component-examples/buttons-examp
     ButtonModule,
     SideMenuModule,
     WebDesktopApplicationsModule.microApplications([
-      {title: "Test service", formContentComponent: TestServiceApplicationComponent, type: MicroApplicationType.Service},
-      {title: "Component examples", formContentComponent: ComponentExamplesComponent, type: MicroApplicationType.Service, autostart: true},
+      {title: "Test service", formContentComponent: TestServiceApplicationComponent, type: MicroApplicationType.Service, autostart: true},
+      {title: "Component examples", formContentComponent: ComponentExamplesComponent, type: MicroApplicationType.Service},
       {title: "Simple ToDo", formContentComponent: SimpleToDoComponent, type: MicroApplicationType.Application}
     ]),
   ],

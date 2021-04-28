@@ -30,10 +30,18 @@ export class SideMenuItemComponent implements OnInit {
   ngOnInit(): void { }
 
   MenuItemClickHandler() {
+    if (this.menuItemListObject.sideMenuItemParam.isDisabled) {
+      return;
+    }
+
     this.menuItemClick.emit(this.menuItemListObject);
   }
 
   InnerMenuChevronClick() {
+    if (this.menuItemListObject.sideMenuItemParam.isDisabled) {
+      return;
+    }
+
     this.menuItemListObject.childrenIsOpen = !this.menuItemListObject.childrenIsOpen;
     this.CloseChildren(this.menuItemListObject.children);
   }
