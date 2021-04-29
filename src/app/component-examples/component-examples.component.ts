@@ -4,10 +4,11 @@ import {SideMenuItemParam} from 'base-components';
 import {ButtonsExampleComponent} from './buttons-example/buttons-example.component';
 import {InputsExampleComponent} from './inputs-example/inputs-example.component';
 import {ButtonColorsComponent} from './buttons-example/button-colors/button-colors.component';
-import {ButtonOutlineColorsComponent} from './buttons-example/button-outline-colors/button-outline-colors.component';
 import {ButtonSizesComponent} from './buttons-example/button-sizes/button-sizes.component';
 import {Size} from 'base-components';
 import {TextInputsExampleComponent} from './inputs-example/text-inputs-example/text-inputs-example.component';
+import {TextInputsExampleSizesComponent} from './inputs-example/text-inputs-example/text-inputs-example-sizes/text-inputs-example-sizes.component';
+import {TextInputsExampleColorsComponent} from './inputs-example/text-inputs-example/text-inputs-example-colors/text-inputs-example-colors.component';
 
 @Component({
   selector: 'app-component-examples',
@@ -31,7 +32,14 @@ export class ComponentExamplesComponent extends MicroApplicationFormContent impl
         new SideMenuItemParam("Sizes", ButtonSizesComponent)
       ]),
       new SideMenuItemParam("Inputs", InputsExampleComponent, [
-        new SideMenuItemParam("Text", TextInputsExampleComponent),
+        new SideMenuItemParam("Text", TextInputsExampleComponent, [
+          new SideMenuItemParam("Sizes", TextInputsExampleSizesComponent),
+          new SideMenuItemParam("Colors", TextInputsExampleColorsComponent)
+        ]),
+        new SideMenuItemParam("Text area", InputsExampleComponent, [
+          new SideMenuItemParam("Sizes", TextInputsExampleSizesComponent),
+          new SideMenuItemParam("Colors", TextInputsExampleColorsComponent)
+        ]),
         new SideMenuItemParam("Select", InputsExampleComponent),
         new SideMenuItemParam("Radio", InputsExampleComponent),
         new SideMenuItemParam("Checkbox", InputsExampleComponent),
@@ -43,7 +51,7 @@ export class ComponentExamplesComponent extends MicroApplicationFormContent impl
 
   FormOnInit() {
     super.FormOnInit();
-    this.form.xSize = 600;
-    this.form.ySize = 450;
+    this.form.xSize = 800;
+    this.form.ySize = 600;
   }
 }

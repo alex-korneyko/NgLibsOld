@@ -19,9 +19,10 @@
   >
   </div>
 
-  <div style="position: absolute; top: 0; height: 100%"
+  <div style="position: absolute; top: 0; height: 100%; overflow-y: auto"
        [ngStyle]="{
-        'left': (menuWidth + 3) + 'px'
+        'left': (menuWidth + 3) + 'px',
+        'width': 'calc(100% - ' + (menuWidth + 3) + 'px)'
        }"
        (dragover)="DragOverRightSide($event)"
   >

@@ -1,4 +1,4 @@
-<div style="display: block; width: 100%; border-radius: 2px">
+<div style="display: block; width: 100%; border-radius: 2px; border: 1px solid transparent">
   <bs-input-title *ngIf="titlePosition == titlePositionValues.Top"
                   [size]="size"
                   [titlePosition]="titlePosition"
@@ -8,20 +8,26 @@
   </bs-input-title>
 
   <div style="display: flex; width: 100%;">
-    <bs-input-title *ngIf="titlePosition == titlePositionValues.Left" style="width: 50%"
+    <bs-input-title *ngIf="titlePosition == titlePositionValues.Left"
                     [size]="size"
                     [titlePosition]="titlePosition"
                     [color]="color"
-                    [disabled]="disabled">
+                    [disabled]="disabled"
+                    [ngStyle]="{
+                      'width': titleWidth
+                    }">
       {{title}}
     </bs-input-title>
 
-    <div class="input-container" [class.disabled]="disabled"
+    <div class="input-container" style="flex: 1"
+         [class.disabled]="disabled"
          [class]="color">
       <input [type]="type"
              [disabled]="disabled"
              [ngModel]="bsModel"
              (ngModelChange)="modelChanged($event)"
+             [title]="prompt"
+             [placeholder]="placeholder"
              [ngClass]="{
             'xsm': size === sizeValues.xsm,
             'sm': size === sizeValues.sm,
@@ -33,7 +39,10 @@
                     [size]="size"
                     [titlePosition]="titlePosition"
                     [color]="color"
-                    [disabled]="disabled">
+                    [disabled]="disabled"
+                    [ngStyle]="{
+                      'width': titleWidth
+                    }">
       {{title}}
     </bs-input-title>
   </div>

@@ -31,17 +31,24 @@ export class TextInputComponent implements OnInit {
   type: TextInputType = TextInputType.text;
 
   @Input()
+  titleWidth = "auto";
+
+  @Input()
   disabled = false;
+
+  @Input()
+  prompt = "";
+
+  @Input()
+  placeholder = "";
 
   @Input()
   bsModel: string;
 
   @Output()
   bsModelChange = new EventEmitter<string>();
-
   @Output()
   onChange = new EventEmitter();
-
   sizeValues = Size;
   titlePositionValues = TitlePosition;
 

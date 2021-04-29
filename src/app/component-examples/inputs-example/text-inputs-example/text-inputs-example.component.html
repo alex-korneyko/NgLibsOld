@@ -1,1 +1,66 @@
-<p>text-inputs-example works!</p>
+<div style="padding: 1rem">
+  <div style="margin-bottom: 1rem">
+    <bs-text-input
+      [(bsModel)]="text"
+    ></bs-text-input>
+  </div>
+  <div style="margin-bottom: 1rem">
+    <bs-text-input
+      [(bsModel)]="text2"
+      [titlePosition]="titlePosition.Left"
+      [title]="'With title'"
+    ></bs-text-input>
+  </div>
+  <div style="margin-bottom: 1rem">
+    <bs-text-input
+      [(bsModel)]="text3"
+      [titlePosition]="titlePosition.Top"
+      [title]="'Title on top'"
+    ></bs-text-input>
+  </div>
+  <div style="margin-bottom: 1rem">
+    <bs-text-input
+      [(bsModel)]="text4"
+      [prompt]="'Input with prompt'"
+      [titlePosition]="titlePosition.Top"
+      [color]="color.Green"
+      [title]="'Colored input'"
+      [placeholder]="'Input with placeholder'"
+    ></bs-text-input>
+  </div>
+  <div style="margin-bottom: 1rem">
+    <bs-text-input
+      [(bsModel)]="textDisabled"
+      [titlePosition]="titlePosition.Right"
+      [title]="'Tile on the right'"
+      [disabled]="true"
+    ></bs-text-input>
+  </div>
+  <div style="margin-bottom: 1rem">
+    <bs-text-input
+      [(bsModel)]="textNum"
+      [titlePosition]="titlePosition.Bottom"
+      [title]="'Number'"
+      [type]="inputType.number"
+    ></bs-text-input>
+  </div>
+  <div style="margin-bottom: 1rem; display: flex">
+    <div style="padding-right: 5px; flex: 1">
+      <bs-text-input
+        [(bsModel)]="textLogin"
+        [titlePosition]="titlePosition.Bottom"
+        [placeholder]="'Enter login...'"
+        [title]="'Login'"
+      ></bs-text-input>
+    </div>
+    <div style="padding-left: 5px; flex: 1">
+      <bs-text-input
+        [(bsModel)]="textPass"
+        [titlePosition]="titlePosition.Bottom"
+        [placeholder]="'Enter password...'"
+        [title]="'Password'"
+        [type]="inputType.password"
+      ></bs-text-input>
+    </div>
+  </div>
+</div>
