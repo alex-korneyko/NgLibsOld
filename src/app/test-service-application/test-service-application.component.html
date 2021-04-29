@@ -2,16 +2,13 @@
   <div style="margin-bottom: 1rem">
     <bs-text-input
       [(bsModel)]="text"
-      (onChange)="TextInputOnChangeHandler()"
       [size]="componentSize.lg"
-      [titlePosition]="titlePosition.Left"
       [title]="'Large'"
     ></bs-text-input>
   </div>
   <div style="margin-bottom: 1rem">
     <bs-text-input
       [(bsModel)]="text"
-      (onChange)="TextInputOnChangeHandler()"
       [titlePosition]="titlePosition.Left"
       [title]="'Standard'"
     ></bs-text-input>
@@ -19,20 +16,17 @@
   <div style="margin-bottom: 1rem">
     <bs-text-input
       [(bsModel)]="text"
-      (onChange)="TextInputOnChangeHandler()"
       [size]="componentSize.sm"
       [titlePosition]="titlePosition.Left"
       [title]="'Small'"
     ></bs-text-input>
   </div>
-  <div>
-    <bs-text-input
+  <div style="margin-bottom: 1rem">
+    <bs-text-input style="width: 50%"
       [(bsModel)]="text"
-      (onChange)="TextInputOnChangeHandler()"
       [size]="componentSize.xsm"
       [titlePosition]="titlePosition.Left"
       [title]="'X-Small'"
-      [width]="'50%'"
     ></bs-text-input>
   </div>
 </div>

@@ -1,6 +1,7 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {Size} from '../../size.enum';
 import {TitlePosition} from '../../title-position.enum';
+import {ColorStyle} from '../../color-style.enum';
 
 @Component({
   selector: 'bs-input-title',
@@ -16,10 +17,13 @@ export class InputTitleComponent implements OnInit {
   size: Size;
 
   @Input()
+  color: ColorStyle = ColorStyle.Light
+
+  @Input()
   titlePosition: TitlePosition;
 
   @Input()
-  width = "max-content";
+  disabled = false;
 
   sizeValues = Size;
   titlePositionValues = TitlePosition;

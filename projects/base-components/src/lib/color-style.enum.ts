@@ -1,7 +1,7 @@
 export enum ColorStyle {
   Light = 'Light',
   Blue = 'Blue',
-  BluSea = 'BluSea',
+  BlueSea = 'BlueSea',
   Grey = 'Grey',
   SlateGrey = 'SlateGrey',
   Green = 'Green',

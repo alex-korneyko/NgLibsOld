@@ -1,20 +1,18 @@
-<div style="height: 100%">
-  <div style="vertical-align: middle">
-    <p [ngClass]="{
-      'xsm': size === sizeValues.xsm && (titlePosition === titlePositionValues.Left || titlePosition === titlePositionValues.Right),
-      'sm': size === sizeValues.sm && (titlePosition === titlePositionValues.Left || titlePosition === titlePositionValues.Right),
-      'lg': size === sizeValues.lg && (titlePosition === titlePositionValues.Left || titlePosition === titlePositionValues.Right),
+<div class="title-container" [class]="color" [class.disabled]="disabled">
+  <p [ngClass]="{
+    'xsm': size === sizeValues.xsm && (titlePosition === titlePositionValues.Left || titlePosition === titlePositionValues.Right),
+    'sm': size === sizeValues.sm && (titlePosition === titlePositionValues.Left || titlePosition === titlePositionValues.Right),
+    'lg': size === sizeValues.lg && (titlePosition === titlePositionValues.Left || titlePosition === titlePositionValues.Right),
 
-      'v-xsm': size === sizeValues.xsm && (titlePosition === titlePositionValues.Top || titlePosition === titlePositionValues.Bottom),
-      'v-sm': size === sizeValues.sm && (titlePosition === titlePositionValues.Top || titlePosition === titlePositionValues.Bottom),
-      'v-std': size == null && (titlePosition === titlePositionValues.Top || titlePosition === titlePositionValues.Bottom),
-      'v-lg': size === sizeValues.lg && (titlePosition === titlePositionValues.Top || titlePosition === titlePositionValues.Bottom)
-      }"
-       [ngStyle]="{
-      'width': width
-     }"
-    >
-      <ng-content></ng-content>
-    </p>
-  </div>
+    'v-xsm': size === sizeValues.xsm && (titlePosition === titlePositionValues.Top || titlePosition === titlePositionValues.Bottom),
+    'v-sm': size === sizeValues.sm && (titlePosition === titlePositionValues.Top || titlePosition === titlePositionValues.Bottom),
+    'v-std': size == null && (titlePosition === titlePositionValues.Top || titlePosition === titlePositionValues.Bottom),
+    'v-lg': size === sizeValues.lg && (titlePosition === titlePositionValues.Top || titlePosition === titlePositionValues.Bottom)
+    }"
+     [ngStyle]="{
+    'width': 'max-content'
+   }"
+  >
+    <ng-content></ng-content>
+  </p>
 </div>

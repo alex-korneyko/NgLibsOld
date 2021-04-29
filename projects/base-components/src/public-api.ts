@@ -8,6 +8,7 @@ export * from './lib/base.component';
 export * from './lib/size.enum';
 export * from './lib/color-style.enum';
 export * from './lib/title-position.enum';
+export * from './lib/text-input-type.enum';
 
 export * from './lib/button/button.module';
 export * from './lib/button/button/button.component';

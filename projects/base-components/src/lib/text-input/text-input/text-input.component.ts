@@ -2,6 +2,7 @@ import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {ColorStyle} from '../../color-style.enum';
 import {Size} from '../../size.enum';
 import {TitlePosition} from '../../title-position.enum';
+import {TextInputType} from '../../text-input-type.enum';
 
 
 @Component({
@@ -18,16 +19,19 @@ export class TextInputComponent implements OnInit {
   title = "Test title"
 
   @Input()
-  color: ColorStyle = ColorStyle.Light
+  color: ColorStyle = ColorStyle.SlateGrey
 
   @Input()
   size: Size;
 
   @Input()
-  titlePosition: TitlePosition = TitlePosition.Left
+  titlePosition: TitlePosition;
 
   @Input()
-  width = "max-content";
+  type: TextInputType = TextInputType.text;
+
+  @Input()
+  disabled = false;
 
   @Input()
   bsModel: string;
@@ -39,7 +43,6 @@ export class TextInputComponent implements OnInit {
   onChange = new EventEmitter();
 
   sizeValues = Size;
-  colorStyleValues = ColorStyle
   titlePositionValues = TitlePosition;
 
   constructor() { }

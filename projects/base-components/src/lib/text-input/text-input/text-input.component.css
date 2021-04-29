@@ -3,6 +3,15 @@ input {
   height: calc(var(--std-height) - 2px);
   line-height: calc(var(--std-height) - 2px);
   font-size: calc(var(--std-height) - 12px);
+  width: 100%;
+  display: block;
+  border: 0;
+  border-radius: 2px;
+  flex: 1
+}
+
+input:disabled {
+  background-color: #ececec;
 }
 
 input.xsm {
@@ -22,3 +31,100 @@ input.lg {
   line-height: calc(var(--lg-height) - 2px);
   font-size: calc(var(--lg-height) - 14px);
 }
+
+.input-container {
+
+  width: 100%;
+  padding: 1px
+}
+
+.input-container.Light {
+  background: var(--light-bg-norm);
+  color: var(--light-font-norm);
+}
+
+.input-container.Light.disabled {
+  background: var(--light-bg-disabled);
+  color: var(--light-font-disabled);
+}
+
+.input-container.Blue {
+  background: var(--blue-bg-norm);
+  color: var(--blue-font-norm);
+}
+
+.input-container.Blue.disabled {
+  background: var(--blue-bg-disabled);
+  color: var(--blue-font-disabled);
+}
+
+.input-container.BlueSea {
+  background: var(--blue-sea-bg-norm);
+  color: var(--blue-sea-font-norm);
+}
+
+.input-container.BlueSea.disabled {
+  background: var(--blue-sea-bg-disabled);
+  color: var(--blue-sea-font-disabled);
+}
+
+.input-container.Grey {
+  background: var(--grey-bg-norm);
+  color: var(--grey-font-norm);
+}
+
+.input-container.Grey.disabled {
+  background: var(--grey-bg-disabled);
+  color: var(--grey-font-disabled);
+}
+
+.input-container.SlateGrey {
+  background: var(--slate-grey-bg-norm);
+  color: var(--slate-grey-font-norm);
+}
+
+.input-container.SlateGrey.disabled {
+  background: var(--slate-grey-bg-disabled);
+  color: var(--slate-grey-font-disabled);
+}
+
+.input-container.Green {
+  background: var(--green-bg-norm);
+  color: var(--green-font-norm);
+}
+
+.input-container.Green.disabled {
+  background: var(--green-bg-disabled);
+  color: var(--green-font-disabled);
+}
+
+.input-container.Red {
+  background: var(--red-bg-norm);
+  color: var(--red-font-norm);
+}
+
+.input-container.Red.disabled {
+  background: var(--red-bg-disabled);
+  color: var(--red-font-disabled);
+}
+
+.input-container.Yellow {
+  background: var(--yellow-bg-norm);
+  color: var(--yellow-font-norm);
+}
+
+.input-container.Yellow.disabled {
+  background: var(--yellow-bg-disabled);
+  color: var(--yellow-font-disabled);
+}
+
+.input-container.Dark {
+  background: var(--dark-bg-norm);
+  color: var(--dark-font-norm);
+}
+
+.input-container.Dark.disabled {
+  background: var(--dark-bg-disabled);
+  color: var(--dark-font-disabled);
+}
+
