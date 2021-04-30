@@ -11,6 +11,7 @@ import {TextInputsExampleSizesComponent} from './inputs-example/text-inputs-exam
 import {TextInputsExampleColorsComponent} from './inputs-example/text-inputs-example/text-inputs-example-colors/text-inputs-example-colors.component';
 import {TextAreaExampleSizesComponent} from './inputs-example/text-area-example/text-area-example-sizes/text-area-example-sizes.component';
 import {TextAreaExampleColorsComponent} from './inputs-example/text-area-example/text-area-example-colors/text-area-example-colors.component';
+import {TextAreaExampleComponent} from './inputs-example/text-area-example/text-area-example.component';
 
 @Component({
   selector: 'app-component-examples',
@@ -38,7 +39,7 @@ export class ComponentExamplesComponent extends MicroApplicationFormContent impl
           new SideMenuItemParam("Sizes", TextInputsExampleSizesComponent),
           new SideMenuItemParam("Colors", TextInputsExampleColorsComponent)
         ]),
-        new SideMenuItemParam("Text area", InputsExampleComponent, [
+        new SideMenuItemParam("Text area", TextAreaExampleComponent, [
           new SideMenuItemParam("Sizes", TextAreaExampleSizesComponent),
           new SideMenuItemParam("Colors", TextAreaExampleColorsComponent)
         ]),

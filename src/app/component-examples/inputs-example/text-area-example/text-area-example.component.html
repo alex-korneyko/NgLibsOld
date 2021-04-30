@@ -1,1 +1,37 @@
-<p>text-area-example works!</p>
+<div style="padding: 1rem">
+
+  <bs-text-area
+    [placeholder]="'Without title, but with placeholder'"
+  ></bs-text-area>
+
+  <div style="margin-top: 10px;">
+    <bs-text-area
+      [title]="'Textarea title'"
+      [titlePosition]="titlePosition.Top"
+    ></bs-text-area>
+  </div>
+
+  <div style="margin-top: 10px">
+    <bs-text-area
+      [title]="'Disabled text area'"
+      [titlePosition]="titlePosition.Top"
+      [disabled]="true"
+    ></bs-text-area>
+  </div>
+
+  <div style="margin-top: 10px">
+    <bs-text-area
+      [title]="'Colored text area'"
+      [titlePosition]="titlePosition.Top"
+      [color]="color.Yellow"
+    ></bs-text-area>
+  </div>
+
+  <div style="margin-top: 10px;">
+    <bs-text-area
+      [title]="'Bottom textarea title'"
+      [titlePosition]="titlePosition.Bottom"
+    ></bs-text-area>
+  </div>
+
+</div>
