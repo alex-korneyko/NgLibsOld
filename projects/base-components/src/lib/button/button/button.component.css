@@ -6,6 +6,9 @@
   cursor: default;
   font-weight: 500;
   user-select: none;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .bs-btn.xsm {

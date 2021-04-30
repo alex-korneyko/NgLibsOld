@@ -1,135 +1,125 @@
-
-input {
-  height: calc(var(--std-height) - 2px);
-  line-height: calc(var(--std-height) - 2px);
-  font-size: calc(var(--std-height) - 12px);
+textarea {
   width: 100%;
   display: block;
   border: none;
   border-radius: 2px;
-  flex: 1
 }
 
-input:focus {
-  outline: 1px solid #1e75e8;
-}
-
-input:disabled {
+textarea:disabled {
   background-color: #ececec;
 }
 
-input.xsm {
-  height: calc(var(--xsm-height) - 2px);
-  line-height: calc(var(--xsm-height) - 2px);
-  font-size: calc(var(--xsm-height) - 6px);
+textarea:focus {
+  outline: none;
 }
 
-input.sm {
-  height: calc(var(--sm-height) - 2px);
-  line-height: calc(var(--sm-height) - 2px);
-  font-size: calc(var(--sm-height) - 9px);
-}
-
-input.lg {
-  height: calc(var(--lg-height) - 2px);
-  line-height: calc(var(--lg-height) - 2px);
+textarea.lg {
   font-size: calc(var(--lg-height) - 14px);
 }
 
-.input-container {
-  /*border: none;*/
-  /*border-radius: 2px;*/
-  width: 100%;
-  padding: 1px
+textarea.sm {
+  font-size: calc(var(--sm-height) - 9px);
+  line-height: calc(var(--sm-height) - 4px);
 }
 
-.input-container.Light {
+textarea.xsm {
+  font-size: calc(var(--xsm-height) - 6px);
+  line-height: calc(var(--xsm-height) - 2px);
+}
+
+.text-area-container {
+  width: 100%;
+  padding: 1px;
+  border: none;
+  border-radius: 2px;
+}
+
+.text-area-container.Light {
   background: var(--light-bg-norm);
   color: var(--light-font-norm);
 }
 
-.input-container.Light.disabled {
+.text-area-container.Light.disabled {
   background: var(--light-bg-disabled);
   color: var(--light-font-disabled);
 }
 
-.input-container.Blue {
+.text-area-container.Blue {
   background: var(--blue-bg-norm);
   color: var(--blue-font-norm);
 }
 
-.input-container.Blue.disabled {
+.text-area-container.Blue.disabled {
   background: var(--blue-bg-disabled);
   color: var(--blue-font-disabled);
 }
 
-.input-container.BlueSea {
+.text-area-container.BlueSea {
   background: var(--blue-sea-bg-norm);
   color: var(--blue-sea-font-norm);
 }
 
-.input-container.BlueSea.disabled {
+.text-area-container.BlueSea.disabled {
   background: var(--blue-sea-bg-disabled);
   color: var(--blue-sea-font-disabled);
 }
 
-.input-container.Grey {
+.text-area-container.Grey {
   background: var(--grey-bg-norm);
   color: var(--grey-font-norm);
 }
 
-.input-container.Grey.disabled {
+.text-area-container.Grey.disabled {
   background: var(--grey-bg-disabled);
   color: var(--grey-font-disabled);
 }
 
-.input-container.SlateGrey {
+.text-area-container.SlateGrey {
   background: var(--slate-grey-bg-norm);
   color: var(--slate-grey-font-norm);
 }
 
-.input-container.SlateGrey.disabled {
+.text-area-container.SlateGrey.disabled {
   background: var(--slate-grey-bg-disabled);
   color: var(--slate-grey-font-disabled);
 }
 
-.input-container.Green {
+.text-area-container.Green {
   background: var(--green-bg-norm);
   color: var(--green-font-norm);
 }
 
-.input-container.Green.disabled {
+.text-area-container.Green.disabled {
   background: var(--green-bg-disabled);
   color: var(--green-font-disabled);
 }
 
-.input-container.Red {
+.text-area-container.Red {
   background: var(--red-bg-norm);
   color: var(--red-font-norm);
 }
 
-.input-container.Red.disabled {
+.text-area-container.Red.disabled {
   background: var(--red-bg-disabled);
   color: var(--red-font-disabled);
 }
 
-.input-container.Yellow {
+.text-area-container.Yellow {
   background: var(--yellow-bg-norm);
   color: var(--yellow-font-norm);
 }
 
-.input-container.Yellow.disabled {
+.text-area-container.Yellow.disabled {
   background: var(--yellow-bg-disabled);
   color: var(--yellow-font-disabled);
 }
 
-.input-container.Dark {
+.text-area-container.Dark {
   background: var(--dark-bg-norm);
   color: var(--dark-font-norm);
 }
 
-.input-container.Dark.disabled {
+.text-area-container.Dark.disabled {
   background: var(--dark-bg-disabled);
   color: var(--dark-font-disabled);
 }
-

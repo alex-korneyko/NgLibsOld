@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { TextInputComponent } from './text-input/text-input.component';
+import { TextAreaComponent } from './text-area/text-area.component';
 import {FormsModule} from '@angular/forms';
 import {InputTitleModule} from '../common/input-title/input-title-module';
 
@@ -8,15 +8,15 @@ import {InputTitleModule} from '../common/input-title/input-title-module';
 
 @NgModule({
   declarations: [
-    TextInputComponent,
+    TextAreaComponent
   ],
   imports: [
     CommonModule,
     FormsModule,
-    InputTitleModule
+    InputTitleModule,
   ],
   exports: [
-    TextInputComponent
+    TextAreaComponent
   ]
 })
-export class TextInputModule { }
+export class TextAreaModule { }

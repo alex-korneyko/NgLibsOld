@@ -1,32 +1,12 @@
 <div style="padding: 1rem">
-  <div style="margin-bottom: 1rem">
-    <bs-text-input
-      [(bsModel)]="text"
-      [size]="componentSize.lg"
-      [title]="'Large'"
-    ></bs-text-input>
-  </div>
-  <div style="margin-bottom: 1rem">
-    <bs-text-input
-      [(bsModel)]="text"
-      [titlePosition]="titlePosition.Left"
-      [title]="'Standard'"
-    ></bs-text-input>
-  </div>
-  <div style="margin-bottom: 1rem">
-    <bs-text-input
-      [(bsModel)]="text"
-      [size]="componentSize.sm"
-      [titlePosition]="titlePosition.Left"
-      [title]="'Small'"
-    ></bs-text-input>
-  </div>
-  <div style="margin-bottom: 1rem">
-    <bs-text-input style="width: 50%"
-      [(bsModel)]="text"
-      [size]="componentSize.xsm"
-      [titlePosition]="titlePosition.Left"
-      [title]="'X-Small'"
-    ></bs-text-input>
-  </div>
+  <h6>{{text}}</h6>
+
+  <bs-text-area
+    [(bsModel)]="text"
+    [title]="'Very long title'"
+    [titlePosition]="titlePosition.Right"
+    [color]="color.BlueSea"
+    [prompt]="'Prompt'"
+    [placeholder]="'Placeholder'"
+  ></bs-text-area>
 </div>

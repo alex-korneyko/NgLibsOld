@@ -2,18 +2,16 @@ import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {ColorStyle} from '../../color-style.enum';
 import {Size} from '../../size.enum';
 import {TitlePosition} from '../../title-position.enum';
-import {TextInputType} from '../../text-input-type.enum';
-
 
 @Component({
-  selector: 'bs-text-input',
-  templateUrl: './text-input.component.html',
+  selector: 'bs-text-area',
+  templateUrl: './text-area.component.html',
   styleUrls: [
-    './text-input.component.css',
-    "../../../styles/bs-variables.css"
+    './text-area.component.css',
+    '../../../styles/bs-variables.css'
   ]
 })
-export class TextInputComponent implements OnInit {
+export class TextAreaComponent implements OnInit {
 
   @Input()
   title = ""
@@ -26,9 +24,6 @@ export class TextInputComponent implements OnInit {
 
   @Input()
   titlePosition: TitlePosition;
-
-  @Input()
-  type: TextInputType = TextInputType.text;
 
   @Input()
   titleWidth = "auto";
@@ -47,6 +42,7 @@ export class TextInputComponent implements OnInit {
 
   @Output()
   bsModelChange = new EventEmitter<string>();
+
   @Output()
   onChange = new EventEmitter();
 

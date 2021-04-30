@@ -20,7 +20,7 @@ export class TestServiceApplicationComponent extends MicroApplicationFormContent
   titlePosition = TitlePosition;
   inputType = TextInputType;
 
-  text = "Test text"
+  text = ""
 
   FormOnInit(): void {
     this.form.xSize = 600;

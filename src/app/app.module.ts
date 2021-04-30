@@ -19,6 +19,9 @@ import { ButtonOutlineColorsComponent } from './component-examples/buttons-examp
 import { TextInputsExampleComponent } from './component-examples/inputs-example/text-inputs-example/text-inputs-example.component';
 import { TextInputsExampleSizesComponent } from './component-examples/inputs-example/text-inputs-example/text-inputs-example-sizes/text-inputs-example-sizes.component';
 import { TextInputsExampleColorsComponent } from './component-examples/inputs-example/text-inputs-example/text-inputs-example-colors/text-inputs-example-colors.component';
+import { TextAreaExampleComponent } from './component-examples/inputs-example/text-area-example/text-area-example.component';
+import { TextAreaExampleColorsComponent } from './component-examples/inputs-example/text-area-example/text-area-example-colors/text-area-example-colors.component';
+import { TextAreaExampleSizesComponent } from './component-examples/inputs-example/text-area-example/text-area-example-sizes/text-area-example-sizes.component';
 
 @NgModule({
   declarations: [
@@ -37,6 +40,9 @@ import { TextInputsExampleColorsComponent } from './component-examples/inputs-ex
     TextInputsExampleComponent,
     TextInputsExampleSizesComponent,
     TextInputsExampleColorsComponent,
+    TextAreaExampleComponent,
+    TextAreaExampleColorsComponent,
+    TextAreaExampleSizesComponent,
   ],
   imports: [
     BrowserModule,
@@ -44,7 +50,7 @@ import { TextInputsExampleColorsComponent } from './component-examples/inputs-ex
     BaseComponentsModule,
     WebDesktopApplicationsModule.microApplications([
       {title: "Test service", formContentComponent: TestServiceApplicationComponent, type: MicroApplicationType.Service},
-      {title: "Component examples", formContentComponent: ComponentExamplesComponent, type: MicroApplicationType.Service, autostart: true},
+      {title: "Base components library", formContentComponent: ComponentExamplesComponent, type: MicroApplicationType.Service, autostart: true},
       {title: "Simple ToDo", formContentComponent: SimpleToDoComponent, type: MicroApplicationType.Application}
     ]),
   ],
