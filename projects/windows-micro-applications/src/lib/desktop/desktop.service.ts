@@ -89,24 +89,29 @@ export class DesktopService {
   }
 
   CloseEventHandler(microApplicationForm: MicroAppForm) {
-    // this.CloseForm(microApplicationForm);
+
   }
 
   ActivateForm(microApplicationForm: MicroAppForm) {
     this.activeForm = microApplicationForm;
     microApplicationForm.isMinimized = false;
 
-    this.forms.sort((win1, win2) => win1.zPos > win2.zPos ? 1 : -1);
-    for (let i = 0; i < this.forms.length; i++) {
-      this.forms[i].isActive = false;
-      this.mainMenuIsShown = false;
-      this.forms[i].zPos = i * 10;
-    }
+    DesktopService.formsRearrange(this.forms);
 
+    this.mainMenuIsShown = false;
     this.activeForm.isActive = true;
     this.activeForm.zPos = this.forms.length * 10;
     if (this.activeForm.isModal) {
       this.activeForm.parent.zPos = this.activeForm.zPos - 5;
+    }
+  }
+
+  private static formsRearrange(forms: MicroAppForm[]) {
+    let tmpListOfForms = new Array<MicroAppForm>(...forms);
+    tmpListOfForms.sort((win1, win2) => win1.zPos > win2.zPos ? 1 : -1);
+    for (let i = 0; i < tmpListOfForms.length; i++) {
+      tmpListOfForms[i].isActive = false;
+      tmpListOfForms[i].zPos = i * 10;
     }
   }
 
