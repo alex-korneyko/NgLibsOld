@@ -2,18 +2,17 @@ import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {ColorStyle} from '../../color-style.enum';
 import {Size} from '../../size.enum';
 import {TitlePosition} from '../../title-position.enum';
-import {TextInputType} from '../../text-input-type.enum';
-
+import {SelectValue} from '../select-value';
 
 @Component({
-  selector: 'bs-text-input',
-  templateUrl: './text-input.component.html',
+  selector: 'bs-dropdown-select',
+  templateUrl: './dropdown-select.component.html',
   styleUrls: [
-    './text-input.component.css',
+    './dropdown-select.component.css',
     "../../../styles/bs-variables.css"
   ]
 })
-export class TextInputComponent implements OnInit {
+export class DropdownSelectComponent implements OnInit {
 
   @Input()
   title = ""
@@ -28,9 +27,6 @@ export class TextInputComponent implements OnInit {
   titlePosition: TitlePosition;
 
   @Input()
-  type: TextInputType = TextInputType.text;
-
-  @Input()
   titleWidth = "auto";
 
   @Input()
@@ -40,7 +36,7 @@ export class TextInputComponent implements OnInit {
   prompt = "";
 
   @Input()
-  placeholder = "";
+  values = new Array<SelectValue>()
 
   @Input()
   bsModel: string;
@@ -60,6 +56,7 @@ export class TextInputComponent implements OnInit {
   }
 
   modelChanged(event: string) {
+    // console.log(event);
     this.bsModelChange.emit(event);
     this.onChange.emit();
   }

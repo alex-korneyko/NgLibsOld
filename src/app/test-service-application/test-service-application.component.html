@@ -1,12 +1,14 @@
 <div style="padding: 1rem">
   <h6>{{text}}</h6>
 
-  <bs-text-area
-    [(bsModel)]="text"
-    [title]="'Very long title'"
-    [titlePosition]="titlePosition.Right"
+  <bs-dropdown-select
+    [title]="'Testselect'"
+    [titlePosition]="titlePosition.Left"
     [color]="color.BlueSea"
-    [prompt]="'Prompt'"
-    [placeholder]="'Placeholder'"
-  ></bs-text-area>
+    [prompt]="'Prompt for select'"
+    [values]="values"
+    [(bsModel)]="text"
+    [disabled]="false"
+    (bsModelChange)="selectChangeHandler($event)"
+  ></bs-dropdown-select>
 </div>

@@ -19,5 +19,10 @@ export * from './lib/side-menu/side-menu-item-param';
 
 export * from './lib/text-input/text-input.module';
 export * from './lib/text-input/text-input/text-input.component';
+
 export * from './lib/text-area/text-area.module';
 export * from './lib/text-area/text-area/text-area.component';
+
+export * from './lib/dropdown-select/dropdown-select.module';
+export * from './lib/dropdown-select/select-value';
+export * from './lib/dropdown-select/dropdown-select/dropdown-select.component';

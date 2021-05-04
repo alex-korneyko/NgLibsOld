@@ -49,8 +49,8 @@ import { TextAreaExampleSizesComponent } from './component-examples/inputs-examp
     FormsModule,
     BaseComponentsModule,
     WebDesktopApplicationsModule.microApplications([
-      {title: "Test service", formContentComponent: TestServiceApplicationComponent, type: MicroApplicationType.Service},
-      {title: "Base components library", formContentComponent: ComponentExamplesComponent, type: MicroApplicationType.Service, autostart: true},
+      {title: "Test service", formContentComponent: TestServiceApplicationComponent, type: MicroApplicationType.Service, autostart: true},
+      {title: "Base components library", formContentComponent: ComponentExamplesComponent, type: MicroApplicationType.Service},
       {title: "Simple ToDo", formContentComponent: SimpleToDoComponent, type: MicroApplicationType.Application}
     ]),
   ],

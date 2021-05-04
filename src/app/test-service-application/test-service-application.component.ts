@@ -4,6 +4,7 @@ import {Size} from 'base-components';
 import {ColorStyle} from 'base-components';
 import {TitlePosition} from 'base-components';
 import {TextInputType} from 'base-components';
+import {SelectValue} from 'base-components';
 
 @Component({
   selector: 'app-test-service-application',
@@ -18,12 +19,22 @@ export class TestServiceApplicationComponent extends MicroApplicationFormContent
   componentSize = Size;
   color = ColorStyle;
   titlePosition = TitlePosition;
-  inputType = TextInputType;
 
-  text = ""
+  values = [
+    new SelectValue("Select value...", true),
+    new SelectValue("First"),
+    new SelectValue("Second"),
+    new SelectValue("Third"),
+    new SelectValue("Fourth")]
+
+  text = "Select value..."
 
   FormOnInit(): void {
     this.form.xSize = 600;
     this.form.ySize = 500;
+  }
+
+  selectChangeHandler(event: string) {
+    console.log(this.text)
   }
 }
