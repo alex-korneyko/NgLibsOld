@@ -1,0 +1,137 @@
+<div style="padding: 1rem">
+
+  <bs-dropdown-select
+    [title]="'Dropdown select'"
+    [titlePosition]="titlePosition.Left"
+    [color]="color.BlueSea"
+    [prompt]="'Prompt for select'"
+    [values]="values"
+    [(bsModel)]="text"
+    [disabled]="false"
+    (bsModelChange)="selectChangeHandler($event)"
+  ></bs-dropdown-select>
+
+  <h6 style="margin-top: 5px; margin-bottom: 15px">Selected value: '' {{text}} ''</h6>
+
+  <hr>
+
+  <h6>Colors:</h6>
+
+  <bs-dropdown-select
+    [title]="'Right title'"
+    [titlePosition]="titlePosition.Right"
+    [color]="color[selectedColor]"
+    [prompt]="'Prompt for select'"
+    [values]="colorsList"
+    [(bsModel)]="selectedColor"
+    [disabled]="false"
+    (bsModelChange)="selectChangeHandler($event)"
+  ></bs-dropdown-select>
+
+  <hr>
+
+  <h6>Title styles:</h6>
+
+  <div style="display: flex; margin-top: 10px">
+    <div style="flex: 1">
+      <bs-dropdown-select
+        [title]="'Title on top'"
+        [titlePosition]="titlePosition.Top"
+        [color]="color.SlateGrey"
+        [prompt]="'Prompt for select'"
+        [values]="values"
+        [(bsModel)]="text"
+        [disabled]="false"
+        (bsModelChange)="selectChangeHandler($event)"
+      ></bs-dropdown-select>
+    </div>
+    <div style="flex: 1">
+      <bs-dropdown-select
+        [title]="'Bottom title'"
+        [titlePosition]="titlePosition.Bottom"
+        [color]="color.SlateGrey"
+        [prompt]="'Prompt for select'"
+        [values]="values"
+        [(bsModel)]="text"
+        [disabled]="false"
+        (bsModelChange)="selectChangeHandler($event)"
+      ></bs-dropdown-select>
+    </div>
+  </div>
+
+  <hr>
+
+  <h6>Sizes:</h6>
+
+  <div style="margin-bottom: 10px">
+    <bs-dropdown-select
+      [title]="'Large size'"
+      [titlePosition]="titlePosition.Left"
+      [color]="color.Blue"
+      [prompt]="'Prompt for select'"
+      [values]="values"
+      [(bsModel)]="text"
+      [disabled]="false"
+      (bsModelChange)="selectChangeHandler($event)"
+      [size]="componentSize.lg"
+    ></bs-dropdown-select>
+  </div>
+
+  <div style="margin-bottom: 10px">
+    <bs-dropdown-select
+      [title]="'Small size'"
+      [titlePosition]="titlePosition.Left"
+      [color]="color.Blue"
+      [prompt]="'Prompt for select'"
+      [values]="values"
+      [(bsModel)]="text"
+      [disabled]="false"
+      (bsModelChange)="selectChangeHandler($event)"
+      [size]="componentSize.sm"
+    ></bs-dropdown-select>
+  </div>
+
+  <div style="margin-bottom: 10px">
+    <bs-dropdown-select
+      [title]="'X-Small size'"
+      [titlePosition]="titlePosition.Left"
+      [color]="color.Blue"
+      [prompt]="'Prompt for select'"
+      [values]="values"
+      [(bsModel)]="text"
+      [disabled]="false"
+      (bsModelChange)="selectChangeHandler($event)"
+      [size]="componentSize.xsm"
+    ></bs-dropdown-select>
+  </div>
+
+  <hr>
+  <h6>Disabling</h6>
+  <div style="display: flex">
+    <div style="flex: 1">
+      <bs-dropdown-select
+        [title]="'Some items'"
+        [titlePosition]="titlePosition.Left"
+        [color]="color.SlateGrey"
+        [prompt]="'Prompt for select'"
+        [values]="disabledValues"
+        [(bsModel)]="text"
+        [disabled]="false"
+        [size]="componentSize.sm"
+      ></bs-dropdown-select>
+    </div>
+    <div style="flex: 1">
+      <bs-dropdown-select
+        [title]="'Completely'"
+        [titlePosition]="titlePosition.Left"
+        [color]="color.SlateGrey"
+        [prompt]="'Prompt for select'"
+        [values]="values"
+        [(bsModel)]="text"
+        [disabled]="true"
+        [size]="componentSize.sm"
+      ></bs-dropdown-select>
+    </div>
+  </div>
+
+</div>

@@ -1,6 +1,4 @@
-
 select {
-  height: calc(var(--std-height) - 2px);
   line-height: calc(var(--std-height) - 2px);
   font-size: calc(var(--std-height) - 12px);
   width: 100%;
@@ -18,27 +16,35 @@ select:disabled {
   background-color: #ececec;
 }
 
-select.xsm {
+option {
+  height: calc(var(--std-height) - 2px);
+  line-height: calc(var(--std-height) - 2px);
+  font-size: calc(var(--std-height) - 12px);
+}
+
+option.xsm {
   height: calc(var(--xsm-height) - 2px);
   line-height: calc(var(--xsm-height) - 2px);
   font-size: calc(var(--xsm-height) - 6px);
 }
 
-select.sm {
+option.sm {
   height: calc(var(--sm-height) - 2px);
   line-height: calc(var(--sm-height) - 2px);
   font-size: calc(var(--sm-height) - 9px);
 }
 
-select.lg {
+option.lg {
   height: calc(var(--lg-height) - 2px);
   line-height: calc(var(--lg-height) - 2px);
   font-size: calc(var(--lg-height) - 14px);
 }
 
+option:hover {
+  background-color: #89c6e2;
+}
+
 .select-container {
-  /*border: none;*/
-  /*border-radius: 2px;*/
   width: 100%;
   padding: 1px
 }
@@ -132,4 +138,3 @@ select.lg {
   background: var(--dark-bg-disabled);
   color: var(--dark-font-disabled);
 }
-

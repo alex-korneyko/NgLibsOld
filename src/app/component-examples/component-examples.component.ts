@@ -12,6 +12,8 @@ import {TextInputsExampleColorsComponent} from './inputs-example/text-inputs-exa
 import {TextAreaExampleSizesComponent} from './inputs-example/text-area-example/text-area-example-sizes/text-area-example-sizes.component';
 import {TextAreaExampleColorsComponent} from './inputs-example/text-area-example/text-area-example-colors/text-area-example-colors.component';
 import {TextAreaExampleComponent} from './inputs-example/text-area-example/text-area-example.component';
+import {DropdownSelectComponent} from './select/dropdown-select/dropdown-select.component';
+import {MultiSelectComponent} from './select/multi-select/multi-select.component';
 
 @Component({
   selector: 'app-component-examples',
@@ -43,7 +45,10 @@ export class ComponentExamplesComponent extends MicroApplicationFormContent impl
           new SideMenuItemParam("Sizes", TextAreaExampleSizesComponent),
           new SideMenuItemParam("Colors", TextAreaExampleColorsComponent)
         ]),
-        new SideMenuItemParam("Select", InputsExampleComponent),
+        new SideMenuItemParam("Select", InputsExampleComponent, [
+          new SideMenuItemParam("Dropdown select", DropdownSelectComponent),
+          new SideMenuItemParam("Multiple select", MultiSelectComponent)
+        ]),
         new SideMenuItemParam("Radio", InputsExampleComponent),
         new SideMenuItemParam("Checkbox", InputsExampleComponent),
         new SideMenuItemParam("Range", InputsExampleComponent),

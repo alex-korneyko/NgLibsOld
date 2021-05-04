@@ -1,18 +1,18 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
-import {ColorStyle} from '../../color-style.enum';
-import {Size} from '../../size.enum';
-import {TitlePosition} from '../../title-position.enum';
-import {SelectValue} from '../select-value';
+import {Size} from '../../../size.enum';
+import {TitlePosition} from '../../../title-position.enum';
+import {ColorStyle} from '../../../color-style.enum';
+import {SelectValue} from '../../select-value';
 
 @Component({
-  selector: 'bs-dropdown-select',
-  templateUrl: './dropdown-select.component.html',
+  selector: 'bs-multi-select',
+  templateUrl: './multi-select.component.html',
   styleUrls: [
-    './dropdown-select.component.css',
-    "../../../styles/bs-variables.css"
+    './multi-select.component.css',
+    '../../../../styles/bs-variables.css'
   ]
 })
-export class DropdownSelectComponent implements OnInit {
+export class MultiSelectComponent implements OnInit {
 
   @Input()
   title = ""
@@ -22,6 +22,9 @@ export class DropdownSelectComponent implements OnInit {
 
   @Input()
   size: Size;
+
+  @Input()
+  rowsCount = 4;
 
   @Input()
   titlePosition: TitlePosition;
@@ -39,10 +42,10 @@ export class DropdownSelectComponent implements OnInit {
   values = new Array<SelectValue>()
 
   @Input()
-  bsModel: string;
+  bsModel: string[];
 
   @Output()
-  bsModelChange = new EventEmitter<string>();
+  bsModelChange = new EventEmitter<string[]>();
 
   @Output()
   onChange = new EventEmitter();
@@ -52,12 +55,12 @@ export class DropdownSelectComponent implements OnInit {
 
   constructor() { }
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void { }
 
-  modelChanged(event: string) {
+  modelChanged(event: string[]) {
     // console.log(event);
     this.bsModelChange.emit(event);
     this.onChange.emit();
   }
+
 }

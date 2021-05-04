@@ -22,6 +22,8 @@ import { TextInputsExampleColorsComponent } from './component-examples/inputs-ex
 import { TextAreaExampleComponent } from './component-examples/inputs-example/text-area-example/text-area-example.component';
 import { TextAreaExampleColorsComponent } from './component-examples/inputs-example/text-area-example/text-area-example-colors/text-area-example-colors.component';
 import { TextAreaExampleSizesComponent } from './component-examples/inputs-example/text-area-example/text-area-example-sizes/text-area-example-sizes.component';
+import { DropdownSelectComponent } from './component-examples/select/dropdown-select/dropdown-select.component';
+import { MultiSelectComponent } from './component-examples/select/multi-select/multi-select.component';
 
 @NgModule({
   declarations: [
@@ -43,14 +45,16 @@ import { TextAreaExampleSizesComponent } from './component-examples/inputs-examp
     TextAreaExampleComponent,
     TextAreaExampleColorsComponent,
     TextAreaExampleSizesComponent,
+    DropdownSelectComponent,
+    MultiSelectComponent,
   ],
   imports: [
     BrowserModule,
     FormsModule,
     BaseComponentsModule,
     WebDesktopApplicationsModule.microApplications([
-      {title: "Test service", formContentComponent: TestServiceApplicationComponent, type: MicroApplicationType.Service, autostart: true},
-      {title: "Base components library", formContentComponent: ComponentExamplesComponent, type: MicroApplicationType.Service},
+      {title: "Test service", formContentComponent: TestServiceApplicationComponent, type: MicroApplicationType.Service},
+      {title: "Components library", formContentComponent: ComponentExamplesComponent, type: MicroApplicationType.Service, autostart: true},
       {title: "Simple ToDo", formContentComponent: SimpleToDoComponent, type: MicroApplicationType.Application}
     ]),
   ],

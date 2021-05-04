@@ -3,7 +3,6 @@ import {MicroApplicationFormContent, MicroApplicationFormService} from 'windows-
 import {Size} from 'base-components';
 import {ColorStyle} from 'base-components';
 import {TitlePosition} from 'base-components';
-import {TextInputType} from 'base-components';
 import {SelectValue} from 'base-components';
 
 @Component({
@@ -13,8 +12,6 @@ import {SelectValue} from 'base-components';
   providers: [MicroApplicationFormService]
 })
 export class TestServiceApplicationComponent extends MicroApplicationFormContent implements OnInit {
-  ngOnInit(): void {
-  }
 
   componentSize = Size;
   color = ColorStyle;
@@ -22,19 +19,26 @@ export class TestServiceApplicationComponent extends MicroApplicationFormContent
 
   values = [
     new SelectValue("Select value...", true),
-    new SelectValue("First"),
+    new SelectValue("First").AddPrompt("First element"),
     new SelectValue("Second"),
     new SelectValue("Third"),
     new SelectValue("Fourth")]
 
   text = "Select value..."
 
+  multiValues = new Array<string>()
+
+  ngOnInit(): void {
+
+  }
+
   FormOnInit(): void {
-    this.form.xSize = 600;
+    this.form.xSize = 1000;
     this.form.ySize = 500;
   }
 
-  selectChangeHandler(event: string) {
-    console.log(this.text)
+  selectChangeHandler(event?: string) {
+    // console.log(this.text)
+    console.log("multiValues: ", this.multiValues)
   }
 }

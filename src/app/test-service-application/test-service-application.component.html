@@ -2,7 +2,7 @@
   <h6>{{text}}</h6>
 
   <bs-dropdown-select
-    [title]="'Testselect'"
+    [title]="'Dropdown select'"
     [titlePosition]="titlePosition.Left"
     [color]="color.BlueSea"
     [prompt]="'Prompt for select'"
@@ -11,4 +11,58 @@
     [disabled]="false"
     (bsModelChange)="selectChangeHandler($event)"
   ></bs-dropdown-select>
+
+  <bs-dropdown-select
+    [title]="'Test select'"
+    [titlePosition]="titlePosition.Left"
+    [color]="color.BlueSea"
+    [prompt]="'Prompt for select'"
+    [values]="values"
+    [(bsModel)]="text"
+    [disabled]="false"
+    (bsModelChange)="selectChangeHandler($event)"
+  ></bs-dropdown-select>
+
+  <hr>
+  <div style="display: flex">
+    <div style="flex: 1">
+      <bs-multi-select
+        [title]="'Multi-select'"
+        [titlePosition]="titlePosition.Top"
+        [size]="componentSize.lg"
+        [values]="values"
+        [color]="color.SlateGrey"
+      ></bs-multi-select>
+    </div>
+    <div style="flex: 1">
+      <bs-multi-select
+        [title]="'Multi-select'"
+        [titlePosition]="titlePosition.Top"
+        [values]="values"
+        [color]="color.Green"
+      ></bs-multi-select>
+    </div>
+    <div style="flex: 1">
+      <bs-multi-select
+        [title]="'Multi-select'"
+        [titlePosition]="titlePosition.Top"
+        [size]="componentSize.sm"
+        [values]="values"
+        [(bsModel)]="multiValues"
+        [color]="color.Red"
+      ></bs-multi-select>
+    </div>
+    <div style="flex: 1">
+      <bs-multi-select
+        [title]="'Multi-select'"
+        [titlePosition]="titlePosition.Bottom"
+        [size]="componentSize.xsm"
+        [values]="values"
+        [(bsModel)]="multiValues"
+        (onChange)="selectChangeHandler()"
+        [color]="color.Yellow"
+        [rowsCount]="5"
+      ></bs-multi-select>
+    </div>
+  </div>
 </div>
