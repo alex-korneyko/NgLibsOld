@@ -11,7 +11,7 @@
     (bsModelChange)="selectChangeHandler($event)"
   ></bs-dropdown-select>
 
-  <h6 style="margin-top: 5px; margin-bottom: 15px">Selected value: '' {{text}} ''</h6>
+  <p style="margin-bottom: 15px; font-weight: 500; font-size: small">Selected value: '' {{text}} ''</p>
 
   <hr>
 
@@ -63,57 +63,84 @@
 
   <h6>Sizes:</h6>
 
-  <div style="margin-bottom: 10px">
-    <bs-dropdown-select
-      [title]="'Large size'"
-      [titlePosition]="titlePosition.Left"
-      [color]="color.Blue"
-      [prompt]="'Prompt for select'"
-      [values]="values"
-      [(bsModel)]="text"
-      [disabled]="false"
-      (bsModelChange)="selectChangeHandler($event)"
-      [size]="componentSize.lg"
-    ></bs-dropdown-select>
-  </div>
+  <div style="display: flex">
+    <div style="flex: 1; margin-right: 2px">
+      <div style="margin-bottom: 10px">
+        <bs-dropdown-select
+          [title]="'Large size'"
+          [titlePosition]="titlePosition.Left"
+          [color]="color.Blue"
+          [prompt]="'Prompt for select'"
+          [values]="values"
+          [(bsModel)]="text"
+          [disabled]="false"
+          (bsModelChange)="selectChangeHandler($event)"
+          [size]="componentSize.lg"
+        ></bs-dropdown-select>
+      </div>
 
-  <div style="margin-bottom: 10px">
-    <bs-dropdown-select
-      [title]="'Small size'"
-      [titlePosition]="titlePosition.Left"
-      [color]="color.Blue"
-      [prompt]="'Prompt for select'"
-      [values]="values"
-      [(bsModel)]="text"
-      [disabled]="false"
-      (bsModelChange)="selectChangeHandler($event)"
-      [size]="componentSize.sm"
-    ></bs-dropdown-select>
-  </div>
+      <div style="margin-bottom: 10px">
+        <bs-dropdown-select
+          [title]="'Small size'"
+          [titlePosition]="titlePosition.Left"
+          [color]="color.Blue"
+          [prompt]="'Prompt for select'"
+          [values]="values"
+          [(bsModel)]="text"
+          [disabled]="false"
+          (bsModelChange)="selectChangeHandler($event)"
+          [size]="componentSize.sm"
+        ></bs-dropdown-select>
+      </div>
 
-  <div style="margin-bottom: 10px">
-    <bs-dropdown-select
-      [title]="'X-Small size'"
-      [titlePosition]="titlePosition.Left"
-      [color]="color.Blue"
-      [prompt]="'Prompt for select'"
-      [values]="values"
-      [(bsModel)]="text"
-      [disabled]="false"
-      (bsModelChange)="selectChangeHandler($event)"
-      [size]="componentSize.xsm"
-    ></bs-dropdown-select>
+      <bs-dropdown-select
+        [title]="'X-Small size'"
+        [titlePosition]="titlePosition.Left"
+        [color]="color.Blue"
+        [prompt]="'Prompt for select'"
+        [values]="values"
+        [(bsModel)]="text"
+        [disabled]="false"
+        (bsModelChange)="selectChangeHandler($event)"
+        [size]="componentSize.xsm"
+      ></bs-dropdown-select>
+    </div>
+    <div style="flex: 1; margin-left: 2px">
+      <div style="margin-bottom: 10px">
+        <bs-dropdown-select
+          [title]="'Small size'"
+          [titlePosition]="titlePosition.Top"
+          [prompt]="'Prompt for select'"
+          [values]="values"
+          [(bsModel)]="text"
+          [disabled]="false"
+          (bsModelChange)="selectChangeHandler($event)"
+          [size]="componentSize.sm"
+        ></bs-dropdown-select>
+      </div>
+      <bs-dropdown-select
+        [title]="'X-Small size'"
+        [titlePosition]="titlePosition.Top"
+        [prompt]="'Prompt for select'"
+        [values]="values"
+        [(bsModel)]="text"
+        [disabled]="false"
+        (bsModelChange)="selectChangeHandler($event)"
+        [size]="componentSize.xsm"
+      ></bs-dropdown-select>
+    </div>
   </div>
 
   <hr>
   <h6>Disabling</h6>
   <div style="display: flex">
     <div style="flex: 1">
+      <p style="margin-bottom: 0; font-weight: 500; font-size: small">Disabling some items:</p>
       <bs-dropdown-select
         [title]="'Some items'"
         [titlePosition]="titlePosition.Left"
         [color]="color.SlateGrey"
-        [prompt]="'Prompt for select'"
+        [prompt]="'Disabling some items'"
         [values]="disabledValues"
         [(bsModel)]="text"
         [disabled]="false"
@@ -121,11 +148,12 @@
       ></bs-dropdown-select>
     </div>
     <div style="flex: 1">
+      <p style="margin-bottom: 0; font-weight: 500; font-size: small">Disabling the entire component:</p>
       <bs-dropdown-select
         [title]="'Completely'"
         [titlePosition]="titlePosition.Left"
-        [color]="color.SlateGrey"
-        [prompt]="'Prompt for select'"
+        [color]="color.Red"
+        [prompt]="'Disabling the entire component'"
         [values]="values"
         [(bsModel)]="text"
         [disabled]="true"

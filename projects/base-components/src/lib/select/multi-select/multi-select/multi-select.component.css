@@ -14,6 +14,11 @@ select:focus {
 
 select:disabled {
   background-color: #ececec;
+  opacity: .9;
+}
+
+select:disabled option:hover {
+  background-color: inherit;
 }
 
 option {
@@ -42,6 +47,10 @@ option.lg {
 
 option:hover {
   background-color: #89c6e2;
+}
+
+option:disabled:hover {
+  background-color: #ececec;
 }
 
 .select-container {

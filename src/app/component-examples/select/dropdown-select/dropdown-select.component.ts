@@ -23,13 +23,15 @@ export class DropdownSelectComponent implements OnInit {
     new SelectValue("First").AddPrompt("First element"),
     new SelectValue("Second"),
     new SelectValue("Third"),
-    new SelectValue("Fourth")];
+    new SelectValue("Fourth")
+  ];
 
   disabledValues = [
     new SelectValue("First").AddPrompt("First element"),
     new SelectValue("Second", true),
     new SelectValue("Third"),
-    new SelectValue("Fourth", true)];
+    new SelectValue("Fourth", true)
+  ];
 
   text = "Select value..."
 

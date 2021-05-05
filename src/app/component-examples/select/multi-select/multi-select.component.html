@@ -1,1 +1,106 @@
-<p>multi-select works!</p>
+<div style="padding: 1rem">
+
+  <bs-multi-select
+    [title]="'Multiple select'"
+    [titlePosition]="titlePosition.Top"
+    [color]="color.BlueSea"
+    [prompt]="'Prompt for select'"
+    [values]="values"
+    [(bsModel)]="multiValues"
+    [disabled]="false"
+  ></bs-multi-select>
+
+  <p style="margin-bottom: 15px; font-weight: 500; font-size: small">Selected value: '' {{multiValues}} ''</p>
+
+  <hr>
+
+  <h6>Title styles:</h6>
+
+  <bs-multi-select
+    [title]="'Bottom title'"
+    [titlePosition]="titlePosition.Bottom"
+    [prompt]="'Prompt for select'"
+    [values]="values"
+    [(bsModel)]="multiValues"
+    [disabled]="false"
+  ></bs-multi-select>
+
+  <hr>
+
+  <h6>Sizes:</h6>
+
+  <div style="display: flex">
+    <div style="flex: 1">
+      <bs-multi-select
+        [title]="'Large size'"
+        [titlePosition]="titlePosition.Top"
+        [prompt]="'Prompt for select'"
+        [values]="values"
+        [(bsModel)]="multiValues"
+        [disabled]="false"
+        [size]="componentSize.lg"
+      ></bs-multi-select>
+    </div>
+    <div style="flex: 1">
+      <bs-multi-select
+        [title]="'Normal size'"
+        [titlePosition]="titlePosition.Top"
+        [prompt]="'Prompt for select'"
+        [values]="values"
+        [(bsModel)]="multiValues"
+        [disabled]="false"
+      ></bs-multi-select>
+    </div>
+    <div style="flex: 1">
+      <bs-multi-select
+        [title]="'Small size'"
+        [titlePosition]="titlePosition.Top"
+        [prompt]="'Prompt for select'"
+        [values]="values"
+        [(bsModel)]="multiValues"
+        [disabled]="false"
+        [size]="componentSize.sm"
+      ></bs-multi-select>
+    </div>
+    <div style="flex: 1">
+      <bs-multi-select
+        [title]="'X-Small size'"
+        [titlePosition]="titlePosition.Top"
+        [prompt]="'Prompt for select'"
+        [values]="values"
+        [(bsModel)]="multiValues"
+        [disabled]="false"
+        [size]="componentSize.xsm"
+      ></bs-multi-select>
+    </div>
+  </div>
+
+  <h6>Disabling</h6>
+  <div style="display: flex">
+    <div style="flex: 1">
+      <p style="margin-bottom: 0; font-weight: 500; font-size: small">Disabling some items:</p>
+      <bs-multi-select
+        [title]="'Red title'"
+        [titlePosition]="titlePosition.Top"
+        [prompt]="'Prompt for select'"
+        [values]="disabledValues"
+        [(bsModel)]="multiValues"
+        [color]="color.Red"
+        [disabled]="false"
+      ></bs-multi-select>
+    </div>
+    <div style="flex: 1">
+      <p style="margin-bottom: 0; font-weight: 500; font-size: small">Disabling the entire component:</p>
+      <bs-multi-select
+        [title]="'Red title'"
+        [titlePosition]="titlePosition.Top"
+        [prompt]="'Prompt for select'"
+        [values]="values"
+        [(bsModel)]="multiValues"
+        [color]="color.Red"
+        [disabled]="true"
+      ></bs-multi-select>
+    </div>
+  </div>
+
+</div>

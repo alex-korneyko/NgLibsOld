@@ -131,3 +131,7 @@ select.lg {
   color: var(--dark-font-disabled);
 }
 
+select:disabled {
+  background-color: #ececec;
+  opacity: .9;
+}

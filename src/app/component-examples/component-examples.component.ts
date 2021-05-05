@@ -59,7 +59,7 @@ export class ComponentExamplesComponent extends MicroApplicationFormContent impl
 
   FormOnInit() {
     super.FormOnInit();
-    this.form.xSize = 800;
+    this.form.xSize = 1000;
     this.form.ySize = 600;
   }
 }

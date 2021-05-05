@@ -12,7 +12,9 @@
     <div class="select-container" style="flex: 1"
          [class.disabled]="disabled"
          [class]="color">
-      <select multiple [size]="rowsCount"
+      <select
+        multiple
+        [size]="rowsCount"
         [disabled]="disabled"
         [ngModel]="bsModel"
         (ngModelChange)="modelChanged($event)"
