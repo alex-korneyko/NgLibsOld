@@ -53,8 +53,8 @@ import { MultiSelectComponent } from './component-examples/select/multi-select/m
     FormsModule,
     BaseComponentsModule,
     WebDesktopApplicationsModule.microApplications([
-      {title: "Test service", formContentComponent: TestServiceApplicationComponent, type: MicroApplicationType.Service},
-      {title: "Components library", formContentComponent: ComponentExamplesComponent, type: MicroApplicationType.Service, autostart: true},
+      {title: "Test service", formContentComponent: TestServiceApplicationComponent, type: MicroApplicationType.Service, autostart: true},
+      {title: "Components library", formContentComponent: ComponentExamplesComponent, type: MicroApplicationType.Service},
       {title: "Simple ToDo", formContentComponent: SimpleToDoComponent, type: MicroApplicationType.Application}
     ]),
   ],

@@ -65,4 +65,51 @@
       ></bs-multi-select>
     </div>
   </div>
+
+  <hr>
+
+  <div style="display: flex">
+    <div style="margin-right: 5px">
+      <bs-checkbox
+        [title]="'Test checkbox'"
+        [prompt]="'Prompt for checkbox'"
+        [titlePosition]="titlePosition.Left"
+        [(bsModel)]="checkboxValue"
+        [size]="componentSize.lg"
+        (onChange)="CheckBoxOnChangeHandler($event)"
+      ></bs-checkbox>
+    </div>
+    <div style="margin-right: 5px">
+      <bs-checkbox
+        [title]="'Test checkbox'"
+        [prompt]="'Prompt for checkbox'"
+        [titlePosition]="titlePosition.Right"
+        [(bsModel)]="checkboxValue"
+        (onChange)="CheckBoxOnChangeHandler($event)"
+        [disabled]="true"
+      ></bs-checkbox>
+    </div>
+    <div style="margin-right: 5px">
+      <bs-checkbox
+        [title]="'Test checkbox'"
+        [prompt]="'Prompt for checkbox'"
+        [titlePosition]="titlePosition.Right"
+        [size]="componentSize.sm"
+        [(bsModel)]="checkboxValue"
+        (onChange)="CheckBoxOnChangeHandler($event)"
+      ></bs-checkbox>
+    </div>
+    <div style="margin-right: 5px">
+      <bs-checkbox
+        [title]="'Test checkbox'"
+        [prompt]="'Prompt for checkbox'"
+        [titlePosition]="titlePosition.Left"
+        [color]="color.Light"
+        [(bsModel)]="checkboxValue"
+        [size]="componentSize.xsm"
+        (onChange)="CheckBoxOnChangeHandler($event)"
+      ></bs-checkbox>
+    </div>
+  </div>
+
 </div>

@@ -28,6 +28,8 @@ export class TestServiceApplicationComponent extends MicroApplicationFormContent
 
   multiValues = new Array<string>()
 
+  checkboxValue = true;
+
   ngOnInit(): void {
 
   }
@@ -40,5 +42,9 @@ export class TestServiceApplicationComponent extends MicroApplicationFormContent
   selectChangeHandler(event?: string) {
     // console.log(this.text)
     console.log("multiValues: ", this.multiValues)
+  }
+
+  CheckBoxOnChangeHandler(event: Event) {
+    console.log('Checkbox: ' + this.checkboxValue);
   }
 }

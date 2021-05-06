@@ -7,6 +7,9 @@ import {TextInputModule} from './text-input/text-input.module';
 import {TextAreaModule} from './text-area/text-area.module';
 import {DropdownSelectModule} from './select/dropdown-select/dropdown-select.module';
 import {MultiSelectModule} from './select/multi-select/multi-select.module';
+import {CheckboxModule} from './checkbox/checkbox.module';
+import {RadioModule} from './radio/radio.module';
+import {RangeModule} from './range/range.module';
 
 @NgModule({
   declarations: [
@@ -22,7 +25,10 @@ import {MultiSelectModule} from './select/multi-select/multi-select.module';
     TextInputModule,
     TextAreaModule,
     DropdownSelectModule,
-    MultiSelectModule
+    MultiSelectModule,
+    CheckboxModule,
+    RadioModule,
+    RangeModule
   ]
 })
 export class BaseComponentsModule {
