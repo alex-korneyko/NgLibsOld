@@ -1,5 +1,5 @@
 import {Component, Input, OnInit, Output, EventEmitter} from '@angular/core';
-import {IMicroApplication} from '../../micro-application';
+import {IMicroApplicationBox} from '../../micrioApplications/i-micro-application-box';
 
 @Component({
   selector: 'wma-main-menu-item',
@@ -9,10 +9,10 @@ import {IMicroApplication} from '../../micro-application';
 export class MainMenuItemComponent implements OnInit {
 
   @Input()
-  microApplication: IMicroApplication;
+  iMicroApplicationBox: IMicroApplicationBox;
 
   @Output()
-  applicationClickEvent = new EventEmitter<IMicroApplication>()
+  applicationClickEvent = new EventEmitter<IMicroApplicationBox>()
 
   constructor() { }
 
@@ -21,6 +21,6 @@ export class MainMenuItemComponent implements OnInit {
 
   ApplicationClick(event: MouseEvent) {
     event.stopPropagation();
-    this.applicationClickEvent.emit(this.microApplication);
+    this.applicationClickEvent.emit(this.iMicroApplicationBox);
   }
 }

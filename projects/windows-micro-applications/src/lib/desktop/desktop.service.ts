@@ -3,8 +3,9 @@ import {MicroApplicationFormSettings} from './micro-application-form/micro-appli
 import {MicroApplicationFormEvent} from './micro-application-form/micro-application-form-event';
 import {MicroApplicationFormEventType} from './micro-application-form/micro-application-form-event-type.enum';
 import {HtmlObjectCoordinates} from './workcpace/html-object-coordinates';
-import {IMicroApplication} from './micro-application';
-import {ifStmt} from '@angular/compiler/src/output/output_ast';
+import {IMicroApplicationBox} from './micrioApplications/i-micro-application-box';
+import {MicroApplicationState} from './micrioApplications/micro-application-state.enum';
+import {MicroApplications} from './micrioApplications/micro.applications';
 
 @Injectable({
   providedIn: 'root'
@@ -40,35 +41,42 @@ export class DesktopService {
     }
   }
 
-  StartApplication = (microApplication: IMicroApplication) => {
+  StartApplication = (microApplicationBox: IMicroApplicationBox) => {
 
-    microApplication.BeforeApplicationStart();
+    if (microApplicationBox.microApplicationState === MicroApplicationState.Running) {
+      let index = this.forms.findIndex(form => form.formContent === microApplicationBox.microApplication.formContentComponent);
+      if (index > -1) {
+        this.CheckForSingleton(this.forms[index]);
+      }
+      return;
+    }
 
-    let microApplicationFormSettings = new MicroApplicationFormSettings(microApplication.formContentComponent);
+    microApplicationBox.microApplication.BeforeApplicationStart();
+
+    let microApplicationFormSettings = new MicroApplicationFormSettings(microApplicationBox.microApplication.formContentComponent);
+
     microApplicationFormSettings.desktopService = this;
 
+    microApplicationBox.Run();
+
+    this.forms.push(microApplicationFormSettings);
+
+    microApplicationBox.microApplication.AfterApplicationStart();
+
+    this.CheckAndRearrangeTasksOnTaskPanel();
+    this.ActivateForm(microApplicationFormSettings);
+    this.activeForm.header = microApplicationBox.microApplication.title;
+  }
+
+  AddNewForm = (microApplicationFormSettings: MicroApplicationFormSettings) => {
     if (this.CheckForSingleton(microApplicationFormSettings)) {
       return;
     }
 
+    microApplicationFormSettings.desktopService = this;
     this.forms.push(microApplicationFormSettings);
-
-    microApplication.AfterApplicationStart();
-
     this.CheckAndRearrangeTasksOnTaskPanel();
     this.ActivateForm(microApplicationFormSettings);
-    this.activeForm.header = microApplication.title;
-  }
-
-  AddNewForm = (microApplicationForm: MicroApplicationFormSettings) => {
-    if (this.CheckForSingleton(microApplicationForm)) {
-      return;
-    }
-
-    microApplicationForm.desktopService = this;
-    this.forms.push(microApplicationForm);
-    this.CheckAndRearrangeTasksOnTaskPanel();
-    this.ActivateForm(microApplicationForm);
   }
 
   private CheckForSingleton(form: MicroApplicationFormSettings): boolean {
@@ -86,10 +94,15 @@ export class DesktopService {
     return this.forms.sort((w1, w2) => w1.created > w2.created ? 1 : -1)
   }
 
-  CloseForm(microApplicationForm: MicroApplicationFormSettings) {
-    let index = this.forms.findIndex(win => win.id === microApplicationForm.id);
+  CloseForm(microApplicationFormSettings: MicroApplicationFormSettings) {
+    let index = this.forms.findIndex(formSettings => formSettings === microApplicationFormSettings);
     if (index > -1) {
       this.forms.splice(index, 1);
+    }
+    index = MicroApplications.applicationBoxes
+      .findIndex(appBox => appBox.microApplication.formContentComponent === microApplicationFormSettings.formContent);
+    if (index > -1) {
+      MicroApplications.applicationBoxes[index].Stop();
     }
   }
 

@@ -5,10 +5,10 @@
     </div>
     <hr style="margin: 3px">
     <div style="padding: 2px">
-      <div *ngFor="let microApplication of microApplications">
+      <div *ngFor="let microApplicationBox of microApplicationBoxes">
         <wma-main-menu-item
-          *ngIf="microApplication.type === type.Application"
-          [microApplication]="microApplication"
+          *ngIf="microApplicationBox.microApplication.type === type.Application"
+          [iMicroApplicationBox]="microApplicationBox"
           (applicationClickEvent)="StartApplication($event)"
         ></wma-main-menu-item>
       </div>
@@ -20,10 +20,10 @@
     </div>
     <hr style="margin: 3px">
     <div style="padding: 2px">
-      <div *ngFor="let microApplication of microApplications">
+      <div *ngFor="let microApplicationBox of microApplicationBoxes">
         <wma-main-menu-item
-          *ngIf="microApplication.type === type.Accessories"
-          [microApplication]="microApplication"
+          *ngIf="microApplicationBox.microApplication.type === type.Accessories"
+          [iMicroApplicationBox]="microApplicationBox"
           (applicationClickEvent)="StartApplication($event)"
         ></wma-main-menu-item>
       </div>

@@ -1,8 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {DesktopService} from '../desktop.service';
-import {MicroApplications} from '../micro.applications';
-import {IMicroApplication} from '../micro-application';
-import {MicroApplicationType} from '../micro-application-type.enum';
+import {MicroApplications} from '../micrioApplications/micro.applications';
+import {MicroApplicationType} from '../micrioApplications/micro-application-type.enum';
+import {IMicroApplicationBox} from '../micrioApplications/i-micro-application-box';
 
 @Component({
   selector: 'wma-main-menu',
@@ -11,15 +11,15 @@ import {MicroApplicationType} from '../micro-application-type.enum';
 })
 export class MainMenuComponent implements OnInit {
 
-  microApplications = MicroApplications.applications;
+  microApplicationBoxes = MicroApplications.applicationBoxes;
   type = MicroApplicationType;
 
   constructor(public deskTopService: DesktopService) { }
 
   ngOnInit(): void { }
 
-  StartApplication(microApplication: IMicroApplication) {
-    this.deskTopService.StartApplication(microApplication)
+  StartApplication(microApplicationBox: IMicroApplicationBox) {
+    this.deskTopService.StartApplication(microApplicationBox)
     this.deskTopService.mainMenuIsShown = false;
   }
 }
