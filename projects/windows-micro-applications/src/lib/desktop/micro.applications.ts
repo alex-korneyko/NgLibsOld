@@ -1,5 +1,5 @@
-import {MicroApplication} from './micro-application';
+import {IMicroApplication} from './micro-application';
 
 export class MicroApplications {
-    public static applications = new Array<MicroApplication>();
+    public static applications = new Array<IMicroApplication>();
 }

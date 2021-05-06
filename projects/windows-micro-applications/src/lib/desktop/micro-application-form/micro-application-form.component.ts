@@ -1,9 +1,9 @@
 import {AfterViewInit, Component, ComponentFactoryResolver, EventEmitter, Input, OnDestroy, OnInit, Output, ViewChild} from '@angular/core';
-import {MicroAppForm} from './micro-app-form';
+import {MicroApplicationFormSettings} from './micro-application-form-settings';
 import {MicroApplicationFormEvent} from './micro-application-form-event';
 import {MicroApplicationFormEventType} from './micro-application-form-event-type.enum';
 import {MicroApplicationFormContentDirective} from './micro-application-form-content.directive';
-import {MicroApplicationContent} from './micro-application-content';
+import {IMicroApplicationContent} from './i-micro-application-content';
 import {DesktopService} from '../desktop.service';
 
 @Component({
@@ -20,16 +20,16 @@ export class MicroApplicationFormComponent implements OnInit, AfterViewInit, OnD
   id: number;
 
   @Input()
-  form: MicroAppForm;
+  form: MicroApplicationFormSettings;
 
   @Output()
-  windowClick = new EventEmitter<MicroAppForm>();
+  windowClick = new EventEmitter<MicroApplicationFormSettings>();
 
   @Output()
-  fullScreenEvent = new EventEmitter<MicroAppForm>();
+  fullScreenEvent = new EventEmitter<MicroApplicationFormSettings>();
 
   @Output()
-  closeEvent = new EventEmitter<MicroAppForm>();
+  closeEvent = new EventEmitter<MicroApplicationFormSettings>();
 
   @Output()
   resizeLeftBorder = new EventEmitter<MicroApplicationFormEvent>();
@@ -49,7 +49,7 @@ export class MicroApplicationFormComponent implements OnInit, AfterViewInit, OnD
   @Output()
   formDragEnd = new EventEmitter<MicroApplicationFormEvent>();
 
-  formContentInstance: MicroApplicationContent;
+  formContentInstance: IMicroApplicationContent;
 
   constructor(private desktopService: DesktopService, private componentFactoryResolver: ComponentFactoryResolver) {
   }
@@ -61,7 +61,7 @@ export class MicroApplicationFormComponent implements OnInit, AfterViewInit, OnD
     let viewContainerRef = this.windowHost.viewContainerRef;
     viewContainerRef.clear();
 
-    let windowContentRef = viewContainerRef.createComponent<MicroApplicationContent>(componentFactory);
+    let windowContentRef = viewContainerRef.createComponent<IMicroApplicationContent>(componentFactory);
     this.formContentInstance = windowContentRef.instance;
     this.formContentInstance.form = this.form;
     this.formContentInstance.FormOnInit();

@@ -1,14 +1,14 @@
 import {MicroApplicationFormEventType} from './micro-application-form-event-type.enum';
-import {MicroAppForm} from './micro-app-form';
+import {MicroApplicationFormSettings} from './micro-application-form-settings';
 
 export class MicroApplicationFormEvent {
-  form: MicroAppForm;
+  form: MicroApplicationFormSettings;
   windowEventType: MicroApplicationFormEventType;
   dragEvent: DragEvent;
   mouseEvent: MouseEvent;
 
 
-  constructor(form: MicroAppForm, windowEventType?: MicroApplicationFormEventType) {
+  constructor(form: MicroApplicationFormSettings, windowEventType?: MicroApplicationFormEventType) {
     this.windowEventType = MicroApplicationFormEventType.NONE;
     this.form = form;
     this.windowEventType = windowEventType;

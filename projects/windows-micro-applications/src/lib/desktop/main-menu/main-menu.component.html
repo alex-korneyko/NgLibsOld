@@ -16,13 +16,13 @@
   </div>
   <div style="height: 100%; flex: 1; display: block">
     <div class="apps-header">
-      <p>Services:</p>
+      <p>Accessories:</p>
     </div>
     <hr style="margin: 3px">
     <div style="padding: 2px">
       <div *ngFor="let microApplication of microApplications">
         <wma-main-menu-item
-          *ngIf="microApplication.type === type.Service"
+          *ngIf="microApplication.type === type.Accessories"
           [microApplication]="microApplication"
           (applicationClickEvent)="StartApplication($event)"
         ></wma-main-menu-item>

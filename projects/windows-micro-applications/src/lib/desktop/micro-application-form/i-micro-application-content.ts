@@ -1,8 +1,8 @@
-import {MicroAppForm} from './micro-app-form';
+import {MicroApplicationFormSettings} from './micro-application-form-settings';
 
-export interface MicroApplicationContent {
+export interface IMicroApplicationContent {
 
-  form: MicroAppForm
+  form: MicroApplicationFormSettings
 
   FormOnInit(): void;
   FormAfterInit(): void;
@@ -19,6 +19,6 @@ export interface MicroApplicationContent {
   FormOnMove(): void;
   FormOnResize(): void;
 
-  AddChildren: (form: MicroAppForm) => void;
+  AddChildren: (form: MicroApplicationFormSettings) => void;
   CloseWindow: () => void;
 }

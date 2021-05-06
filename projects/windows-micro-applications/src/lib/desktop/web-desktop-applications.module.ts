@@ -1,6 +1,6 @@
 import {ModuleWithProviders, NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
-import {MicroApplication} from './micro-application';
+import {IMicroApplication} from './micro-application';
 import {MicroApplicationFormComponent} from './micro-application-form/micro-application-form.component';
 import {DesktopComponent} from './desktop.component';
 import {TaskPanelComponent} from './task-panel/task-panel.component';
@@ -36,7 +36,7 @@ import {TaskPanelApplicationItemComponent} from './task-panel/task-panel-applica
 })
 export class WebDesktopApplicationsModule {
 
-  public static microApplications(applications: MicroApplication[]): ModuleWithProviders<WebDesktopApplicationsModule> {
+  public static microApplications(applications: IMicroApplication[]): ModuleWithProviders<WebDesktopApplicationsModule> {
     MicroApplications.applications.push(...applications);
 
     return {ngModule: WebDesktopApplicationsModule}

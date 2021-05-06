@@ -1,9 +1,9 @@
 import {Injectable} from '@angular/core';
-import {MicroAppForm} from './micro-application-form/micro-app-form';
+import {MicroApplicationFormSettings} from './micro-application-form/micro-application-form-settings';
 import {MicroApplicationFormEvent} from './micro-application-form/micro-application-form-event';
 import {MicroApplicationFormEventType} from './micro-application-form/micro-application-form-event-type.enum';
 import {HtmlObjectCoordinates} from './workcpace/html-object-coordinates';
-import {MicroApplication} from './micro-application';
+import {IMicroApplication} from './micro-application';
 import {ifStmt} from '@angular/compiler/src/output/output_ast';
 
 @Injectable({
@@ -11,9 +11,9 @@ import {ifStmt} from '@angular/compiler/src/output/output_ast';
 })
 export class DesktopService {
 
-  forms = new Array<MicroAppForm>();
+  forms = new Array<MicroApplicationFormSettings>();
 
-  activeForm: MicroAppForm;
+  activeForm: MicroApplicationFormSettings;
   currentWindowEvent: MicroApplicationFormEvent;
 
   mainMenuIsShown = false;
@@ -40,22 +40,27 @@ export class DesktopService {
     }
   }
 
-  StartApplication = (microApplication: MicroApplication) => {
+  StartApplication = (microApplication: IMicroApplication) => {
 
-    let microApplicationForm = new MicroAppForm(microApplication.formContentComponent);
-    microApplicationForm.desktopService = this;
+    microApplication.BeforeApplicationStart();
 
-    if (this.CheckForSingleton(microApplicationForm)) {
+    let microApplicationFormSettings = new MicroApplicationFormSettings(microApplication.formContentComponent);
+    microApplicationFormSettings.desktopService = this;
+
+    if (this.CheckForSingleton(microApplicationFormSettings)) {
       return;
     }
 
-    this.forms.push(microApplicationForm);
+    this.forms.push(microApplicationFormSettings);
+
+    microApplication.AfterApplicationStart();
+
     this.CheckAndRearrangeTasksOnTaskPanel();
-    this.ActivateForm(microApplicationForm);
+    this.ActivateForm(microApplicationFormSettings);
     this.activeForm.header = microApplication.title;
   }
 
-  AddNewForm = (microApplicationForm: MicroAppForm) => {
+  AddNewForm = (microApplicationForm: MicroApplicationFormSettings) => {
     if (this.CheckForSingleton(microApplicationForm)) {
       return;
     }
@@ -66,7 +71,7 @@ export class DesktopService {
     this.ActivateForm(microApplicationForm);
   }
 
-  private CheckForSingleton(form: MicroAppForm): boolean {
+  private CheckForSingleton(form: MicroApplicationFormSettings): boolean {
     let index = this.forms.findIndex(winForm => winForm.formContent === form.formContent);
     if (index > -1) {
       if (this.forms[index].isSingleton && this.forms[index].parent === form.parent) {
@@ -77,22 +82,22 @@ export class DesktopService {
     return false;
   }
 
-  GetWindowsSortedByCreation(): MicroAppForm[] {
+  GetWindowsSortedByCreation(): MicroApplicationFormSettings[] {
     return this.forms.sort((w1, w2) => w1.created > w2.created ? 1 : -1)
   }
 
-  CloseForm(microApplicationForm: MicroAppForm) {
+  CloseForm(microApplicationForm: MicroApplicationFormSettings) {
     let index = this.forms.findIndex(win => win.id === microApplicationForm.id);
     if (index > -1) {
       this.forms.splice(index, 1);
     }
   }
 
-  CloseEventHandler(microApplicationForm: MicroAppForm) {
+  CloseEventHandler(microApplicationForm: MicroApplicationFormSettings) {
 
   }
 
-  ActivateForm(microApplicationForm: MicroAppForm) {
+  ActivateForm(microApplicationForm: MicroApplicationFormSettings) {
     this.activeForm = microApplicationForm;
     microApplicationForm.isMinimized = false;
 
@@ -106,8 +111,8 @@ export class DesktopService {
     }
   }
 
-  private static formsRearrange(forms: MicroAppForm[]) {
-    let tmpListOfForms = new Array<MicroAppForm>(...forms);
+  private static formsRearrange(forms: MicroApplicationFormSettings[]) {
+    let tmpListOfForms = new Array<MicroApplicationFormSettings>(...forms);
     tmpListOfForms.sort((win1, win2) => win1.zPos > win2.zPos ? 1 : -1);
     for (let i = 0; i < tmpListOfForms.length; i++) {
       tmpListOfForms[i].isActive = false;
@@ -164,7 +169,7 @@ export class DesktopService {
     event.form.xPos += event.dragEvent.offsetX
   }
 
-  FullScreenEventHandler(microApplicationForm: MicroAppForm) {
+  FullScreenEventHandler(microApplicationForm: MicroApplicationFormSettings) {
     microApplicationForm.isMaximized = !microApplicationForm.isMaximized;
   }
 

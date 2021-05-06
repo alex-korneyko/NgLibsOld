@@ -1,5 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {MicroAppForm} from '../../micro-application-form/micro-app-form';
+import {MicroApplicationFormSettings} from '../../micro-application-form/micro-application-form-settings';
 import {DesktopService} from '../../desktop.service';
 
 @Component({
@@ -10,7 +10,7 @@ import {DesktopService} from '../../desktop.service';
 export class TaskPanelApplicationItemComponent implements OnInit {
 
   @Input()
-  microApplicationFormParams: MicroAppForm
+  microApplicationFormParams: MicroApplicationFormSettings
 
   constructor(public desktopService: DesktopService) { }
 

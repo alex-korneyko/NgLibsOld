@@ -1,4 +1,5 @@
 export enum MicroApplicationType {
   Application,
-  Service
+  Accessories,
+  SystemService
 }

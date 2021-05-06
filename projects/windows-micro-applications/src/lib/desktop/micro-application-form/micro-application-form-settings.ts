@@ -3,14 +3,14 @@ import {MicroApplicationFormContent} from './micro-application-form-content';
 import {DesktopService} from '../desktop.service';
 import {MicroApplicationFormComponent} from './micro-application-form.component';
 
-export class MicroAppForm {
+export class MicroApplicationFormSettings {
   readonly id: number;
   formContainer: MicroApplicationFormComponent;
   readonly formContent: Type<MicroApplicationFormContent>;
   desktopService: DesktopService;
   params: any;
-  readonly children = new Array<MicroAppForm>()
-  parent: MicroAppForm;
+  readonly children = new Array<MicroApplicationFormSettings>()
+  parent: MicroApplicationFormSettings;
   closeIfParentClosed = false;
   readonly created: Date;
   xPos = 100;
@@ -55,7 +55,7 @@ export class MicroAppForm {
     }
   }
 
-  AddChildren = (form: MicroAppForm) => {
+  AddChildren = (form: MicroApplicationFormSettings) => {
     form.parent = this;
     if (form.isModal) {
       this.isBlockedByChildren = true;

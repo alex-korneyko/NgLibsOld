@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {DesktopService} from '../desktop.service';
 import {MicroApplications} from '../micro.applications';
-import {MicroApplication} from '../micro-application';
+import {IMicroApplication} from '../micro-application';
 import {MicroApplicationType} from '../micro-application-type.enum';
 
 @Component({
@@ -18,7 +18,7 @@ export class MainMenuComponent implements OnInit {
 
   ngOnInit(): void { }
 
-  StartApplication(microApplication: MicroApplication) {
+  StartApplication(microApplication: IMicroApplication) {
     this.deskTopService.StartApplication(microApplication)
     this.deskTopService.mainMenuIsShown = false;
   }
