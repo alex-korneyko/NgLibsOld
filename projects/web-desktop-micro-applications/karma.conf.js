@@ -25,7 +25,7 @@ module.exports = function (config) {
       suppressAll: true // removes the duplicated traces
     },
     coverageReporter: {
-      dir: require('path').join(__dirname, '../../coverage/windows-micro-applications'),
+      dir: require('path').join(__dirname, '../../coverage/web-desktop-micro-applications'),
       subdir: '.',
       reporters: [
         { type: 'html' },

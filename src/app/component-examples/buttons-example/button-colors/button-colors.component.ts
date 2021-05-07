@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {ColorStyle, Size} from 'base-components';
+import {ColorStyle, Size} from '@nextrium/base-components';
 
 @Component({
   selector: 'app-button-colors',

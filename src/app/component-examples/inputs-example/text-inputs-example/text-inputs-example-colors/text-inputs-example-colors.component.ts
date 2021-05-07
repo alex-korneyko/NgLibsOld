@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {Size, ColorStyle, TitlePosition, TextInputType} from 'base-components';
+import {Size, ColorStyle, TitlePosition, TextInputType} from '@nextrium/base-components';
 
 @Component({
   selector: 'app-text-inputs-examle-colors',

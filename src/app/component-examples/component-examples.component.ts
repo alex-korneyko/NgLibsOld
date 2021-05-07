@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import {MicroApplicationFormContent} from 'windows-micro-applications';
-import {SideMenuItemParam} from 'base-components';
+import {MicroApplicationFormContent} from '@nextrium/web-desktop';
+import {SideMenuItemParam} from '@nextrium/base-components';
 import {ButtonsExampleComponent} from './buttons-example/buttons-example.component';
 import {InputsExampleComponent} from './inputs-example/inputs-example.component';
 import {ButtonColorsComponent} from './buttons-example/button-colors/button-colors.component';
 import {ButtonSizesComponent} from './buttons-example/button-sizes/button-sizes.component';
-import {Size} from 'base-components';
+import {Size} from '@nextrium/base-components';
 import {TextInputsExampleComponent} from './inputs-example/text-inputs-example/text-inputs-example.component';
 import {TextInputsExampleSizesComponent} from './inputs-example/text-inputs-example/text-inputs-example-sizes/text-inputs-example-sizes.component';
 import {TextInputsExampleColorsComponent} from './inputs-example/text-inputs-example/text-inputs-example-colors/text-inputs-example-colors.component';

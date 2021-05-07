@@ -8,7 +8,7 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "wforms": "ng build WindowsMicroApplications --watch",
+    "wdmapp": "ng build WebSesktopMicroApplications --watch",
     "bcomp": "ng build BaseComponents --watch"
   },
   "private": true,

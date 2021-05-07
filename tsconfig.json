@@ -17,11 +17,11 @@
       "dom"
     ],
     "paths": {
-      "base-components": [
+      "@nextrium/base-components": [
         "dist/base-components"
       ],
-      "windows-micro-applications": [
-        "dist/windows-micro-applications"
+      "@nextrium/web-desktop": [
+        "dist/web-desktop"
       ]
     }
   },

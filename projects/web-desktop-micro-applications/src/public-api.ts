@@ -1,5 +1,5 @@
 /*
- * Public API Surface of windows-micro-applications
+ * Public API Surface of web-desktop-micro-applications
  */
 
 export * from "./lib/desktop/desktop.component"

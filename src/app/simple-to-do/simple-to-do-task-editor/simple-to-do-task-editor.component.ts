@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {MicroApplicationFormContent} from 'windows-micro-applications';
+import {MicroApplicationFormContent} from '@nextrium/web-desktop';
 import {ToDoTask} from '../../domain/to-do-task';
 import {SimpleToDoService} from '../simple-to-do.service';
 

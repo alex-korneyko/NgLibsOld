@@ -1,10 +1,9 @@
 import {Component, OnInit} from '@angular/core';
-import {MicroAppForm} from 'windows-micro-applications';
+import {MicroApplicationFormSettings, MicroApplicationFormContent} from '@nextrium/web-desktop';
 import {SimpleToDoTaskEditorComponent} from './simple-to-do-task-editor/simple-to-do-task-editor.component';
 import {SimpleToDoService} from './simple-to-do.service';
 import {ToDoTask} from '../domain/to-do-task';
 import {TaskInfoWindowComponent} from './task-info-window/task-info-window.component';
-import {MicroApplicationFormContent} from 'windows-micro-applications';
 
 @Component({
   selector: 'app-simple-to-do',
@@ -35,7 +34,7 @@ export class SimpleToDoComponent extends MicroApplicationFormContent implements 
   }
 
   EditTaskBtnClick() {
-    let microApplicationForm = new MicroAppForm(SimpleToDoTaskEditorComponent);
+    let microApplicationForm = new MicroApplicationFormSettings(SimpleToDoTaskEditorComponent);
 
     this.AddChildren(microApplicationForm)
   }
@@ -53,12 +52,12 @@ export class SimpleToDoComponent extends MicroApplicationFormContent implements 
   }
 
   TaskDoubleClickHandler(task: ToDoTask) {
-    let microAppForm = new MicroAppForm(TaskInfoWindowComponent, {
+    let microApplicationFormSettings = new MicroApplicationFormSettings(TaskInfoWindowComponent, {
       task: task,
 
     });
-    microAppForm.header = this.simpleToDoService.currentTask.name;
-    this.AddChildren(microAppForm)
+    microApplicationFormSettings.header = this.simpleToDoService.currentTask.name;
+    this.AddChildren(microApplicationFormSettings)
   }
 
   CloseFormBtnClick() {

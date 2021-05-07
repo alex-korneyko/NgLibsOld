@@ -1,9 +1,6 @@
 import {Component, OnInit} from '@angular/core';
-import {MicroApplicationFormContent, MicroApplicationFormService} from 'windows-micro-applications';
-import {Size} from 'base-components';
-import {ColorStyle} from 'base-components';
-import {TitlePosition} from 'base-components';
-import {SelectValue} from 'base-components';
+import {MicroApplicationFormContent, MicroApplicationFormService} from '@nextrium/web-desktop';
+import {Size, ColorStyle, TitlePosition, SelectValue} from '@nextrium/base-components';
 
 @Component({
   selector: 'app-test-service-application',
