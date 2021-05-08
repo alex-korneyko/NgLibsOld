@@ -16,9 +16,7 @@ export class SimpleToDoComponent extends MicroApplicationFormContent implements 
     super()
   }
 
-  ngOnInit(): void {
-
-  }
+  ngOnInit(): void { }
 
   FormOnInit(): void {
     this.form.xSize = 700;
@@ -29,14 +27,14 @@ export class SimpleToDoComponent extends MicroApplicationFormContent implements 
     this.EditTaskBtnClick();
   }
 
-  TaskClickHandler(event: ToDoTask) {
-    this.simpleToDoService.currentTask = event;
-  }
-
   EditTaskBtnClick() {
     let microApplicationForm = new MicroApplicationFormSettings(SimpleToDoTaskEditorComponent);
+    // microApplicationForm.isModal = true;
+    this.OpenChildrenForm(microApplicationForm)
+  }
 
-    this.AddChildren(microApplicationForm)
+  TaskClickHandler(event: ToDoTask) {
+    this.simpleToDoService.currentTask = event;
   }
 
   DeleteTaskBtnClick() {
@@ -47,20 +45,16 @@ export class SimpleToDoComponent extends MicroApplicationFormContent implements 
 
     index = this.form.children.findIndex(form => form.params?.task.id === this.simpleToDoService.currentTask.id);
     if (index > -1) {
-      this.form.children[index].Close();
+      this.form.children[index].formContainer.CloseClick();
     }
   }
 
   TaskDoubleClickHandler(task: ToDoTask) {
     let microApplicationFormSettings = new MicroApplicationFormSettings(TaskInfoWindowComponent, {
-      task: task,
+      task,
 
     });
     microApplicationFormSettings.header = this.simpleToDoService.currentTask.name;
-    this.AddChildren(microApplicationFormSettings)
-  }
-
-  CloseFormBtnClick() {
-    this.CloseWindow();
+    this.OpenChildrenForm(microApplicationFormSettings)
   }
 }

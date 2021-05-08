@@ -1,4 +1,4 @@
-import {NgModule} from '@angular/core';
+import {NgModule, Type} from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { TestMicroAppMainFormComponent } from './test-micro-app-main-form/test-micro-app-main-form.component';
 import {MicroApplication} from '@nextrium/web-desktop';
@@ -21,21 +21,21 @@ export class TestMicroApplicationModule extends MicroApplication{
 
   type = MicroApplicationType.Application;
 
-  children = new Array<MicroApplicationFormContent>();
-
-  AfterApplicationStart() {
-    console.log("AfterApplicationStart")
-  }
+  children = new Array<Type<MicroApplicationFormContent>>();
 
   BeforeApplicationStart() {
     console.log("BeforeApplicationStart")
   }
 
-  BeforeApplicationSleep() {
-    console.log("BeforeApplicationSleep")
+  AfterApplicationStart() {
+    console.log("AfterApplicationStart")
   }
 
   BeforeApplicationStop() {
     console.log("BeforeApplicationStop")
+  }
+
+  AfterApplicationStop() {
+    console.log("AfterApplicationStop")
   }
 }

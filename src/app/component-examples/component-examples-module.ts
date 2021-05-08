@@ -1,9 +1,7 @@
-import {NgModule} from '@angular/core';
+import {NgModule, Type} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {ComponentExamplesComponent} from './component-examples.component';
-import {MicroApplication} from '@nextrium/web-desktop';
-import {MicroApplicationFormContent} from '@nextrium/web-desktop';
-import {MicroApplicationType} from '@nextrium/web-desktop';
+import {MicroApplication, MicroApplicationFormContent, MicroApplicationType} from '@nextrium/web-desktop';
 import {ButtonsExampleComponent} from './buttons-example/buttons-example.component';
 import {InputsExampleComponent} from './inputs-example/inputs-example.component';
 import {ButtonSizesComponent} from './buttons-example/button-sizes/button-sizes.component';
@@ -38,7 +36,7 @@ import {BaseComponentsModule} from '@nextrium/base-components';
   ],
   imports: [
     CommonModule,
-    BaseComponentsModule,
+    BaseComponentsModule
   ],
   exports: []
 })
@@ -47,5 +45,5 @@ export class ComponentExamplesModule extends MicroApplication {
     title = "Components library";
     formContentComponent = ComponentExamplesComponent;
     type = MicroApplicationType.Accessories;
-    children: MicroApplicationFormContent[];
+    children = new Array<Type<MicroApplicationFormContent>>();
 }

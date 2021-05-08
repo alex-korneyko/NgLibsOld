@@ -39,6 +39,6 @@ export class SimpleToDoTaskEditorComponent extends MicroApplicationFormContent i
 
   CancelClick() {
     this.simpleToDoService.currentTask = null;
-    this.CloseWindow();
+    this.CloseForm();
   }
 }

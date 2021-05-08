@@ -4,11 +4,11 @@ import {Size, ColorStyle, TitlePosition, SelectValue} from '@nextrium/base-compo
 
 @Component({
   selector: 'app-test-service-application',
-  templateUrl: './test-service-application.component.html',
-  styleUrls: ['./test-service-application.component.css'],
+  templateUrl: './test-accessory-application.component.html',
+  styleUrls: ['./test-accessory-application.component.css'],
   providers: [MicroApplicationFormService]
 })
-export class TestServiceApplicationComponent extends MicroApplicationFormContent implements OnInit {
+export class TestAccessoryApplicationComponent extends MicroApplicationFormContent implements OnInit {
 
   componentSize = Size;
   color = ColorStyle;
