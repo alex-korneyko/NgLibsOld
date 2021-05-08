@@ -108,7 +108,7 @@ export class DesktopService {
       }
     });
 
-    let index = this.forms.findIndex(formSettings => formSettings === formSettings);
+    let index = this.forms.findIndex(form => form === formSettings);
     if (index > -1) {
       this.forms.splice(index, 1);
     }
