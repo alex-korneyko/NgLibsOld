@@ -20,5 +20,5 @@ export interface IMicroApplicationContent {
   FormOnResize(): void;
 
   AddChildren: (form: MicroApplicationFormSettings) => void;
-  CloseWindow: () => void;
+  CloseForm: () => void;
 }

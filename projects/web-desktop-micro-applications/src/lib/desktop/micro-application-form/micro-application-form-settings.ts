@@ -64,21 +64,6 @@ export class MicroApplicationFormSettings {
     this.desktopService.AddNewForm(form);
   }
 
-  Close() {
-    if (this.isModal) {
-      this.parent.isBlockedByChildren = false;
-      this.parent.isActive = true;
-    }
-
-    this.children.forEach(child => {
-      if (child.closeIfParentClosed) {
-        child.Close();
-      }
-    });
-
-    this.desktopService.CloseForm(this);
-  }
-
   get isModal(): boolean {
     return this._isModal;
   }

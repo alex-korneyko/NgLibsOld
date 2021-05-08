@@ -6,6 +6,7 @@ import {HtmlObjectCoordinates} from './workcpace/html-object-coordinates';
 import {IMicroApplicationBox} from './micrioApplications/i-micro-application-box';
 import {MicroApplicationState} from './micrioApplications/micro-application-state.enum';
 import {MicroApplications} from './micrioApplications/micro.applications';
+import {IMicroApplicationContent} from './micro-application-form/i-micro-application-content';
 
 @Injectable({
   providedIn: 'root'
@@ -94,13 +95,27 @@ export class DesktopService {
     return this.forms.sort((w1, w2) => w1.created > w2.created ? 1 : -1)
   }
 
-  CloseForm(microApplicationFormSettings: MicroApplicationFormSettings) {
-    let index = this.forms.findIndex(formSettings => formSettings === microApplicationFormSettings);
+  CloseForm(formSettings: MicroApplicationFormSettings, instance?: IMicroApplicationContent) {
+    instance?.FormOnDestroy();
+    if (formSettings.isModal) {
+      formSettings.parent.isBlockedByChildren = false;
+      formSettings.parent.isActive = true;
+    }
+
+    formSettings.children.forEach(child => {
+      if (child.closeIfParentClosed) {
+        this.CloseForm(child);
+      }
+    });
+
+    let index = this.forms.findIndex(formSettings => formSettings === formSettings);
     if (index > -1) {
       this.forms.splice(index, 1);
     }
+    instance?.FormAfterDestroy();
+
     index = MicroApplications.applicationBoxes
-      .findIndex(appBox => appBox.microApplication.formContentComponent === microApplicationFormSettings.formContent);
+      .findIndex(appBox => appBox.microApplication.formContentComponent === formSettings.formContent);
     if (index > -1) {
       MicroApplications.applicationBoxes[index].Stop();
     }

@@ -73,14 +73,15 @@ export class MicroApplicationFormComponent implements OnInit, AfterViewInit, OnD
 
   ngOnDestroy() {
     this.windowHost.viewContainerRef.clear();
-    this.formContentInstance.FormAfterDestroy();
+
   }
 
   CloseClick = (event?: MouseEvent) => {
     event?.stopPropagation();
-    this.formContentInstance.FormOnDestroy();
+    // this.formContentInstance.FormOnDestroy();
     this.closeEvent.emit(this.form);
-    this.form.Close()
+    this.desktopService.CloseForm(this.form, this.formContentInstance);
+    // this.formContentInstance.FormAfterDestroy();
   }
 
   FullScreenClick(event?: MouseEvent) {

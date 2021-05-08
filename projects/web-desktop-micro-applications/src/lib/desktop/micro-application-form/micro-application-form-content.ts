@@ -5,7 +5,7 @@ export abstract class MicroApplicationFormContent implements IMicroApplicationCo
 
   form: MicroApplicationFormSettings
 
-  CloseWindow = () => {
+  CloseForm = () => {
     this.form.formContainer.CloseClick();
   }
 
