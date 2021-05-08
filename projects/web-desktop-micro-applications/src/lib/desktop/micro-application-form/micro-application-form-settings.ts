@@ -10,7 +10,7 @@ export class MicroApplicationFormSettings {
   desktopService: DesktopService;
   params: any;
   readonly children = new Array<MicroApplicationFormSettings>()
-  parent: MicroApplicationFormSettings;
+  private _parent: MicroApplicationFormSettings;
   closeIfParentClosed = false;
   readonly created: Date;
   xPos = 100;
@@ -55,21 +55,13 @@ export class MicroApplicationFormSettings {
     }
   }
 
-  AddChildren = (form: MicroApplicationFormSettings) => {
-    form.parent = this;
-    if (form.isModal) {
-      this.isBlockedByChildren = true;
-    }
-    this.children.push(form);
-    this.desktopService.AddNewForm(form);
-  }
-
   get isModal(): boolean {
     return this._isModal;
   }
 
   set isModal(value: boolean) {
-    this.parent.isBlockedByChildren = value;
+    // this._parent.isBlockedByChildren = value;
+    this.desktopService.BlockForm(this._parent);
     this._isModal = value;
   }
 
@@ -91,5 +83,14 @@ export class MicroApplicationFormSettings {
 
   set isResizable(value: boolean) {
     this._isResizable = value;
+  }
+
+
+  get parent(): MicroApplicationFormSettings {
+    return this._parent;
+  }
+
+  set parent(value: MicroApplicationFormSettings) {
+    this._parent = value;
   }
 }

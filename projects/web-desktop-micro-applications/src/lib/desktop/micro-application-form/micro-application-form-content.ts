@@ -9,12 +9,16 @@ export abstract class MicroApplicationFormContent implements IMicroApplicationCo
     this.form.formContainer.CloseClick();
   }
 
-  AddChildren(form: MicroApplicationFormSettings): void {
+  OpenChildrenForm(form: MicroApplicationFormSettings): void {
+    this.form.children.push(form);
+    form.parent = this.form;
+
     if (form.xPos === this.form.xPos && form.yPos === this.form.yPos) {
       form.xPos = this.form.xPos + 30;
       form.yPos = this.form.yPos + 30;
     }
-    this.form.AddChildren(form);
+
+    this.form.desktopService.AddNewForm(form);
   }
 
   FormOnInit(): void {

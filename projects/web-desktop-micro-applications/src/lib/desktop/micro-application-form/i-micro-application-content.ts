@@ -19,6 +19,6 @@ export interface IMicroApplicationContent {
   FormOnMove(): void;
   FormOnResize(): void;
 
-  AddChildren: (form: MicroApplicationFormSettings) => void;
+  OpenChildrenForm: (form: MicroApplicationFormSettings) => void;
   CloseForm: () => void;
 }

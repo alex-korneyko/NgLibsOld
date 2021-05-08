@@ -278,4 +278,8 @@ export class DesktopService {
   FormDragEndHandler(event: MicroApplicationFormEvent) {
     this.currentWindowEvent = null;
   }
+
+  BlockForm(form: MicroApplicationFormSettings) {
+    setTimeout(() => form.isBlockedByChildren = true, 10)
+  }
 }
