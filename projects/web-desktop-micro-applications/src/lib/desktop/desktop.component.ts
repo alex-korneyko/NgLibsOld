@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {DesktopService} from './desktop.service';
+import {WebDesktopCoreService} from './web-desktop-core.service';
 
 @Component({
   selector: 'wma-desk-top',
@@ -8,7 +8,7 @@ import {DesktopService} from './desktop.service';
 })
 export class DesktopComponent implements OnInit {
 
-  constructor(public desktopService: DesktopService) { }
+  constructor(public desktopService: WebDesktopCoreService) { }
 
   ngOnInit(): void {
 

@@ -1,5 +1,5 @@
 import {Component, ElementRef, OnInit, Output, ViewChild, EventEmitter} from '@angular/core';
-import {DesktopService} from '../desktop.service';
+import {WebDesktopCoreService} from '../web-desktop-core.service';
 
 @Component({
   selector: 'wma-task-panel',
@@ -14,7 +14,7 @@ export class TaskPanelComponent implements OnInit {
   @Output()
   taskPanelAreaOnResize = new EventEmitter<any>();
 
-  constructor(public deskTopService: DesktopService) { }
+  constructor(public deskTopService: WebDesktopCoreService) { }
 
   ngOnInit(): void {
     this.deskTopService.windowOnResizeHandlers.push(() => {

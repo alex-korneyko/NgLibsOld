@@ -3,7 +3,7 @@
  */
 
 export * from "./lib/desktop/desktop.component"
-export * from "./lib/desktop/desktop.service"
+export * from "./lib/desktop/web-desktop-core.service"
 export * from "./lib/desktop/web-desktop-applications.module"
 export * from "./lib/desktop/micrioApplications/micro-application"
 export * from "./lib/desktop/micrioApplications/micro-application-state.enum"

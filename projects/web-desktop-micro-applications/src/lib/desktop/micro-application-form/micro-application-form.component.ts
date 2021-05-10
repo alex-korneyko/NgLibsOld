@@ -4,7 +4,7 @@ import {MicroApplicationFormEvent} from './micro-application-form-event';
 import {MicroApplicationFormEventType} from './micro-application-form-event-type.enum';
 import {MicroApplicationFormContentDirective} from './micro-application-form-content.directive';
 import {IMicroApplicationContent} from './i-micro-application-content';
-import {DesktopService} from '../desktop.service';
+import {WebDesktopCoreService} from '../web-desktop-core.service';
 
 @Component({
   selector: 'wma-form',
@@ -51,7 +51,7 @@ export class MicroApplicationFormComponent implements OnInit, AfterViewInit, OnD
 
   formContentInstance: IMicroApplicationContent;
 
-  constructor(private desktopService: DesktopService, private componentFactoryResolver: ComponentFactoryResolver) {
+  constructor(private desktopService: WebDesktopCoreService, private componentFactoryResolver: ComponentFactoryResolver) {
   }
 
   ngOnInit(): void {

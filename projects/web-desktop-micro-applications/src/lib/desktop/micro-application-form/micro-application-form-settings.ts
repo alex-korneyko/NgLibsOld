@@ -1,13 +1,13 @@
 import {Type} from '@angular/core';
 import {MicroApplicationFormContent} from './micro-application-form-content';
-import {DesktopService} from '../desktop.service';
+import {WebDesktopCoreService} from '../web-desktop-core.service';
 import {MicroApplicationFormComponent} from './micro-application-form.component';
 
 export class MicroApplicationFormSettings {
   readonly id: number;
   formContainer: MicroApplicationFormComponent;
   readonly formContent: Type<MicroApplicationFormContent>;
-  desktopService: DesktopService;
+  desktopService: WebDesktopCoreService;
   params: any;
   readonly children = new Array<MicroApplicationFormSettings>()
   private _parent: MicroApplicationFormSettings;

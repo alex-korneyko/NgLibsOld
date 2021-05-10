@@ -1,8 +1,8 @@
-import {IMicroApplicationBox} from './i-micro-application-box';
+import {IMicroApplicationContainer} from './i-micro-application-container';
 import {IMicroApplication} from './micro-application';
 import {MicroApplicationState} from './micro-application-state.enum';
 
-export class MicroApplicationBox implements IMicroApplicationBox{
+export class MicroApplicationContainer implements IMicroApplicationContainer{
 
   autostart = false;
   microApplication: IMicroApplication;

@@ -3,15 +3,15 @@ import {MicroApplicationFormSettings} from './micro-application-form/micro-appli
 import {MicroApplicationFormEvent} from './micro-application-form/micro-application-form-event';
 import {MicroApplicationFormEventType} from './micro-application-form/micro-application-form-event-type.enum';
 import {HtmlObjectCoordinates} from './workcpace/html-object-coordinates';
-import {IMicroApplicationBox} from './micrioApplications/i-micro-application-box';
+import {IMicroApplicationContainer} from './micrioApplications/i-micro-application-container';
 import {MicroApplicationState} from './micrioApplications/micro-application-state.enum';
-import {MicroApplications} from './micrioApplications/micro.applications';
+import {WebDesktopComon} from './web-desktop-comon';
 import {IMicroApplicationContent} from './micro-application-form/i-micro-application-content';
 
 @Injectable({
   providedIn: 'root'
 })
-export class DesktopService {
+export class WebDesktopCoreService {
 
   forms = new Array<MicroApplicationFormSettings>();
 
@@ -42,7 +42,7 @@ export class DesktopService {
     }
   }
 
-  StartApplication = (microApplicationBox: IMicroApplicationBox) => {
+  StartApplication = (microApplicationBox: IMicroApplicationContainer) => {
 
     if (microApplicationBox.microApplicationState === MicroApplicationState.Running) {
       let index = this.forms.findIndex(form => form.formContent === microApplicationBox.microApplication.formContentComponent);
@@ -114,10 +114,10 @@ export class DesktopService {
     }
     instance?.FormAfterDestroy();
 
-    index = MicroApplications.applicationBoxes
+    index = WebDesktopComon.applicationContainers
       .findIndex(appBox => appBox.microApplication.formContentComponent === formSettings.formContent);
     if (index > -1) {
-      MicroApplications.applicationBoxes[index].Stop();
+      WebDesktopComon.applicationContainers[index].Stop();
     }
   }
 
@@ -129,7 +129,7 @@ export class DesktopService {
     this.activeForm = microApplicationForm;
     microApplicationForm.isMinimized = false;
 
-    DesktopService.formsRearrange(this.forms);
+    WebDesktopCoreService.formsRearrange(this.forms);
 
     this.mainMenuIsShown = false;
     this.activeForm.isActive = true;
